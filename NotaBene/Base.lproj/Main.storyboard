@@ -36,6 +36,9 @@
                                 <rect key="frame" x="168" y="339" width="38" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="action:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OdS-H8-nJ5"/>
+                                </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Hih-GA-1uZ">
                                 <rect key="frame" x="130" y="165" width="115" height="29"/>
@@ -50,6 +53,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="actionButton" destination="5JV-8k-Kc9" id="M9B-s5-ffo"/>
                         <outlet property="emailText" destination="7yC-dw-dtm" id="5Je-Bf-4B7"/>
                         <outlet property="passwordText" destination="KXC-gF-Qud" id="s1q-jc-8Yp"/>
                         <outlet property="segmentControl" destination="Hih-GA-1uZ" id="9gv-ZM-4bu"/>
