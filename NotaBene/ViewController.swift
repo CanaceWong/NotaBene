@@ -23,7 +23,7 @@ class ViewController: UIViewController {
                 Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!, completion:{(user, error) in
                     if user != nil {
                         // sign in successful
-                        print("SUCCESS")
+                        self.performSegue(withIdentifier: "logged", sender: self)
                     } else {
                         if let myError = error?.localizedDescription{
                             print(myError)
@@ -38,7 +38,7 @@ class ViewController: UIViewController {
                 Auth.auth().createUser(withEmail: emailText.text!, password: passwordText.text!, completion: { (user, error) in
                     if user != nil {
                         // sign up successful
-                        print("SUCCESS")
+                       self.performSegue(withIdentifier: "logged", sender: self)
                     } else {
                         if let myError = error?.localizedDescription{
                             print(myError)

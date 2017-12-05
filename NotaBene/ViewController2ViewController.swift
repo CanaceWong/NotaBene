@@ -1,0 +1,39 @@
+//
+//  ViewController2ViewController.swift
+//  NotaBene
+//
+//  Created by Olivia Beresford on 05/12/2017.
+//  Copyright © 2017 NotaBeneTeam. All rights reserved.
+//
+
+import UIKit
+import FirebaseAuth
+
+class ViewController2ViewController: UIViewController {
+    
+    @IBAction func action(_ sender: UIButton) {
+        
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print(Auth.auth().currentUser?.email)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
+}
