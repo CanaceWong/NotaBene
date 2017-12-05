@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ViewController: UIViewController {
     
@@ -16,6 +17,38 @@ class ViewController: UIViewController {
     @IBOutlet weak var actionButton: UIButton!
     
     @IBAction func action(_ sender: UIButton) {
+        if emailText.text != "" && passwordText.text != "" {
+            if segmentControl.selectedSegmentIndex == 0 //login user
+            {
+                Auth.auth().signIn(withEmail: emailText.text!, password: passwordText.text!, completion:{(user, error) in
+                    if user != nil {
+                        // sign in successful
+                        print("SUCCESS")
+                    } else {
+                        if let myError = error?.localizedDescription{
+                            print(myError)
+                        } else {
+                            print("ERROR")
+                        }
+                    }
+                })
+            }
+            else //signup user
+            {
+                Auth.auth().createUser(withEmail: emailText.text!, password: passwordText.text!, completion: { (user, error) in
+                    if user != nil {
+                        // sign up successful
+                        print("SUCCESS")
+                    } else {
+                        if let myError = error?.localizedDescription{
+                            print(myError)
+                        } else {
+                            print("ERROR")
+                        }
+                    }
+                })
+            }
+        }
     }
     
     
