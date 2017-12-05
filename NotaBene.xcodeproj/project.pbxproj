@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7AA794E3C164601823BA4E0E /* Pods_NotaBeneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */; };
+		7C3D11391FD70A3E0059D98C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C3D11381FD70A3E0059D98C /* GoogleService-Info.plist */; };
 		7C67438D1FD6F55000A3B578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67438C1FD6F55000A3B578 /* AppDelegate.swift */; };
 		7C67438F1FD6F55100A3B578 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67438E1FD6F55100A3B578 /* ViewController.swift */; };
 		7C6743921FD6F55100A3B578 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6743901FD6F55100A3B578 /* Main.storyboard */; };
@@ -15,7 +16,6 @@
 		7C6743971FD6F55100A3B578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6743951FD6F55100A3B578 /* LaunchScreen.storyboard */; };
 		7C6743A21FD6F55100A3B578 /* NotaBeneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6743A11FD6F55100A3B578 /* NotaBeneTests.swift */; };
 		7C6743AD1FD6F55100A3B578 /* NotaBeneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */; };
-		7C6743BB1FD6F68E00A3B578 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C6743BA1FD6F68E00A3B578 /* GoogleService-Info.plist */; };
 		CD9B6BE680718C0E16A580F3 /* Pods_NotaBeneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8E01D8D5666786CADD5D24 /* Pods_NotaBeneUITests.framework */; };
 		D2FABF5FC40ECE4E88C55498 /* Pods_NotaBene.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E14FC05096576DD9376898 /* Pods_NotaBene.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +43,7 @@
 		381A223640B4E20B9E4BE7B2 /* Pods-NotaBeneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneTests/Pods-NotaBeneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBeneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77F03B3D500857187FBF54B0 /* Pods-NotaBeneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneUITests/Pods-NotaBeneUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7C3D11381FD70A3E0059D98C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7C6743891FD6F55000A3B578 /* NotaBene.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NotaBene.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C67438C1FD6F55000A3B578 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7C67438E1FD6F55100A3B578 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		7C6743A81FD6F55100A3B578 /* NotaBeneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotaBeneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaBeneUITests.swift; sourceTree = "<group>"; };
 		7C6743AE1FD6F55100A3B578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7C6743BA1FD6F68E00A3B578 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2E14FC05096576DD9376898 /* Pods_NotaBene.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBene.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D53CC1D5DC22BEA1C60D36 /* Pods-NotaBene.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBene.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBene/Pods-NotaBene.release.xcconfig"; sourceTree = "<group>"; };
 		BB72E7771DD3A7BD7CE766D2 /* Pods-NotaBeneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneTests/Pods-NotaBeneTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 				7C6743931FD6F55100A3B578 /* Assets.xcassets */,
 				7C6743951FD6F55100A3B578 /* LaunchScreen.storyboard */,
 				7C6743981FD6F55100A3B578 /* Info.plist */,
-				7C6743BA1FD6F68E00A3B578 /* GoogleService-Info.plist */,
+				7C3D11381FD70A3E0059D98C /* GoogleService-Info.plist */,
 			);
 			path = NotaBene;
 			sourceTree = "<group>";
@@ -285,9 +285,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6743971FD6F55100A3B578 /* LaunchScreen.storyboard in Resources */,
+				7C3D11391FD70A3E0059D98C /* GoogleService-Info.plist in Resources */,
 				7C6743941FD6F55100A3B578 /* Assets.xcassets in Resources */,
 				7C6743921FD6F55100A3B578 /* Main.storyboard in Resources */,
-				7C6743BB1FD6F68E00A3B578 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
