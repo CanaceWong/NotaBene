@@ -12,7 +12,8 @@ import FirebaseAuth
 class ViewController2ViewController: UIViewController {
     
     @IBAction func action(_ sender: UIButton) {
-        
+        try! Auth.auth().signOut()
+        performSegue(withIdentifier: "logged2", sender: self)
     }
     
     override func viewDidLoad() {
