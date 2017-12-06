@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseDatabase
 
 class ViewControllerSave: UIViewController {
 
@@ -16,7 +16,12 @@ class ViewControllerSave: UIViewController {
     var ref:DatabaseReference?
     
     @IBAction func saveEntry(_ sender: Any) {
+        ref = Database.database().reference()
         
+        if entryText.text != "" {
+            ref?.child("entries").childByAutoId().setValue(entryText.text)
+
+        }
     }
     
     

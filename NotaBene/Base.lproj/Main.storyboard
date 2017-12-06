@@ -80,6 +80,14 @@
                                     <action selector="action:" destination="QSy-TN-J8O" eventType="touchUpInside" id="DPM-eU-rhy"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zME-KG-vDJ">
+                                <rect key="frame" x="135" y="318" width="104" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="create an entry"/>
+                                <connections>
+                                    <segue destination="vbW-Hw-7m0" kind="show" identifier="goToEntries" id="Wqf-mc-wPm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="eEv-sQ-78T"/>
