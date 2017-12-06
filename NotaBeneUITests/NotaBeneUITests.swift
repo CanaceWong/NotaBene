@@ -29,8 +29,44 @@ class NotaBeneUITests: XCTestCase {
     }
     
     func testExample() {
+        
+      
+        
+        let app = XCUIApplication()
+        
+        let predicate = NSPredicate(format: "exists == 1")
+        let entryTab = app.navigationBars["Entries"]
+
+     
+
+        
+        XCTAssertFalse(entryTab.exists)
+        
+
+        
+        let usernameTextField = app.textFields["Username"]
+        usernameTextField.tap()
+        usernameTextField.typeText("canacewong@testing.com")
+        
+        let passwordSecureTextField = app.secureTextFields["Password"]
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("Testing")
+        app.otherElements.containing(.textField, identifier:"Username").children(matching: .button)["Login"].tap()
+        
+        expectation(for: predicate, evaluatedWith: entryTab, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
+        
+        XCTAssert(app.navigationBars["Entries"].exists)
+        
+            
+        
         // Use recording to get started writing UI tests.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+    }
+    
+    func codeTest() {
+        
+        
     }
     
 }
