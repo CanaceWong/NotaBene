@@ -65,117 +65,12 @@
                         <outlet property="emailText" destination="7yC-dw-dtm" id="5Je-Bf-4B7"/>
                         <outlet property="passwordText" destination="KXC-gF-Qud" id="s1q-jc-8Yp"/>
                         <outlet property="segmentControl" destination="Hih-GA-1uZ" id="9gv-ZM-4bu"/>
-                        <segue destination="QSy-TN-J8O" kind="show" identifier="logged" id="RxL-Vs-XcW"/>
+                        <segue destination="kCC-0F-PoU" kind="show" identifier="logged" id="LDs-qN-15X"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="117.39130434782609"/>
-        </scene>
-        <!--View Controller2 View Controller-->
-        <scene sceneID="6kx-al-NCr">
-            <objects>
-                <viewController id="QSy-TN-J8O" customClass="ViewController2ViewController" customModule="NotaBene" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="rN8-QZ-TFE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XCd-01-1ew">
-                                <rect key="frame" x="307" y="20" width="52" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Log out"/>
-                                <connections>
-                                    <action selector="action:" destination="QSy-TN-J8O" eventType="touchUpInside" id="DPM-eU-rhy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zME-KG-vDJ">
-                                <rect key="frame" x="135" y="318" width="104" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="create an entry"/>
-                                <connections>
-                                    <segue destination="vbW-Hw-7m0" kind="show" identifier="goToEntries" id="Wqf-mc-wPm"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="eEv-sQ-78T"/>
-                    </view>
-                    <connections>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="logged2" id="YAv-qG-Syu"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oIc-MV-KM0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1026" y="117"/>
-        </scene>
-        <!--View Controller Save-->
-        <scene sceneID="dEj-FJ-RPS">
-            <objects>
-                <viewController id="vbW-Hw-7m0" customClass="ViewControllerSave" customModule="NotaBene" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Rjq-L1-qfg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="isH-Lb-bYe">
-                                <rect key="frame" x="48" y="224" width="293" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oJh-z9-v4O">
-                                <rect key="frame" x="171" y="318" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="save"/>
-                                <connections>
-                                    <action selector="saveEntry:" destination="vbW-Hw-7m0" eventType="touchUpInside" id="WUa-JE-RTC"/>
-                                    <segue destination="o8b-6j-amV" kind="show" id="tzJ-pL-5q6"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FDK-IN-idT">
-                                <rect key="frame" x="139" y="390" width="97" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="saveEntry:" destination="vbW-Hw-7m0" eventType="editingDidEnd" id="4Eq-ua-OhE"/>
-                                </connections>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2m7-P3-MLp">
-                                <rect key="frame" x="15" y="20" width="48" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <segue destination="QSy-TN-J8O" kind="show" identifier="cancelEntry" id="Org-zW-bjw"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="NqM-CB-ykL"/>
-                    </view>
-                    <connections>
-                        <outlet property="entryText" destination="isH-Lb-bYe" id="DWK-GW-MbS"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pSc-BA-hZ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1720.8" y="111.99400299850076"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="O2E-G6-bji">
-            <objects>
-                <viewController id="o8b-6j-amV" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bE1-hr-zTw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="o9X-4r-Oxh"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0zK-Ou-5jl" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2455" y="112"/>
+            <point key="canvasLocation" x="3041" y="108"/>
         </scene>
         <!--Entries-->
         <scene sceneID="UEG-iN-lq9">
@@ -224,6 +119,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Entries" id="d4R-jy-NCi">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="fuR-nM-X37">
+                            <connections>
+                                <segue destination="BYZ-38-t0r" kind="show" identifier="logged2" id="oGy-G1-kBH"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cFv-2M-PJt">
                             <connections>
                                 <segue destination="IBJ-q8-Bk1" kind="presentation" identifier="addEntry" id="PoU-rj-R50"/>
@@ -238,7 +138,7 @@
         <!--Your Entry-->
         <scene sceneID="2S1-e5-yjj">
             <objects>
-                <viewController id="91A-sR-Qxm" sceneMemberID="viewController">
+                <viewController id="91A-sR-Qxm" customClass="Entry" customModule="NotaBene" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tHH-WB-uf7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -273,13 +173,13 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="entry description..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GV7-DL-m4V">
-                                        <rect key="frame" x="0.0" y="46" width="362" height="215"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="entry content....." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-rL-61x">
+                                        <rect key="frame" x="0.0" y="46" width="354" height="223"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                    </textView>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -288,13 +188,26 @@
                         <viewLayoutGuide key="safeArea" id="cWa-8i-bf9"/>
                     </view>
                     <navigationItem key="navigationItem" title="Your Entry" id="SBz-V2-7W6">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="uia-mQ-L0E"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="g7L-Da-dEc">
+                            <connections>
+                                <segue destination="fuE-0W-AgS" kind="show" identifier="cancelEntry" id="6CI-GF-maF"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="uia-mQ-L0E">
+                            <connections>
+                                <action selector="saveEntry:" destination="91A-sR-Qxm" id="g2n-rB-UNr"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="entryContent" destination="xvd-rL-61x" id="svC-tL-yg1"/>
+                        <outlet property="entryTitle" destination="sqH-rx-lH0" id="5zs-EB-zuJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcC-fR-T3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="lot-RI-Hv5"/>
             </objects>
-            <point key="canvasLocation" x="4644" y="116.49175412293854"/>
+            <point key="canvasLocation" x="4773.6000000000004" y="75.112443778110944"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zwc-O9-s8L">
@@ -312,7 +225,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P8P-tc-aGv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3126.4000000000001" y="109.74512743628186"/>
+            <point key="canvasLocation" x="3865" y="-679"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="oaD-1v-Jye">
@@ -330,11 +243,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KvQ-qX-RNI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3865" y="838"/>
+            <point key="canvasLocation" x="3865" y="922"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hRB-P8-1j2"/>
-        <segue reference="Org-zW-bjw"/>
+        <segue reference="Pj2-Uh-jir"/>
+        <segue reference="6CI-GF-maF"/>
     </inferredMetricsTieBreakers>
 </document>
