@@ -7,7 +7,11 @@
 //
 
 import XCTest
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseAnalytics
 @testable import NotaBene
+
 
 class NotaBeneTests: XCTestCase {
     
