@@ -16,15 +16,21 @@ class Entry: UIViewController {
     
     var ref:DatabaseReference?
     
-    @IBAction func saveEntry(_ sender: UIBarButtonItem) {
+    @IBAction func saveEntry(_ sender: Any) {
         ref = Database.database().reference()
         
         if entryTitle.text != "" {
-            ref?.child("entries").childByAutoId().setValue(entryTitle.text)
+            let key = ref?.child("entries").childByAutoId().key
+            let entry = [
+                "title": entryTitle.text,
+                "content": entryContent.text
+            ]
+            let childUpdates = [ "/entries/\(key)": entry]
+            ref?.updateChildValues(childUpdates)
             print("successfully saved")
-            entryTitle.text = ""
         }
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

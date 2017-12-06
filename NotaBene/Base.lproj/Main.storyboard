@@ -159,6 +159,15 @@
                                             <outletCollection property="gestureRecognizers" destination="lot-RI-Hv5" appends="YES" id="bLw-tx-boq"/>
                                         </connections>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gf5-EP-flf">
+                                        <rect key="frame" x="164" y="269" width="34" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveEntry:" destination="91A-sR-Qxm" eventType="touchUpInside" id="LHd-Ki-2mv"/>
+                                            <segue destination="fuE-0W-AgS" kind="show" identifier="saved" id="6x5-Ia-knV"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
@@ -191,11 +200,6 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="g7L-Da-dEc">
                             <connections>
                                 <segue destination="fuE-0W-AgS" kind="show" identifier="cancelEntry" id="6CI-GF-maF"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="uia-mQ-L0E">
-                            <connections>
-                                <action selector="saveEntry:" destination="91A-sR-Qxm" id="g2n-rB-UNr"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -247,7 +251,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Pj2-Uh-jir"/>
-        <segue reference="6CI-GF-maF"/>
+        <segue reference="hRB-P8-1j2"/>
+        <segue reference="6x5-Ia-knV"/>
     </inferredMetricsTieBreakers>
 </document>
