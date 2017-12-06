@@ -20,7 +20,8 @@ class ViewControllerSave: UIViewController {
         
         if entryText.text != "" {
             ref?.child("entries").childByAutoId().setValue(entryText.text)
-
+            print("successfully saved")
+            entryText.text = ""
         }
     }
     
