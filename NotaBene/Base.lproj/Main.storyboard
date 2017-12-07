@@ -82,14 +82,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kZF-u0-6NL">
-                            <rect key="frame" x="0.0" y="117" width="375" height="44"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="add"/>
-                            <connections>
-                                <segue destination="91A-sR-Qxm" kind="show" identifier="newAdd" id="khj-9a-Iqa"/>
-                            </connections>
-                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Entries" rowHeight="89" id="5fd-4i-NBu">
                                 <rect key="frame" x="0.0" y="28" width="375" height="89"/>
@@ -109,6 +101,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="fuR-nM-X37">
                             <connections>
                                 <segue destination="BYZ-38-t0r" kind="show" identifier="logged2" id="oGy-G1-kBH"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="2Ji-RK-gAp">
+                            <connections>
+                                <segue destination="91A-sR-Qxm" kind="show" identifier="addEntry" id="peA-S1-LWK"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -157,7 +154,7 @@
                                     <action selector="saveEntry:" destination="91A-sR-Qxm" eventType="touchUpInside" id="7oh-eV-WSZ"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERn-yu-ux6">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERn-yu-ux6">
                                 <rect key="frame" x="16" y="323" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" identifier="successMessage"/>
@@ -225,7 +222,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="khj-9a-Iqa"/>
+        <segue reference="peA-S1-LWK"/>
         <segue reference="6CI-GF-maF"/>
     </inferredMetricsTieBreakers>
 </document>
