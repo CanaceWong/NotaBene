@@ -33,6 +33,7 @@ class Entries: UITableViewController {
         }
         
         let deleteAction = UIAlertAction(title:"Delete", style:.default){(_) in
+            self.deleteEntry(id: entry.id!)
         }
         
         alertController.addTextField{(textField) in
@@ -57,6 +58,10 @@ class Entries: UITableViewController {
         ]
         refEntries.child(id).setValue(entry)
 //        labelMessage.text = "Entry Updated!"
+    }
+    
+    func deleteEntry(id: String) {
+        refEntries.child(id).setValue(nil)
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
