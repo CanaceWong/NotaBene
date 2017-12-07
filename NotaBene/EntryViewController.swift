@@ -11,25 +11,7 @@ import FirebaseDatabase
 
 class Entry: UIViewController {
     
-    @IBOutlet weak var entryTitle: UITextField!
-    @IBOutlet weak var entryContent: UITextField!
     
-    var ref:DatabaseReference?
-    
-    @IBAction func saveEntry(_ sender: Any) {
-        ref = Database.database().reference()
-        print("helllo")
-        if entryTitle.text != "" {
-            let key = ref?.child("entries").childByAutoId().key
-            let entry = [
-                "title": entryTitle.text,
-                "content": entryContent.text
-            ]
-            let childUpdates = [ "/entries/\(key)": entry]
-            ref?.updateChildValues(childUpdates)
-            print("successfully saved")
-        }
-    }
     
     
     override func viewDidLoad() {
