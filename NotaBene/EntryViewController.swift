@@ -18,7 +18,7 @@ class Entry: UIViewController {
     
     @IBAction func saveEntry(_ sender: Any) {
         ref = Database.database().reference()
-        print("heloo"git status)
+        print("helllo")
         if entryTitle.text != "" {
             let key = ref?.child("entries").childByAutoId().key
             let entry = [
