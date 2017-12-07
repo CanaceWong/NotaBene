@@ -10,8 +10,9 @@ import UIKit
 import Firebase
 import FirebaseAuth
 
-class Entries: UIViewController {
+class Entries: UITableViewController {
     
+    @IBOutlet weak var userNameDisplay: UILabel!
     @IBAction func action(_ sender: UIButton) {
         try! Auth.auth().signOut()
         performSegue(withIdentifier: "logged2", sender: self)
@@ -19,7 +20,8 @@ class Entries: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Auth.auth().currentUser?.email)
+        
+        userNameDisplay.text = Auth.auth().currentUser?.email
     }
     
     override func didReceiveMemoryWarning() {

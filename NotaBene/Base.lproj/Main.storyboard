@@ -77,14 +77,22 @@
         <!--Entries-->
         <scene sceneID="UEG-iN-lq9">
             <objects>
-                <tableViewController id="fuE-0W-AgS" sceneMemberID="viewController">
+                <tableViewController id="fuE-0W-AgS" customClass="Entries" customModule="NotaBene" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mhT-ZD-ZxY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <label key="tableHeaderView" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GwA-N9-hIZ">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <accessibility key="accessibilityConfiguration" identifier="userName"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Entries" rowHeight="89" id="5fd-4i-NBu">
-                                <rect key="frame" x="0.0" y="28" width="375" height="89"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="89"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5fd-4i-NBu" id="n8P-8J-D8H">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="88.5"/>
@@ -109,6 +117,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="userNameDisplay" destination="GwA-N9-hIZ" id="gaf-YO-yNc"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fn-Od-X9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -223,6 +234,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="6CI-GF-maF"/>
+        <segue reference="Z6f-LQ-h6Q"/>
     </inferredMetricsTieBreakers>
 </document>
