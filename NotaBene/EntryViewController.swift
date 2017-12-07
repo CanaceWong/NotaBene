@@ -7,17 +7,43 @@
 //
 
 import UIKit
+import Firebase
 import FirebaseDatabase
 
 class Entry: UIViewController {
     
     
+    @IBOutlet weak var entryTitle: UITextField!
+    @IBOutlet weak var entryContent: UITextField!
+    @IBOutlet weak var successMessage: UILabel!
     
+    var refEntries: DatabaseReference!
+    
+    
+    @IBAction func saveEntry(_ sender: UIButton) {
+        addEntry()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
+    
+        refEntries = Database.database().reference().child("entries");
+        
+    }
+    
+    func addEntry() {
+        let key = refEntries.childByAutoId().key
+        
+        let entry = ["id": key,
+            "entryTitle": entryTitle.text! as String,
+            "entryContent": entryContent.text! as String
+        ]
+        
+        refEntries.child(key).setValue(entry)
+        
+        successMessage.text = "Entry Saved!"
     }
     
     override func didReceiveMemoryWarning() {

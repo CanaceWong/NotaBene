@@ -82,6 +82,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kZF-u0-6NL">
+                            <rect key="frame" x="0.0" y="117" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="add"/>
+                            <connections>
+                                <segue destination="91A-sR-Qxm" kind="show" identifier="newAdd" id="khj-9a-Iqa"/>
+                            </connections>
+                        </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Entries" rowHeight="89" id="5fd-4i-NBu">
                                 <rect key="frame" x="0.0" y="28" width="375" height="89"/>
@@ -90,9 +98,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="88.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="91A-sR-Qxm" kind="show" identifier="showEntry" id="hRB-P8-1j2"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -106,16 +111,11 @@
                                 <segue destination="BYZ-38-t0r" kind="show" identifier="logged2" id="oGy-G1-kBH"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="cFv-2M-PJt">
-                            <connections>
-                                <segue destination="IBJ-q8-Bk1" kind="presentation" identifier="addEntry" id="PoU-rj-R50"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fn-Od-X9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3864.8000000000002" y="108.39580209895054"/>
+            <point key="canvasLocation" x="3884" y="97"/>
         </scene>
         <!--Your Entry-->
         <scene sceneID="2S1-e5-yjj">
@@ -129,18 +129,18 @@
                                 <rect key="frame" x="6" y="71" width="362" height="269"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="entry title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sqH-rx-lH0">
-                                        <rect key="frame" x="8" y="8" width="354" height="30"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="entry content....." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-rL-61x">
+                                        <rect key="frame" x="8" y="46" width="354" height="177"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="EntryTitle"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="entryContent"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="entry content....." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-rL-61x">
-                                        <rect key="frame" x="8" y="46" width="354" height="223"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="entry title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wJb-cW-Zk5">
+                                        <rect key="frame" x="8" y="8" width="354" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <accessibility key="accessibilityConfiguration" identifier="EntryContent"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="entryTitle"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -151,9 +151,20 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="td7-zU-5G6">
                                 <rect key="frame" x="170" y="514" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="entrySave"/>
+                                <accessibility key="accessibilityConfiguration" identifier="saveEntry"/>
                                 <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveEntry:" destination="91A-sR-Qxm" eventType="touchUpInside" id="7oh-eV-WSZ"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERn-yu-ux6">
+                                <rect key="frame" x="16" y="323" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="successMessage"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cWa-8i-bf9"/>
@@ -166,8 +177,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="entryContent" destination="xvd-rL-61x" id="svC-tL-yg1"/>
-                        <outlet property="entryTitle" destination="sqH-rx-lH0" id="5zs-EB-zuJ"/>
+                        <outlet property="entryContent" destination="xvd-rL-61x" id="Elm-Kq-7Q2"/>
+                        <outlet property="entryTitle" destination="wJb-cW-Zk5" id="Y4L-tw-9qC"/>
+                        <outlet property="successMessage" destination="ERn-yu-ux6" id="oRe-VB-jj6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcC-fR-T3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -213,7 +225,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hRB-P8-1j2"/>
+        <segue reference="khj-9a-Iqa"/>
         <segue reference="6CI-GF-maF"/>
     </inferredMetricsTieBreakers>
 </document>
