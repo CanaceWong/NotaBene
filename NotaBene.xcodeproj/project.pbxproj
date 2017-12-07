@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1EF754731FD83D2B00B3E4E7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EF754721FD83D2B00B3E4E7 /* GoogleService-Info.plist */; };
+		1EF754791FD8617E00B3E4E7 /* loginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF754781FD8617E00B3E4E7 /* loginTests.swift */; };
 		7AA794E3C164601823BA4E0E /* Pods_NotaBeneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */; };
 		7C1379551FD81FAA009C35FA /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1379541FD81FAA009C35FA /* EntryViewController.swift */; };
 		7C67438D1FD6F55000A3B578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67438C1FD6F55000A3B578 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		17947378912FFFAFE1E99D95 /* Pods-NotaBene.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBene.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBene/Pods-NotaBene.debug.xcconfig"; sourceTree = "<group>"; };
 		1EF754721FD83D2B00B3E4E7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		1EF754781FD8617E00B3E4E7 /* loginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginTests.swift; sourceTree = "<group>"; };
 		2E8E01D8D5666786CADD5D24 /* Pods_NotaBeneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBeneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		381A223640B4E20B9E4BE7B2 /* Pods-NotaBeneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneTests/Pods-NotaBeneTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBeneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +159,7 @@
 			children = (
 				7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */,
 				7C6743AE1FD6F55100A3B578 /* Info.plist */,
+				1EF754781FD8617E00B3E4E7 /* loginTests.swift */,
 			);
 			path = NotaBeneUITests;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6743AD1FD6F55100A3B578 /* NotaBeneUITests.swift in Sources */,
+				1EF754791FD8617E00B3E4E7 /* loginTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
