@@ -140,6 +140,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="entriesTable" destination="mhT-ZD-ZxY" id="dzQ-IB-HCf"/>
                         <outlet property="userNameDisplay" destination="GwA-N9-hIZ" id="gaf-YO-yNc"/>
                     </connections>
                 </tableViewController>
