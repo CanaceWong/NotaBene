@@ -1,0 +1,6 @@
+framework module Pods_NotaBene_NotaBeneUITests {
+  umbrella header "Pods-NotaBene-NotaBeneUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

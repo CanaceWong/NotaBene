@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_NotaBeneUITestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_NotaBeneUITestsVersionString[];
+FOUNDATION_EXPORT double Pods_NotaBene_NotaBeneUITestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_NotaBene_NotaBeneUITestsVersionString[];
 

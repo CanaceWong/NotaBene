@@ -18,7 +18,10 @@ target 'NotaBene' do
   end
 
   target 'NotaBeneUITests' do
-    inherit! :search_paths
+      pod 'Firebase/Core'
+      pod 'Firebase/Auth'
+      pod 'Firebase/Database'
+
     # Pods for testing
   end
 

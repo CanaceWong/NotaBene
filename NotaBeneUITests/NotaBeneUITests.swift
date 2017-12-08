@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import FirebaseAuth
+import Firebase
 
 class NotaBeneUITests: XCTestCase {
     
@@ -27,29 +29,71 @@ class NotaBeneUITests: XCTestCase {
     }
     
     override func tearDown() {
+        
+     
+
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+        
     }
     
     func testExample() {
         
-        let predicate = NSPredicate(format: "exists == 1")
-        let entryTab = app.navigationBars["Entries"]
-        XCTAssertFalse(entryTab.exists)
+        let app = XCUIApplication()
+
+
+        app/*@START_MENU_TOKEN@*/.buttons["Signup"]/*[[".segmentedControls.buttons[\"Signup\"]",".buttons[\"Signup\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
         let usernameTextField = app.textFields["Username"]
         usernameTextField.tap()
-        usernameTextField.typeText("canacewong@testing.com")
+        usernameTextField.typeText("testing@testing.com")
         
         let passwordSecureTextField = app.secureTextFields["Password"]
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText("Testing")
         app.otherElements.containing(.textField, identifier:"Username").children(matching: .button)["Login"].tap()
         
-        expectation(for: predicate, evaluatedWith: entryTab, handler: nil)
-        waitForExpectations(timeout: 10, handler: nil)
+        let entriesNavigationBar = app.navigationBars["Entries"]
+        let logoutButton = entriesNavigationBar.buttons["Logout"]
         
-        XCTAssert(app.navigationBars["Entries"].exists)
+        logoutButton.tap()
+        usernameTextField.tap()
+        usernameTextField.typeText("testing@testing.com")
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("Testing")
+        
+        let window = app.children(matching: .window).element(boundBy: 0)
+        window.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .button)["Login"].tap()
+        
+        let addButton = entriesNavigationBar.buttons["Add"]
+        addButton.tap()
+        window.children(matching: .other).element(boundBy: 2).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element(boundBy: 0).tap()
+        
+        let entrytitleTextField = app/*@START_MENU_TOKEN@*/.textFields["EntryTitle"]/*[[".textFields[\"entry title\"]",".textFields[\"EntryTitle\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        entrytitleTextField.tap()
+        entrytitleTextField.typeText("Another test")
+        
+        let entrycontentTextField = app/*@START_MENU_TOKEN@*/.textFields["EntryContent"]/*[[".textFields[\"entry content.....\"]",".textFields[\"EntryContent\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        entrycontentTextField.tap()
+        entrycontentTextField.typeText("another test ")
+        app.buttons["Save"].tap()
+        addButton.tap()
+        app.navigationBars["Your Entry"].buttons["Cancel"].tap()
+
+        let user = Auth.auth().currentUser
+        
+        user?.delete { error in
+            if let error = error {
+                // An error happened.
+                print(error.localizedDescription)
+            } else {
+                // Account deleted.
+                print("account is deleted")
+            }
+        }
+      
+
+        
     }
         
 }
