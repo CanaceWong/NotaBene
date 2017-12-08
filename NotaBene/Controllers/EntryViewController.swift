@@ -46,7 +46,8 @@ class Entry: UIViewController {
     
     func scheduleNotification() {
         let content = UNMutableNotificationContent() //The notification's content
-        content.title = "Set a reminder"
+        
+        content.title = "It is time to review " + entryTitle.text!
         content.sound = UNNotificationSound.default()
         
         let dateComponent = datePicker.calendar.dateComponents([.day, .hour, .minute], from: datePicker.date)
