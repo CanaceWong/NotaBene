@@ -18,52 +18,6 @@ class Entries: UITableViewController {
     
     var entriesList = [EntryModel]()
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let entry = entriesList[indexPath.row]
-//        
-//        let alertController = UIAlertController(title: entry.entryTitle, message:"Edit/Delete?", preferredStyle:.alert)
-//        
-//        let updateAction = UIAlertAction(title:"Update", style:.default){(_) in
-//            let id = entry.id
-//            
-//            let entryTitle = alertController.textFields?[0].text
-//            let entryContent = alertController.textFields?[1].text
-//            
-//            self.updateEntry(id: id!, entryTitle: entryTitle!, entryContent: entryContent!)
-//        }
-//        
-//        let deleteAction = UIAlertAction(title:"Delete", style:.default){(_) in
-//            self.deleteEntry(id: entry.id!)
-//        }
-//        
-//        alertController.addTextField{(textField) in
-//            textField.text = entry.entryTitle
-//        }
-//        
-//        alertController.addTextField{(textField) in
-//            textField.text = entry.entryContent
-//        }
-//        
-//        alertController.addAction(updateAction)
-//        alertController.addAction(deleteAction)
-//        
-//        present(alertController, animated: true, completion: nil)
-//    }
-//    
-//    func updateEntry(id: String, entryTitle: String, entryContent: String){
-//        let entry = [
-//            "id": id,
-//            "entryTitle": entryTitle,
-//            "entryContent": entryContent
-//        ]
-//        refEntries.child(id).setValue(entry)
-////        labelMessage.text = "Entry Updated!"
-//    }
-//    
-//    func deleteEntry(id: String) {
-//        refEntries.child(id).setValue(nil)
-//    }
-    
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entriesList.count
     }
@@ -97,13 +51,13 @@ class Entries: UITableViewController {
         refEntries.observe(DataEventType.value, with:{(snapshot) in
             if snapshot.childrenCount>0{
                 self.entriesList.removeAll()
-                
+
                 for entries in snapshot.children.allObjects as![DataSnapshot]{
                     let entryObject = entries.value as? [String: AnyObject]
                     let entryTitle = entryObject?["entryTitle"]
                     let entryContent = entryObject?["entryContent"]
                     let entryId = entryObject?["id"]
-                    
+            
                     let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?)
                     
                     self.entriesList.append(entry)
