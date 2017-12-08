@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
 import FirebaseDatabase
 
 class Entry: UIViewController {
@@ -18,11 +19,41 @@ class Entry: UIViewController {
     @IBOutlet weak var successMessage: UILabel!
     
     var refEntries: DatabaseReference!
-    
+    var ref: DatabaseReference!
+    var entriesList = [EntryModel]()
     
     @IBAction func saveEntry(_ sender: UIButton) {
         addEntry()
     }
+    
+    
+    func addEntry() {
+        let key = refEntries.childByAutoId().key
+
+        let entry = [
+                    "id": key,
+                    "entryTitle": entryTitle.text! as String,
+                    "entryContent": entryContent.text! as String
+        ]
+
+        refEntries.child(key).setValue(entry)
+
+        successMessage.text = "Entry Saved!"
+    }
+
+    
+//    func addEntry() {
+//        let key = refEntries.childByAutoId().key
+//        let userKey = ref.child("users").childByAutoId().key
+//        let entry = [ "uid": userKey,
+//                      "id": key,
+//                      "entryTitle": entryTitle.text! as String,
+//                      "entryContent": entryContent.text! as String
+//        ]
+//        let childUpdates = ["/entries/\(key)": entry,
+//                            "user-entries/\(userKey)/\(key)/": entry]
+//        ref.updateChildValues(childUpdates)
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,19 +62,6 @@ class Entry: UIViewController {
     
         refEntries = Database.database().reference().child("entries");
         
-    }
-    
-    func addEntry() {
-        let key = refEntries.childByAutoId().key
-        
-        let entry = ["id": key,
-            "entryTitle": entryTitle.text! as String,
-            "entryContent": entryContent.text! as String
-        ]
-        
-        refEntries.child(key).setValue(entry)
-        
-        successMessage.text = "Entry Saved!"
     }
     
     override func didReceiveMemoryWarning() {
