@@ -14,9 +14,10 @@ import FirebaseDatabase
 class RegisterViewController: UIViewController {
 
     @IBOutlet weak var emailText: UITextField!
+    
     @IBOutlet weak var passwordText: UITextField!
     
-    @IBAction func signUpButton(_ sender: Any) {
+    @IBAction func signUp(_ sender: Any) {
         guard let email = emailText.text, !email.isEmpty else { print("Email is Empty"); return}
         guard let password = passwordText.text, !password.isEmpty else { print("Password is Empty"); return}
         

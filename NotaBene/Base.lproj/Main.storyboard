@@ -26,14 +26,6 @@
                                     <segue destination="BYZ-38-t0r" kind="show" id="ayG-Uo-Lj3"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UW-oi-6FR">
-                                <rect key="frame" x="90" y="324" width="195" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Register"/>
-                                <connections>
-                                    <segue destination="H9i-W3-pbj" kind="show" id="AFS-tK-a0K"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="or" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Rkb-o9-408">
                                 <rect key="frame" x="139" y="271" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -41,6 +33,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0I-Yu-DRx">
+                                <rect key="frame" x="139" y="334" width="97" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Register"/>
+                                <connections>
+                                    <segue destination="H9i-W3-pbj" kind="show" identifier="register" id="YFv-zS-H7R"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Xwd-PH-NfX"/>
@@ -49,7 +49,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RW-3q-mv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1988" y="454"/>
+            <point key="canvasLocation" x="1988" y="453.82308845577217"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="mR3-Vh-iCD">
@@ -59,30 +59,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZLL-V1-v83">
-                                <rect key="frame" x="77" y="192" width="220" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDb-Hg-2Qb">
+                                <rect key="frame" x="160" y="318" width="55" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="Username"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <action selector="signUp:" destination="H9i-W3-pbj" eventType="touchUpInside" id="mqN-bz-yY1"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="registered" id="Rbz-8s-Xhs"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-31-NDe">
+                                <rect key="frame" x="57" y="191" width="263" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="emailText"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TMC-0V-dRX">
-                                <rect key="frame" x="77" y="239" width="220" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zbu-uG-4g9">
+                                <rect key="frame" x="57" y="244" width="263" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="Password"/>
+                                <accessibility key="accessibilityConfiguration" identifier="passwordText"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfB-Gb-XE5">
-                                <rect key="frame" x="161" y="300" width="52" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rvN-7m-GzH">
+                                <rect key="frame" x="163" y="372" width="48" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Sign up"/>
+                                <state key="normal" title="Cancel"/>
                                 <connections>
-                                    <action selector="signUpButton:" destination="H9i-W3-pbj" eventType="touchUpInside" id="WQL-ky-0th"/>
-                                    <action selector="signUpButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Yhy-84-tp5"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="registered" id="xIs-id-gpD"/>
+                                    <segue destination="4Pj-bv-QyU" kind="show" identifier="cancelSignUp" id="UTa-6b-WCc"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -90,14 +97,13 @@
                         <viewLayoutGuide key="safeArea" id="Fos-YT-76m"/>
                     </view>
                     <connections>
-                        <outlet property="emailText" destination="ZLL-V1-v83" id="4F0-Bl-s8U"/>
-                        <outlet property="emialText" destination="ZLL-V1-v83" id="g2T-qO-ukw"/>
-                        <outlet property="passwordText" destination="TMC-0V-dRX" id="XEP-vD-40y"/>
+                        <outlet property="emailText" destination="cfu-31-NDe" id="Y7z-z6-V4w"/>
+                        <outlet property="passwordText" destination="zbu-uG-4g9" id="do2-5e-rPd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7f-iQ-8Tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2902" y="922"/>
+            <point key="canvasLocation" x="2902" y="1175"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -139,14 +145,6 @@
                                     <action selector="logInButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jyZ-X0-MjK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ftz-Bp-U26">
-                                <rect key="frame" x="91" y="419" width="195" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Register"/>
-                                <connections>
-                                    <segue destination="H9i-W3-pbj" kind="show" identifier="goToSignUp" id="KVo-16-Vws"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="center" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="or" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ojl-HJ-Z5C">
                                 <rect key="frame" x="140" y="381" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -154,6 +152,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Kb-cZ-XeB">
+                                <rect key="frame" x="161" y="419" width="55" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Sign Up"/>
+                                <connections>
+                                    <segue destination="H9i-W3-pbj" kind="show" identifier="goToSignUp" id="6fG-dx-Vf1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -412,7 +418,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="peA-S1-LWK"/>
         <segue reference="Z6f-LQ-h6Q"/>
-        <segue reference="xIs-id-gpD"/>
-        <segue reference="KVo-16-Vws"/>
+        <segue reference="Rbz-8s-Xhs"/>
+        <segue reference="6fG-dx-Vf1"/>
+        <segue reference="UTa-6b-WCc"/>
     </inferredMetricsTieBreakers>
 </document>

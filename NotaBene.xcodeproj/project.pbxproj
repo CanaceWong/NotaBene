@@ -150,7 +150,6 @@
 				7C67438C1FD6F55000A3B578 /* AppDelegate.swift */,
 				7CF033771FDAACE900E31704 /* Models */,
 				7C6743901FD6F55100A3B578 /* Main.storyboard */,
-				7CF0337C1FDAB23A00E31704 /* RegisterViewController.swift */,
 				7C6743931FD6F55100A3B578 /* Assets.xcassets */,
 				7C6743951FD6F55100A3B578 /* LaunchScreen.storyboard */,
 				7CFCB62F1FD9962B005A8076 /* GoogleService-Info.plist */,
@@ -191,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				7C67438E1FD6F55100A3B578 /* ViewController.swift */,
+				7CF0337C1FDAB23A00E31704 /* RegisterViewController.swift */,
 				7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */,
 				CB0E2CD71FD98896008F9391 /* ViewControllerTableViewCell.swift */,
 				7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */,
