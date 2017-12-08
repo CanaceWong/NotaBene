@@ -22,28 +22,14 @@ class Entries: UITableViewController {
         return entriesList.count
     }
     
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let entry = entriesList[indexPath.row]
-//
-//        let alertController = UIAlertController(title: entry.entryTitle, message:"Delete?", preferredStyle:.alert)
-//
-//        let deleteAction = UIAlertAction(title:"Delete", style:.default){(_) in
-//            self.deleteEntry(id: entry.id!)
-//        }
-//
-//        alertController.addAction(deleteAction)
-//
-//        present(alertController, animated: true, completion: nil)
-//    }
-//    
-//    func deleteEntry(id: String) {
-//        refEntries.child(id).setValue(nil)
-//    }
-    
-    @IBAction func deleteEntryButton(_ sender: Any) {
-        
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEntry" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let destination = segue.destination as! ShowEntryViewController
+                destination.entry = entriesList[indexPath.row]
+            }
+        }
     }
-    
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell

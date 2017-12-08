@@ -227,7 +227,7 @@
                                 <connections>
                                     <outlet property="entryContentLabel" destination="oKX-GC-wca" id="JRH-zW-jNk"/>
                                     <outlet property="entryTitleLabel" destination="bPa-ab-5aL" id="rtj-gK-DrE"/>
-                                    <segue destination="rX9-KX-EtL" kind="show" identifier="showEntry" id="eSe-tB-4QU"/>
+                                    <segue destination="rX9-KX-EtL" kind="show" identifier="showEntry" id="k1b-HO-7Mu"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -326,7 +326,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcC-fR-T3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="lot-RI-Hv5"/>
             </objects>
-            <point key="canvasLocation" x="4975" y="922"/>
+            <point key="canvasLocation" x="4975" y="1101"/>
         </scene>
         <!--Show Entry View Controller-->
         <scene sceneID="FXk-7y-dBN">
@@ -344,10 +344,18 @@
                                     <action selector="updateEntry:" destination="rX9-KX-EtL" eventType="touchUpInside" id="f2S-5q-cz4"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLn-10-MCM">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iP0-cf-S04">
+                                <rect key="frame" x="16" y="99" width="343" height="510"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="entryContentDisplay"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XbK-WD-DzV">
                                 <rect key="frame" x="16" y="70" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="EntryTitleDisplay"/>
+                                <accessibility key="accessibilityConfiguration" identifier="entryTitleDisplay"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -364,12 +372,13 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="entryTitleDisplay" destination="TLn-10-MCM" id="5Qm-FO-IeE"/>
+                        <outlet property="entryContentDisplay" destination="iP0-cf-S04" id="wK5-Pn-kg1"/>
+                        <outlet property="entryTitleDisplay" destination="XbK-WD-DzV" id="A1a-eb-yET"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hc-lx-2BW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4975.1999999999998" y="151.57421289355324"/>
+            <point key="canvasLocation" x="4973.6000000000004" y="168.6656671664168"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Zwc-O9-s8L">
@@ -427,7 +436,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="eSe-tB-4QU"/>
+        <segue reference="k1b-HO-7Mu"/>
         <segue reference="peA-S1-LWK"/>
         <segue reference="L5U-c7-drx"/>
         <segue reference="Rbz-8s-Xhs"/>

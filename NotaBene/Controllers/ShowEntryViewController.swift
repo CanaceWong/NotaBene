@@ -13,20 +13,15 @@ import FirebaseAuth
 
 class ShowEntryViewController: UIViewController {
     
+    var entry: EntryModel?
     
     @IBOutlet weak var entryTitleDisplay: UILabel!
-
+    @IBOutlet weak var entryContentDisplay: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let entryReference = Database.database().reference().child("entries").child("-L-qFiFStLfdwwgagOPw")
-        entryReference.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
-            let entry = snapshot.value as? [String: AnyObject]
-            
-            self.entryTitleDisplay.text = entry?["entryTitle"] as? String ?? ""
-        })
-        
+        entryTitleDisplay.text = entry?.entryTitle
+        entryContentDisplay.text = entry?.entryContent
     }
 
     override func didReceiveMemoryWarning() {
