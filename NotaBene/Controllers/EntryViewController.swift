@@ -45,6 +45,7 @@ class Entry: UIViewController {
     }
     
     func scheduleNotification() {
+        let key = refEntries.childByAutoId().key
         let content = UNMutableNotificationContent() //The notification's content
         
         content.title = "It is time to review " + entryTitle.text!
@@ -53,7 +54,7 @@ class Entry: UIViewController {
         let dateComponent = datePicker.calendar.dateComponents([.day, .hour, .minute], from: datePicker.date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
         
-        let notificationReq = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
+        let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
         
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
     }
