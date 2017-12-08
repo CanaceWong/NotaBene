@@ -14,26 +14,18 @@ import FirebaseAuth
 class ShowEntryViewController: UIViewController {
     
     
-//    func deleteEntry(id: String) {
-//        refEntries.child(id).setValue(nil)
-//    }
-//
-//    func updateEntry(id: String, entryTitle: String, entryContent: String){
-//        let entry = [
-//            "id": id,
-//            "entryTitle": entryTitle,
-//            "entryContent": entryContent
-//        ]
-//        refEntries.child(id).setValue(entry)
-//    }
+    @IBOutlet weak var entryTitleDisplay: UILabel!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         
-        // maybe we need this???
-//        ref.observe(.value, with: { snapshot in
-//            print(snapshot.value)})
+        let entryReference = Database.database().reference().child("entries").child("-L-qFiFStLfdwwgagOPw")
+        entryReference.observeSingleEvent(of: DataEventType.value, with: {(snapshot) in
+            let entry = snapshot.value as? [String: AnyObject]
+            
+            self.entryTitleDisplay.text = entry?["entryTitle"] as? String ?? ""
+        })
         
     }
 

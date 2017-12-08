@@ -214,12 +214,20 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MvP-PA-xij">
+                                            <rect key="frame" x="313" y="11" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="-"/>
+                                            <connections>
+                                                <action selector="deleteEntryButton:" destination="fuE-0W-AgS" eventType="touchUpInside" id="Ywj-4x-IJl"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="entryContentLabel" destination="oKX-GC-wca" id="JRH-zW-jNk"/>
                                     <outlet property="entryTitleLabel" destination="bPa-ab-5aL" id="rtj-gK-DrE"/>
-                                    <segue destination="ODu-WU-F1J" kind="show" identifier="showEntry" id="XtO-aQ-2jJ"/>
+                                    <segue destination="rX9-KX-EtL" kind="show" identifier="showEntry" id="eSe-tB-4QU"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -328,22 +336,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4f2-y1-Slb">
-                                <rect key="frame" x="16" y="619" width="132" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Delete"/>
-                                <connections>
-                                    <action selector="deleteEntry:" destination="rX9-KX-EtL" eventType="touchUpInside" id="jFF-Pm-3aS"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m3a-Bb-8Zf">
-                                <rect key="frame" x="207" y="619" width="152" height="30"/>
+                                <rect key="frame" x="111" y="617" width="152" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
                                     <action selector="updateEntry:" destination="rX9-KX-EtL" eventType="touchUpInside" id="f2S-5q-cz4"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TLn-10-MCM">
+                                <rect key="frame" x="16" y="70" width="343" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="EntryTitleDisplay"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2ns-QG-aBl"/>
@@ -355,6 +363,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="entryTitleDisplay" destination="TLn-10-MCM" id="5Qm-FO-IeE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Hc-lx-2BW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -416,10 +427,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="eSe-tB-4QU"/>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="Z6f-LQ-h6Q"/>
+        <segue reference="L5U-c7-drx"/>
         <segue reference="Rbz-8s-Xhs"/>
         <segue reference="6fG-dx-Vf1"/>
-        <segue reference="UTa-6b-WCc"/>
+        <segue reference="QS9-Iw-0Ou"/>
     </inferredMetricsTieBreakers>
 </document>
