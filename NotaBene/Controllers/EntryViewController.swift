@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import UserNotifications
 
 class Entry: UIViewController {
     
@@ -17,6 +18,7 @@ class Entry: UIViewController {
     @IBOutlet weak var entryTitle: UITextField!
     @IBOutlet weak var entryContent: UITextField!
     @IBOutlet weak var successMessage: UILabel!
+    @IBOutlet weak var datePicker: UIDatePicker!
     
     var refEntries: DatabaseReference!
     var ref: DatabaseReference!
@@ -24,6 +26,7 @@ class Entry: UIViewController {
     
     @IBAction func saveEntry(_ sender: UIButton) {
         addEntry()
+        scheduleNotification()
     }
     
     
@@ -40,6 +43,20 @@ class Entry: UIViewController {
 
         successMessage.text = "Entry Saved!"
     }
+    
+    func scheduleNotification() {
+        let content = UNMutableNotificationContent() //The notification's content
+        content.title = "Set a reminder"
+        content.sound = UNNotificationSound.default()
+        
+        let dateComponent = datePicker.calendar.dateComponents([.day, .hour, .minute], from: datePicker.date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+        
+        let notificationReq = UNNotificationRequest(identifier: "identifier", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
+    }
+
 
     
 //    func addEntry() {
@@ -61,6 +78,8 @@ class Entry: UIViewController {
         // Do any additional setup after loading the view.
     
         refEntries = Database.database().reference().child("entries");
+        
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
     }
     

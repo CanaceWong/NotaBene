@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Pj-bv-QyU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Pj-bv-QyU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -298,6 +298,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="l05-KF-oE1">
+                                <rect key="frame" x="6" y="352" width="375" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="534438204.06408298">
+                                    <!--2017-12-08 15:03:24 +0000-->
+                                </date>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cWa-8i-bf9"/>
@@ -310,6 +317,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="datePicker" destination="l05-KF-oE1" id="dsq-BS-EQC"/>
                         <outlet property="entryContent" destination="xvd-rL-61x" id="Elm-Kq-7Q2"/>
                         <outlet property="entryTitle" destination="wJb-cW-Zk5" id="Y4L-tw-9qC"/>
                         <outlet property="successMessage" destination="ERn-yu-ux6" id="oRe-VB-jj6"/>
@@ -417,7 +425,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="Z6f-LQ-h6Q"/>
+        <segue reference="6CI-GF-maF"/>
         <segue reference="Rbz-8s-Xhs"/>
         <segue reference="6fG-dx-Vf1"/>
         <segue reference="UTa-6b-WCc"/>
