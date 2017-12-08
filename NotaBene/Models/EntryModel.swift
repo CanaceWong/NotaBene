@@ -7,17 +7,19 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class EntryModel {
     
     var id: String?
     var entryTitle: String?
     var entryContent: String?
-    
+
     init(id: String?, entryTitle: String?, entryContent: String?) {
         self.id = id;
         self.entryTitle = entryTitle;
         self.entryContent = entryContent;
     }
-    
+
 }
+
