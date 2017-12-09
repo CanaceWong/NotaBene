@@ -14,14 +14,35 @@ import FirebaseAuth
 class ShowEntryViewController: UIViewController {
     
     var entry: EntryModel?
+    var entriesList = [EntryModel]()
+    var refEntries = Database.database().reference().child("entries")
+    var ref = Database.database().reference()
     
-    @IBOutlet weak var entryTitleDisplay: UILabel!
-    @IBOutlet weak var entryContentDisplay: UILabel!
+    @IBOutlet weak var entryContentEditable: UITextView!
+    @IBOutlet weak var entryTitleEditable: UITextField!
+    
+    
+    @IBAction func saveChanges(_ sender: Any) {
+        let id = entry?.id
+        self.updateEntry(id: id!, entryTitle: entryTitleEditable.text!, entryContent: entryContentEditable.text!)
+        print("success")
+    }
+    
+    func updateEntry(id: String, entryTitle: String, entryContent: String){
+            let entry = [
+                "id": id,
+                "entryTitle": entryTitle,
+                "entryContent": entryContent
+            ]
+            refEntries.child(id).setValue(entry)
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        entryTitleDisplay.text = entry?.entryTitle
-        entryContentDisplay.text = entry?.entryContent
+        entryTitleEditable.text = entry?.entryTitle
+        entryContentEditable.text = entry?.entryContent
     }
 
     override func didReceiveMemoryWarning() {
