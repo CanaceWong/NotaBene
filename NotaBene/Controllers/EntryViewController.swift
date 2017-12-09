@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import UserNotifications
 
 class Entry: UIViewController {
     
@@ -21,19 +22,30 @@ class Entry: UIViewController {
     
     @IBAction func textFieldEditing(_ sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
-        
-        datePickerView.datePickerMode = UIDatePickerMode.date
-        
+        datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
         sender.inputView = datePickerView
-        
         datePickerView.addTarget(self, action: #selector(Entry.datePickerValueChanged), for: UIControlEvents.valueChanged)
-        
     }
+    
+//    func scheduleNotification() {
+//        let key = refEntries.childByAutoId().key
+//        let content = UNMutableNotificationContent() //The notification's content
+//
+//        content.title = "It is time to review " + entryTitle.text!
+//        content.sound = UNNotificationSound.default()
+//
+//        let dateComponent = datePickerView.calendar.dateComponents([.day, .hour, .minute], from: datePickerView.date)
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+//
+//        let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
+//
+//        UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
+//    }
 
     @objc func datePickerValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.medium
-        dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.timeStyle = DateFormatter.Style.medium
         dateTextField.text = dateFormatter.string(from: sender.date)
     }
     
@@ -42,22 +54,16 @@ class Entry: UIViewController {
     }
     
     @objc func tappedToolBarBtn(sender: UIBarButtonItem) {
-        
         let dateformatter = DateFormatter()
-        
         dateformatter.dateStyle = DateFormatter.Style.medium
-        
         dateformatter.timeStyle = DateFormatter.Style.none
-        
         dateTextField.text = dateformatter.string(from: NSDate() as Date)
-        
         dateTextField.resignFirstResponder()
     }
     
     func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
     
     var refEntries: DatabaseReference!
     var ref: DatabaseReference!
