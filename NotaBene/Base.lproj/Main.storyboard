@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2902" y="152"/>
+            <point key="canvasLocation" x="2871" y="-476"/>
         </scene>
         <!--Entries-->
         <scene sceneID="UEG-iN-lq9">
@@ -344,13 +344,22 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lnn-26-OMV">
-                                <rect key="frame" x="138" y="617" width="98" height="30"/>
+                                <rect key="frame" x="16" y="617" width="98" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" identifier="saveChanges"/>
                                 <state key="normal" title="Save Changes"/>
                                 <connections>
                                     <action selector="saveChanges:" destination="rX9-KX-EtL" eventType="touchUpInside" id="L7z-4x-MmR"/>
                                     <segue destination="fuE-0W-AgS" kind="show" identifier="afterSave" id="vie-DC-pIu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HGy-fr-SPY">
+                                <rect key="frame" x="237" y="616" width="122" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Delete?"/>
+                                <connections>
+                                    <action selector="deleteButton:" destination="rX9-KX-EtL" eventType="touchUpInside" id="tto-iz-YIO"/>
+                                    <segue destination="fuE-0W-AgS" kind="show" identifier="afterDelete" id="D1v-mr-bf7"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -361,11 +370,6 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" id="et7-Sw-kh0">
                             <connections>
                                 <segue destination="fuE-0W-AgS" kind="show" identifier="returnFromShow" id="L5U-c7-drx"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Delete Entry" id="amn-yl-bTy">
-                            <connections>
-                                <action selector="deleteButton:" destination="rX9-KX-EtL" id="jQr-jt-Drt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -436,7 +440,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="9LU-HV-byT"/>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="vie-DC-pIu"/>
+        <segue reference="D1v-mr-bf7"/>
         <segue reference="Rbz-8s-Xhs"/>
         <segue reference="6fG-dx-Vf1"/>
         <segue reference="QS9-Iw-0Ou"/>

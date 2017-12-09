@@ -21,9 +21,9 @@ class ShowEntryViewController: UIViewController {
     @IBOutlet weak var entryContentEditable: UITextView!
     @IBOutlet weak var entryTitleEditable: UITextField!
     
-    
     @IBAction func deleteButton(_ sender: Any) {
         self.deleteEntry(id: (entry?.id!)!)
+        print("deleted")
     }
     
     @IBAction func saveChanges(_ sender: Any) {
