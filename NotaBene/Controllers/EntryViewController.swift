@@ -17,6 +17,47 @@ class Entry: UIViewController {
     @IBOutlet weak var entryTitle: UITextField!
     @IBOutlet weak var entryContent: UITextField!
     @IBOutlet weak var successMessage: UILabel!
+    @IBOutlet weak var dateTextField: UITextField!
+    
+    @IBAction func textFieldEditing(_ sender: UITextField) {
+        let datePickerView:UIDatePicker = UIDatePicker()
+        
+        datePickerView.datePickerMode = UIDatePickerMode.date
+        
+        sender.inputView = datePickerView
+        
+        datePickerView.addTarget(self, action: #selector(Entry.datePickerValueChanged), for: UIControlEvents.valueChanged)
+        
+    }
+
+    @objc func datePickerValueChanged(sender:UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        dateTextField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    @objc func donePressed(sender: UIBarButtonItem) {
+        dateTextField.resignFirstResponder()
+    }
+    
+    @objc func tappedToolBarBtn(sender: UIBarButtonItem) {
+        
+        let dateformatter = DateFormatter()
+        
+        dateformatter.dateStyle = DateFormatter.Style.medium
+        
+        dateformatter.timeStyle = DateFormatter.Style.none
+        
+        dateTextField.text = dateformatter.string(from: NSDate() as Date)
+        
+        dateTextField.resignFirstResponder()
+    }
+    
+    func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     
     var refEntries: DatabaseReference!
     var ref: DatabaseReference!
@@ -42,25 +83,47 @@ class Entry: UIViewController {
     }
 
     
-//    func addEntry() {
-//        let key = refEntries.childByAutoId().key
-//        let userKey = ref.child("users").childByAutoId().key
-//        let entry = [ "uid": userKey,
-//                      "id": key,
-//                      "entryTitle": entryTitle.text! as String,
-//                      "entryContent": entryContent.text! as String
-//        ]
-//        let childUpdates = ["/entries/\(key)": entry,
-//                            "user-entries/\(userKey)/\(key)/": entry]
-//        ref.updateChildValues(childUpdates)
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     
         refEntries = Database.database().reference().child("entries");
+        
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))
+        
+        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        
+        toolBar.barStyle = UIBarStyle.blackTranslucent
+        
+        toolBar.tintColor = UIColor.white
+        
+        toolBar.backgroundColor = UIColor.black
+        
+        
+        let todayBtn = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(Entry.tappedToolBarBtn))
+        
+        let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(Entry.donePressed))
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
+        
+        label.font = UIFont(name: "Helvetica", size: 12)
+        
+        label.backgroundColor = UIColor.clear
+        
+        label.textColor = UIColor.white
+        
+        label.text = "Set a Reminder Date"
+        
+        label.textAlignment = NSTextAlignment.center
+        
+        let textBtn = UIBarButtonItem(customView: label)
+        
+        toolBar.setItems([todayBtn,flexSpace,textBtn,flexSpace,okBarBtn], animated: true)
+        
+        dateTextField.inputAccessoryView = toolBar
         
     }
     
