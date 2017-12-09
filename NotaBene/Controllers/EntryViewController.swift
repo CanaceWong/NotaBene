@@ -24,6 +24,7 @@ class Entry: UIViewController {
     var ref: DatabaseReference!
     var entriesList = [EntryModel]()
     
+    
     @IBAction func saveEntry(_ sender: UIButton) {
         addEntry()
         scheduleNotification()
@@ -41,7 +42,6 @@ class Entry: UIViewController {
 
         refEntries.child(key).setValue(entry)
 
-        successMessage.text = "Entry Saved!"
     }
     
     func scheduleNotification() {
@@ -58,6 +58,28 @@ class Entry: UIViewController {
         
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let entry = KeyTitlePair()
+        if segue.identifier == "setReminder" {
+            let destination = segue.destination as! SetRemindViewController
+            destination.entry = entry
+        }
+       
+    }
+    
+    
+    struct KeyTitlePair {
+        var key = refEntries.childByAutoId().key
+        
+        var entry = [
+            "id": key,
+            "entryTitle": entryTitle.text! as String,
+        ]
+    }
+    
+    
+
 
 
     
@@ -89,6 +111,8 @@ class Entry: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+  
     
     
     /*

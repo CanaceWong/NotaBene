@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/cwong/Documents/NB/NotaBene/NotaBene/Controllers/SetReminderViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:NotaBene.xcodeproj">
    </FileRef>
    <FileRef

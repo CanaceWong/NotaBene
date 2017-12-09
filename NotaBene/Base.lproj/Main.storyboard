@@ -287,7 +287,7 @@
                                 <state key="normal" title="Save"/>
                                 <connections>
                                     <action selector="saveEntry:" destination="91A-sR-Qxm" eventType="touchUpInside" id="7oh-eV-WSZ"/>
-                                    <segue destination="fuE-0W-AgS" kind="show" identifier="afterSave" id="2x4-CQ-y7i"/>
+                                    <segue destination="1Gc-Mg-Nl5" kind="show" identifier="setReminder" id="WMC-dJ-Wsp"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERn-yu-ux6">
@@ -298,13 +298,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="l05-KF-oE1">
-                                <rect key="frame" x="6" y="352" width="375" height="162"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <date key="date" timeIntervalSinceReferenceDate="534438204.06408298">
-                                    <!--2017-12-08 15:03:24 +0000-->
-                                </date>
-                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cWa-8i-bf9"/>
@@ -317,7 +310,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="datePicker" destination="l05-KF-oE1" id="dsq-BS-EQC"/>
                         <outlet property="entryContent" destination="xvd-rL-61x" id="Elm-Kq-7Q2"/>
                         <outlet property="entryTitle" destination="wJb-cW-Zk5" id="Y4L-tw-9qC"/>
                         <outlet property="successMessage" destination="ERn-yu-ux6" id="oRe-VB-jj6"/>
@@ -326,7 +318,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcC-fR-T3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="lot-RI-Hv5"/>
             </objects>
-            <point key="canvasLocation" x="4975" y="922"/>
+            <point key="canvasLocation" x="4973.6000000000004" y="921.58920539730138"/>
+        </scene>
+        <!--Set Remind View Controller-->
+        <scene sceneID="tg7-xt-61U">
+            <objects>
+                <viewController id="1Gc-Mg-Nl5" customClass="SetRemindViewController" customModule="NotaBene" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eDt-XZ-7pl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="abG-qf-vJ9">
+                                <rect key="frame" x="0.0" y="261" width="375" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="534448865.95320201">
+                                    <!--2017-12-08 18:01:05 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="uYH-ky-0tF"/>
+                    </view>
+                    <connections>
+                        <outlet property="datePicker" destination="abG-qf-vJ9" id="jCE-Zm-3uE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fe7-tZ-JCo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5794" y="882"/>
         </scene>
         <!--Show Entry View Controller-->
         <scene sceneID="FXk-7y-dBN">
@@ -424,7 +443,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="peA-S1-LWK"/>
+        <segue reference="Pj2-Uh-jir"/>
         <segue reference="6CI-GF-maF"/>
         <segue reference="Rbz-8s-Xhs"/>
         <segue reference="6fG-dx-Vf1"/>
