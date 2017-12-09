@@ -214,14 +214,6 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MvP-PA-xij">
-                                            <rect key="frame" x="313" y="11" width="46" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="-"/>
-                                            <connections>
-                                                <action selector="deleteEntryButton:" destination="fuE-0W-AgS" eventType="touchUpInside" id="Ywj-4x-IJl"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
@@ -358,6 +350,7 @@
                                 <state key="normal" title="Save Changes"/>
                                 <connections>
                                     <action selector="saveChanges:" destination="rX9-KX-EtL" eventType="touchUpInside" id="L7z-4x-MmR"/>
+                                    <segue destination="fuE-0W-AgS" kind="show" identifier="afterSave" id="vie-DC-pIu"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -368,6 +361,11 @@
                         <barButtonItem key="leftBarButtonItem" title="Back" id="et7-Sw-kh0">
                             <connections>
                                 <segue destination="fuE-0W-AgS" kind="show" identifier="returnFromShow" id="L5U-c7-drx"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Delete Entry" id="amn-yl-bTy">
+                            <connections>
+                                <action selector="deleteButton:" destination="rX9-KX-EtL" id="jQr-jt-Drt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -436,9 +434,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="k1b-HO-7Mu"/>
+        <segue reference="9LU-HV-byT"/>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="L5U-c7-drx"/>
+        <segue reference="vie-DC-pIu"/>
         <segue reference="Rbz-8s-Xhs"/>
         <segue reference="6fG-dx-Vf1"/>
         <segue reference="QS9-Iw-0Ou"/>
