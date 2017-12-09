@@ -13,28 +13,44 @@ import FirebaseAuth
 
 class ShowEntryViewController: UIViewController {
     
+    var entry: EntryModel?
+    var entriesList = [EntryModel]()
+    var refEntries = Database.database().reference().child("entries")
+    var ref = Database.database().reference()
     
-//    func deleteEntry(id: String) {
-//        refEntries.child(id).setValue(nil)
-//    }
-//
-//    func updateEntry(id: String, entryTitle: String, entryContent: String){
-//        let entry = [
-//            "id": id,
-//            "entryTitle": entryTitle,
-//            "entryContent": entryContent
-//        ]
-//        refEntries.child(id).setValue(entry)
-//    }
+    @IBOutlet weak var entryContentEditable: UITextView!
+    @IBOutlet weak var entryTitleEditable: UITextField!
+    
+    @IBAction func deleteButton(_ sender: Any) {
+        self.deleteEntry(id: (entry?.id!)!)
+        print("deleted")
+    }
+    
+    @IBAction func saveChanges(_ sender: Any) {
+        let id = entry?.id
+        self.updateEntry(id: id!, entryTitle: entryTitleEditable.text!, entryContent: entryContentEditable.text!)
+        print("success")
+    }
+    
+    func updateEntry(id: String, entryTitle: String, entryContent: String){
+            let entry = [
+                "id": id,
+                "entryTitle": entryTitle,
+                "entryContent": entryContent
+            ]
+            refEntries.child(id).setValue(entry)
+    }
+    
+    func deleteEntry(id: String) {
+        refEntries.child(id).setValue(nil)
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-        // maybe we need this???
-//        ref.observe(.value, with: { snapshot in
-//            print(snapshot.value)})
-        
+        entryTitleEditable.text = entry?.entryTitle
+        entryContentEditable.text = entry?.entryContent
     }
 
     override func didReceiveMemoryWarning() {

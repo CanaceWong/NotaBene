@@ -22,6 +22,15 @@ class Entries: UITableViewController {
         return entriesList.count
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showEntry" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                let destination = segue.destination as! ShowEntryViewController
+                destination.entry = entriesList[indexPath.row]
+            }
+        }
+    }
+
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
         
