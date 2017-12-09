@@ -20,33 +20,36 @@ class Entry: UIViewController {
     @IBOutlet weak var successMessage: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
     
+    var datePickerView:UIDatePicker = UIDatePicker()
+    
     @IBAction func textFieldEditing(_ sender: UITextField) {
-        let datePickerView:UIDatePicker = UIDatePicker()
         datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(Entry.datePickerValueChanged), for: UIControlEvents.valueChanged)
     }
     
-//    func scheduleNotification() {
-//        let key = refEntries.childByAutoId().key
-//        let content = UNMutableNotificationContent() //The notification's content
-//
-//        content.title = "It is time to review " + entryTitle.text!
-//        content.sound = UNNotificationSound.default()
-//
-//        let dateComponent = datePickerView.calendar.dateComponents([.day, .hour, .minute], from: datePickerView.date)
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
-//
-//        let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
-//
-//        UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
-//    }
+    func scheduleNotification() {
+        let key = refEntries.childByAutoId().key
+        let content = UNMutableNotificationContent() //The notification's content
+        let datePicker = datePickerView
+
+        content.title = "It is time to review " + entryTitle.text!
+        content.sound = UNNotificationSound.default()
+
+        let dateComponent = datePicker.calendar.dateComponents([.day, .hour, .minute], from: datePicker.date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+
+        let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
+
+        UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
+    }
 
     @objc func datePickerValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = DateFormatter.Style.medium
-        dateFormatter.timeStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.short
         dateTextField.text = dateFormatter.string(from: sender.date)
+        
     }
     
     @objc func donePressed(sender: UIBarButtonItem) {
@@ -56,7 +59,7 @@ class Entry: UIViewController {
     @objc func tappedToolBarBtn(sender: UIBarButtonItem) {
         let dateformatter = DateFormatter()
         dateformatter.dateStyle = DateFormatter.Style.medium
-        dateformatter.timeStyle = DateFormatter.Style.none
+        dateformatter.timeStyle = DateFormatter.Style.short
         dateTextField.text = dateformatter.string(from: NSDate() as Date)
         dateTextField.resignFirstResponder()
     }
@@ -71,6 +74,8 @@ class Entry: UIViewController {
     
     @IBAction func saveEntry(_ sender: UIButton) {
         addEntry()
+        
+        scheduleNotification()
     }
     
     
@@ -91,8 +96,9 @@ class Entry: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        Database.database().reference().child("entries");
         
-        // Do any additional setup after loading the view.
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
     
         refEntries = Database.database().reference().child("entries");
         
@@ -104,7 +110,7 @@ class Entry: UIViewController {
         
         toolBar.tintColor = UIColor.white
         
-        toolBar.backgroundColor = UIColor.black
+        toolBar.backgroundColor = UIColor.white
         
         
         let todayBtn = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(Entry.tappedToolBarBtn))
