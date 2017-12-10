@@ -308,18 +308,10 @@
                                     <action selector="textFieldEditing:" destination="91A-sR-Qxm" eventType="editingDidBegin" id="y6D-1a-zje"/>
                                 </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-pM-UuY">
-                                <rect key="frame" x="16" y="303" width="343" height="199"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="addimage" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-pM-UuY">
+                                <rect key="frame" x="21" y="408" width="332" height="118"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ec2-kn-o74">
-                                <rect key="frame" x="139" y="508" width="107" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Import Image"/>
-                                <connections>
-                                    <action selector="importImage:" destination="91A-sR-Qxm" eventType="touchUpInside" id="Che-8L-auO"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cWa-8i-bf9"/>
@@ -461,6 +453,9 @@
             <point key="canvasLocation" x="4974" y="-681"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="addimage" width="640" height="640"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9LU-HV-byT"/>
         <segue reference="peA-S1-LWK"/>

@@ -48,18 +48,14 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         if (gesture.view as? UIImageView) != nil {
             print("Image Tapped")
             
-            
-        }
-    }
-    
-    @IBAction func importImage(_ sender: Any) {
-        let image = UIImagePickerController()
-        image.delegate = self
-        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-        image.allowsEditing = false
-        self.present(image, animated: true)
-        {
-            //After it is complete
+            let image = UIImagePickerController()
+            image.delegate = self
+            image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            image.allowsEditing = false
+            self.present(image, animated: true)
+            {
+                //After it is complete
+            }
         }
     }
     
