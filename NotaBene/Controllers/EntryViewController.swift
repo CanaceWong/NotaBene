@@ -12,14 +12,14 @@ import FirebaseAuth
 import FirebaseDatabase
 import UserNotifications
 
-class Entry: UIViewController {
+class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     
     @IBOutlet weak var entryTitle: UITextField!
     @IBOutlet weak var entryContent: UITextField!
     @IBOutlet weak var successMessage: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
-    
+    @IBOutlet weak var imageView: UIImageView!
     var datePickerView:UIDatePicker = UIDatePicker()
     
     @IBAction func textFieldEditing(_ sender: UITextField) {
@@ -42,6 +42,31 @@ class Entry: UIViewController {
         let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
 
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
+    }
+    
+    @IBAction func importImage(_ sender: Any) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        image.allowsEditing = false
+        self.present(image, animated: true)
+        {
+            //After it is complete
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        {
+            imageView.image = image
+        }
+        else
+        {
+            //Error message
+        }
+        
+        self.dismiss(animated: true, completion: nil)
     }
 
     @objc func datePickerValueChanged(sender:UIDatePicker) {
@@ -74,7 +99,6 @@ class Entry: UIViewController {
     
     @IBAction func saveEntry(_ sender: UIButton) {
         addEntry()
-        
         scheduleNotification()
     }
     
