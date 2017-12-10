@@ -65,7 +65,6 @@
                                 <state key="normal" title="Sign Up"/>
                                 <connections>
                                     <action selector="signUp:" destination="H9i-W3-pbj" eventType="touchUpInside" id="mqN-bz-yY1"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="registered" id="Rbz-8s-Xhs"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cfu-31-NDe">
@@ -99,11 +98,12 @@
                     <connections>
                         <outlet property="emailText" destination="cfu-31-NDe" id="Y7z-z6-V4w"/>
                         <outlet property="passwordText" destination="zbu-uG-4g9" id="do2-5e-rPd"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="VC2" id="YQf-F4-BfT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7f-iQ-8Tf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2902" y="1175"/>
+            <point key="canvasLocation" x="2902" y="1143"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -172,7 +172,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2871" y="-476"/>
+            <point key="canvasLocation" x="2902" y="337"/>
         </scene>
         <!--Entries-->
         <scene sceneID="UEG-iN-lq9">
@@ -190,6 +190,24 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="vvg-iw-uKn">
+                            <rect key="frame" x="0.0" y="279" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="or4-Wr-MJO">
+                                    <rect key="frame" x="16" y="7" width="343" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="viewReminders"/>
+                                    <state key="normal" title="View Reminders"/>
+                                    <connections>
+                                        <action selector="viewNotifications:" destination="fuE-0W-AgS" eventType="touchUpInside" id="KSv-8l-HVI"/>
+                                        <action selector="viewReminders:" destination="fuE-0W-AgS" eventType="touchUpInside" id="a4U-74-H5x"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <viewLayoutGuide key="safeArea" id="p7a-Ro-dFC"/>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="207" id="5fd-4i-NBu" customClass="ViewControllerTableViewCell" customModule="NotaBene" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="207"/>
@@ -228,6 +246,7 @@
                             <outlet property="delegate" destination="fuE-0W-AgS" id="hb6-1R-Paf"/>
                         </connections>
                     </tableView>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Entries" id="d4R-jy-NCi">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="fuR-nM-X37">
                             <connections>
@@ -240,6 +259,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="entriesTable" destination="mhT-ZD-ZxY" id="dzQ-IB-HCf"/>
                         <outlet property="userNameDisplay" destination="GwA-N9-hIZ" id="gaf-YO-yNc"/>
@@ -247,7 +267,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5fn-Od-X9H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3865" y="152"/>
+            <point key="canvasLocation" x="3864.8000000000002" y="151.57421289355324"/>
         </scene>
         <!--Your Entry-->
         <scene sceneID="2S1-e5-yjj">
@@ -460,11 +480,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="9LU-HV-byT"/>
+        <segue reference="k1b-HO-7Mu"/>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="vie-DC-pIu"/>
-        <segue reference="Rbz-8s-Xhs"/>
+        <segue reference="Z6f-LQ-h6Q"/>
+        <segue reference="YQf-F4-BfT"/>
         <segue reference="6fG-dx-Vf1"/>
-        <segue reference="QS9-Iw-0Ou"/>
+        <segue reference="UTa-6b-WCc"/>
     </inferredMetricsTieBreakers>
 </document>

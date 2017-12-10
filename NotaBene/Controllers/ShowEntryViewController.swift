@@ -28,6 +28,10 @@ class ShowEntryViewController: UIViewController {
         print("deleted")
     }
     
+    func deleteEntry(id: String) {
+        refEntries.child(id).setValue(nil)
+    }
+    
     @IBAction func saveChanges(_ sender: Any) {
         let id = entry?.id
         self.updateEntry(id: id!, entryTitle: entryTitleEditable.text!, entryContent: entryContentEditable.text!)
@@ -43,10 +47,7 @@ class ShowEntryViewController: UIViewController {
             ]
             refEntries.child(id).setValue(entry)
     }
-    
-    func deleteEntry(id: String) {
-        refEntries.child(id).setValue(nil)
-    }
+
     
     var datePickerView:UIDatePicker = UIDatePicker()
     
