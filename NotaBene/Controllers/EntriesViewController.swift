@@ -10,14 +10,55 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import UserNotifications
 
 class Entries: UITableViewController {
     
-    var refEntries: DatabaseReference!
+    
     @IBOutlet var entriesTable: UITableView!
     
+    var refEntries: DatabaseReference!
     var entriesList = [EntryModel]()
+    var entry: EntryModel?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        userNameDisplay.text = Auth.auth().currentUser?.email
+        
+        refEntries = Database.database().reference().child("entries");
+        
+        refEntries.observe(DataEventType.value, with:{(snapshot) in
+            if snapshot.childrenCount>0{
+                self.entriesList.removeAll()
+                
+                for entries in snapshot.children.allObjects as![DataSnapshot]{
+                    let entryObject = entries.value as? [String: AnyObject]
+                    let entryTitle = entryObject?["entryTitle"]
+                    let entryContent = entryObject?["entryContent"]
+                    let entryId = entryObject?["id"]
+                    
+                    let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?)
+                    
+                    self.entriesList.append(entry)
+                }
+                self.entriesTable.reloadData()
+            }
+        })
+    }
+    
+//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+//        let refEntries = Database.database().reference().child("entries");
+//        if editingStyle == .delete {
+//            self.entriesList.removeValue(at: indexPath.row)
+//            tableView.deleteRows(at: [indexPath], with: .fade)
+//
+//            let thisEntry = entriesList[indexPath.row]
+//            thisEntry.refEntries?.removeValue()
+//        }
+//    }
+
+
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entriesList.count
     }
@@ -48,32 +89,6 @@ class Entries: UITableViewController {
     @IBAction func action(_ sender: UIButton) {
         try! Auth.auth().signOut()
         performSegue(withIdentifier: "logged2", sender: self)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        userNameDisplay.text = Auth.auth().currentUser?.email
-        
-        refEntries = Database.database().reference().child("entries");
-        
-        refEntries.observe(DataEventType.value, with:{(snapshot) in
-            if snapshot.childrenCount>0{
-                self.entriesList.removeAll()
-
-                for entries in snapshot.children.allObjects as![DataSnapshot]{
-                    let entryObject = entries.value as? [String: AnyObject]
-                    let entryTitle = entryObject?["entryTitle"]
-                    let entryContent = entryObject?["entryContent"]
-                    let entryId = entryObject?["id"]
-            
-                    let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?)
-                    
-                    self.entriesList.append(entry)
-                }
-                self.entriesTable.reloadData()
-            }
-        })
     }
     
     override func didReceiveMemoryWarning() {

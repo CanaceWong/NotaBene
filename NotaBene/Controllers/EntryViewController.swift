@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import UserNotifications
 
-class Entry: UIViewController {
+class Entry: UIViewController, UNUserNotificationCenterDelegate {
     
     
     @IBOutlet weak var entryTitle: UITextField!
@@ -21,6 +21,10 @@ class Entry: UIViewController {
     @IBOutlet weak var dateTextField: UITextField!
     
     var datePickerView:UIDatePicker = UIDatePicker()
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.sound])
+    }
     
     @IBAction func textFieldEditing(_ sender: UITextField) {
         datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
@@ -38,9 +42,7 @@ class Entry: UIViewController {
 
         let dateComponent = datePicker.calendar.dateComponents([.day, .hour, .minute], from: datePicker.date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
-
         let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
-
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
     }
 
@@ -96,6 +98,9 @@ class Entry: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UNUserNotificationCenter.current().delegate = self
+
         Database.database().reference().child("entries");
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
