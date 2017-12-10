@@ -373,6 +373,16 @@
                                     <segue destination="fuE-0W-AgS" kind="show" identifier="afterDelete" id="D1v-mr-bf7"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Prw-lt-13L">
+                                <rect key="frame" x="16" y="579" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEditing:" destination="rX9-KX-EtL" eventType="editingDidBegin" id="Gv4-H4-9Ho"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2ns-QG-aBl"/>
@@ -385,6 +395,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateTextField" destination="Prw-lt-13L" id="nQs-Mm-UzR"/>
                         <outlet property="entryContentEditable" destination="SUM-Rc-Opz" id="xhm-Jk-P4c"/>
                         <outlet property="entryTitleEditable" destination="fn8-yz-BaJ" id="IOp-tb-tZ6"/>
                     </connections>
@@ -451,7 +462,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="9LU-HV-byT"/>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="2x4-CQ-y7i"/>
+        <segue reference="vie-DC-pIu"/>
         <segue reference="Rbz-8s-Xhs"/>
         <segue reference="6fG-dx-Vf1"/>
         <segue reference="QS9-Iw-0Ou"/>

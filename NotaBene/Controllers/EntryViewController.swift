@@ -12,7 +12,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import UserNotifications
 
-class Entry: UIViewController {
+class Entry: UIViewController, UNUserNotificationCenterDelegate {
     
     
     @IBOutlet weak var entryTitle: UITextField!
@@ -22,6 +22,22 @@ class Entry: UIViewController {
     
     var datePickerView:UIDatePicker = UIDatePicker()
     
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert,.sound])
+        
+        /* Not a very good way to do this, just here to give you ideas.
+         let alert = UIAlertController(
+         title: notification.request.content.title,
+         message: notification.request.content.body,
+         preferredStyle: .alert)
+         let okAction = UIAlertAction(
+         title: "OK",
+         style: .default,
+         handler: nil)
+         alert.addAction(okAction)
+         present(alert, animated: true, completion: nil)
+         */
+    }
     @IBAction func textFieldEditing(_ sender: UITextField) {
         datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
         sender.inputView = datePickerView
@@ -38,9 +54,7 @@ class Entry: UIViewController {
 
         let dateComponent = datePicker.calendar.dateComponents([.day, .hour, .minute], from: datePicker.date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
-
         let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
-
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
     }
 
@@ -96,6 +110,9 @@ class Entry: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UNUserNotificationCenter.current().delegate = self
+
         Database.database().reference().child("entries");
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
