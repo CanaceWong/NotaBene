@@ -110,6 +110,24 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     @IBAction func saveEntry(_ sender: UIButton) {
         addEntry()
         scheduleNotification()
+        storeImage() 
+    }
+    
+    func storeImage() {
+        let storageRef = Storage.storage().reference().child("myImage.png")
+        
+        if let uploadData = UIImagePNGRepresentation(self.imageView.image!) {
+            storageRef.putData(uploadData, metadata: nil, completion: {(metadata, error) in
+                if error != nil {
+                    print(error ?? "there's an error")
+                    return
+                }
+                
+                print(metadata!)
+            })
+        }
+        
+        
     }
     
     
@@ -126,6 +144,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
 
         successMessage.text = "Entry Saved!"
     }
+    
 
     
     override func viewDidLoad() {
