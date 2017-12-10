@@ -44,6 +44,14 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
     }
     
+    @objc func imageTapped(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped")
+            
+            
+        }
+    }
+    
     @IBAction func importImage(_ sender: Any) {
         let image = UIImagePickerController()
         image.delegate = self
@@ -120,6 +128,11 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Entry.imageTapped(gesture:)))
+        imageView.addGestureRecognizer(tapGesture)
+        imageView.isUserInteractionEnabled = true
+        
         Database.database().reference().child("entries");
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
