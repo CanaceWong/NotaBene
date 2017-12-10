@@ -281,7 +281,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="td7-zU-5G6">
-                                <rect key="frame" x="170" y="514" width="34" height="30"/>
+                                <rect key="frame" x="171" y="395" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <accessibility key="accessibilityConfiguration" identifier="saveEntry"/>
                                 <state key="normal" title="Save"/>
@@ -298,6 +298,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cxu-At-ouf">
+                                <rect key="frame" x="16" y="572" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEditing:" destination="91A-sR-Qxm" eventType="editingDidBegin" id="y6D-1a-zje"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cWa-8i-bf9"/>
@@ -310,6 +320,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateTextField" destination="Cxu-At-ouf" id="S5B-dp-Z91"/>
                         <outlet property="entryContent" destination="xvd-rL-61x" id="Elm-Kq-7Q2"/>
                         <outlet property="entryTitle" destination="wJb-cW-Zk5" id="Y4L-tw-9qC"/>
                         <outlet property="successMessage" destination="ERn-yu-ux6" id="oRe-VB-jj6"/>
@@ -318,7 +329,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lcC-fR-T3A" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="lot-RI-Hv5"/>
             </objects>
-            <point key="canvasLocation" x="4975" y="1101"/>
+            <point key="canvasLocation" x="4973.6000000000004" y="1100.5997001499252"/>
         </scene>
         <!--Show Entry View Controller-->
         <scene sceneID="FXk-7y-dBN">
@@ -362,6 +373,16 @@
                                     <segue destination="fuE-0W-AgS" kind="show" identifier="afterDelete" id="D1v-mr-bf7"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Prw-lt-13L">
+                                <rect key="frame" x="16" y="579" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textFieldEditing:" destination="rX9-KX-EtL" eventType="editingDidBegin" id="Gv4-H4-9Ho"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2ns-QG-aBl"/>
@@ -374,6 +395,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateTextField" destination="Prw-lt-13L" id="nQs-Mm-UzR"/>
                         <outlet property="entryContentEditable" destination="SUM-Rc-Opz" id="xhm-Jk-P4c"/>
                         <outlet property="entryTitleEditable" destination="fn8-yz-BaJ" id="IOp-tb-tZ6"/>
                     </connections>
@@ -440,7 +462,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="9LU-HV-byT"/>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="D1v-mr-bf7"/>
+        <segue reference="vie-DC-pIu"/>
         <segue reference="Rbz-8s-Xhs"/>
         <segue reference="6fG-dx-Vf1"/>
         <segue reference="QS9-Iw-0Ou"/>
