@@ -51,7 +51,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
             let image = UIImagePickerController()
             image.delegate = self
             image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            image.allowsEditing = false
+            image.allowsEditing = true
             self.present(image, animated: true)
             {
                 //After it is complete
@@ -60,10 +60,16 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
-        {
-            imageView.image = image
+        
+        var selectedImageFromPicker: UIImage?
+        
+        if let editedImage = info["UIImagePickerControllerEditedImage"]              as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        if let selectedImage = selectedImageFromPicker {
+            imageView.image = selectedImage
         }
         else
         {
