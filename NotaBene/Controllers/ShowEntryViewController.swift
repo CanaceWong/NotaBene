@@ -16,7 +16,7 @@ class ShowEntryViewController: UIViewController {
     var entry: EntryModel?
     var entriesList = [EntryModel]()
     var refEntries = Database.database().reference().child("entries")
-    var ref = Database.database().reference()
+//    var ref = Database.database().reference()
     
     @IBOutlet weak var entryContentEditable: UITextView!
     @IBOutlet weak var entryTitleEditable: UITextField!
