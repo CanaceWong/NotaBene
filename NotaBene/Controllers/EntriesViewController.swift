@@ -17,7 +17,7 @@ class Entries: UITableViewController {
     
     @IBOutlet var entriesTable: UITableView!
     
-//    var refEntries: DatabaseReference!
+    var refEntries: DatabaseReference!
     var entriesList = [EntryModel]()
     var entry: EntryModel?
     
@@ -25,28 +25,30 @@ class Entries: UITableViewController {
         super.viewDidLoad()
         
         let currentUser = Auth.auth().currentUser
-        let uid = currentUser?.uid
         userNameDisplay.text = currentUser?.email
         
-        let refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
-//        refEntries = Database.database().reference().child("entries");
-        refEntries.observe(DataEventType.value, with:{(snapshot) in
-            if snapshot.childrenCount>0{
-                self.entriesList.removeAll()
-                
-                for entries in snapshot.children.allObjects as![DataSnapshot]{
-                    let entryObject = entries.value as? [String: AnyObject]
-                    let entryTitle = entryObject?["entryTitle"]
-                    let entryContent = entryObject?["entryContent"]
-                    let entryId = entryObject?["id"]
-                    
-                    let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?)
-                    
-                    self.entriesList.append(entry)
+        let refEntries = Database.database().reference().child("users")
+        if let uid = currentUser?.uid {
+            
+            refEntries.child("\(uid)").child("entries").observe(DataEventType.value, with:{(snapshot) in
+                if snapshot.childrenCount>0{
+                    self.entriesList.removeAll()
+
+                    for entries in snapshot.children.allObjects as![DataSnapshot]{
+                        let entryObject = entries.value as? [String: AnyObject] ?? [:]
+                        let entryTitle = entryObject["entryTitle"]
+                        let entryContent = entryObject["entryContent"]
+                        let entryId = entryObject["id"]
+                        let image = entryObject["image"]
+                        
+                        let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?, image: image as! String?)
+            
+                        self.entriesList.append(entry)
+                    }
+                    self.entriesTable.reloadData()
                 }
-                self.entriesTable.reloadData()
-            }
-        })
+            })
+        }
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
