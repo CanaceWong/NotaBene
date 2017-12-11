@@ -49,6 +49,7 @@ class NotaBeneUITests: XCTestCase {
         logInButton.tap()
         
         XCTAssert(app.alerts["Error"].exists)
+            
         app.alerts["Error"].buttons["OK"].tap()
         
         passwordSecureTextField.typeText("testing")
@@ -68,12 +69,10 @@ class NotaBeneUITests: XCTestCase {
         
         let entrycontentTextField = app/*@START_MENU_TOKEN@*/.textFields["entryContent"]/*[[".textFields[\"entry content.....\"]",".textFields[\"entryContent\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         entrycontentTextField.tap()
-        entrycontentTextField.typeText("hello again")
+        entrycontentTextField.typeText("hello again there")
         app/*@START_MENU_TOKEN@*/.buttons["saveEntry"]/*[[".buttons[\"Save\"]",".buttons[\"saveEntry\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
         XCTAssert(app.staticTexts["hello again"].exists)
-
-        
         
         
     }
