@@ -10,38 +10,60 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 import UserNotifications
 
-class Entry: UIViewController, UNUserNotificationCenterDelegate {
-    
-    
+
+class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+  
     @IBOutlet weak var entryTitle: UITextField!
     @IBOutlet weak var entryContent: UITextField!
     @IBOutlet weak var successMessage: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
-    
+    @IBOutlet weak var imageView: UIImageView!    
+    var refEntries: DatabaseReference!
+    var ref: DatabaseReference!
+    var entriesList = [EntryModel]()
     var datePickerView:UIDatePicker = UIDatePicker()
+    var imageFileName = ""
+
+    
+    func addEntry() {
+        let key = refEntries.childByAutoId().key
+        let entry = [
+            "id": key,
+            "entryTitle": entryTitle.text! as String,
+            "entryContent": entryContent.text! as String,
+            "image": imageFileName
+        ]
+            let dbref = Database.database().reference().child("users")
+            let user = Auth.auth().currentUser
+            if let uid = user?.uid {
+            dbref.child("\(uid)").child("entries").child(key).setValue(entry)
+            }
+    }
+    
+    @IBAction func saveEntry(_ sender: UIButton) {
+        addEntry()
+        scheduleNotification()
+    }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert,.sound])
-        
-        /* Not a very good way to do this, just here to give you ideas.
-         let alert = UIAlertController(
-         title: notification.request.content.title,
-         message: notification.request.content.body,
-         preferredStyle: .alert)
-         let okAction = UIAlertAction(
-         title: "OK",
-         style: .default,
-         handler: nil)
-         alert.addAction(okAction)
-         present(alert, animated: true, completion: nil)
-         */
     }
+    
+    
     @IBAction func textFieldEditing(_ sender: UITextField) {
         datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(Entry.datePickerValueChanged), for: UIControlEvents.valueChanged)
+    }
+    
+    @objc func datePickerValueChanged(sender:UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateTextField.text = dateFormatter.string(from: sender.date)
     }
     
     func scheduleNotification() {
@@ -57,15 +79,8 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
     }
-
-    @objc func datePickerValueChanged(sender:UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.medium
-        dateFormatter.timeStyle = DateFormatter.Style.short
-        dateTextField.text = dateFormatter.string(from: sender.date)
-        
-    }
-    
+  
+  
     @objc func donePressed(sender: UIBarButtonItem) {
         dateTextField.resignFirstResponder()
     }
@@ -82,37 +97,82 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         self.view.endEditing(true)
     }
     
-    var refEntries: DatabaseReference!
-    var ref: DatabaseReference!
-    var entriesList = [EntryModel]()
+    @objc func imageTapped(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped")
+            
+            let image = UIImagePickerController()
+            image.delegate = self
+            image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            image.allowsEditing = true
+            self.present(image, animated: true)
+            {
+                //After it is complete
+            }
+        }
+    }
     
-    @IBAction func saveEntry(_ sender: UIButton) {
-        addEntry()
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        scheduleNotification()
+        var selectedImageFromPicker: UIImage?
+        
+        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        if let selectedImage = selectedImageFromPicker {
+            imageView.image = selectedImage
+        }
+        else
+        {
+            //Error message
+            print("All is doomed! Your image has failed")
+        }
+        
+        uploadImage(image: selectedImageFromPicker!)
+        self.dismiss(animated: true, completion: nil)
+        
     }
     
-    
-    func addEntry() {
-        let key = refEntries.childByAutoId().key
-
-        let entry = [
-                    "id": key,
-                    "entryTitle": entryTitle.text! as String,
-                    "entryContent": entryContent.text! as String
-        ]
-
-        refEntries.child(key).setValue(entry)
-
-        successMessage.text = "Entry Saved!"
+    func uploadImage(image: UIImage) {
+        let randomName = randomStringWithLength(length: 10)
+        let imageData = UIImageJPEGRepresentation(image, 1.0)
+        let uploadRef = Storage.storage().reference().child("images/\(randomName).jpg")
+        
+        let uploadTask = uploadRef.putData(imageData!, metadata: nil) { metadata, error in
+            if error == nil {
+                //success
+                print("Sucessfully uploaded image!")
+                self.imageFileName = "\(randomName as String).jpg"
+            } else {
+                // error
+                print("Error uploading image: \(error?.localizedDescription)")
+            }
+        }
     }
-
     
+    func randomStringWithLength(length: Int) -> NSString {
+        let characters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let randomString: NSMutableString = NSMutableString(capacity: length)
+        
+        for i in 0..<length {
+            let len = UInt32(characters.length)
+            let rand = arc4random_uniform(len)
+            randomString.appendFormat("%C", characters.character(at: Int(rand)))
+        }
+        
+        return randomString
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        UNUserNotificationCenter.current().delegate = self
 
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Entry.imageTapped(gesture:)))
+        imageView.addGestureRecognizer(tapGesture)
+        imageView.isUserInteractionEnabled = true
+        
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
         Database.database().reference().child("entries");
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
@@ -120,15 +180,10 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         refEntries = Database.database().reference().child("entries");
         
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))
-        
         toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
-        
         toolBar.barStyle = UIBarStyle.blackTranslucent
-        
         toolBar.tintColor = UIColor.white
-        
         toolBar.backgroundColor = UIColor.white
-        
         
         let todayBtn = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(Entry.tappedToolBarBtn))
         
@@ -139,19 +194,12 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
         
         label.font = UIFont(name: "Helvetica", size: 12)
-        
         label.backgroundColor = UIColor.clear
-        
         label.textColor = UIColor.white
-        
         label.text = "Set a Reminder Date"
-        
         label.textAlignment = NSTextAlignment.center
-        
         let textBtn = UIBarButtonItem(customView: label)
-        
         toolBar.setItems([todayBtn,flexSpace,textBtn,flexSpace,okBarBtn], animated: true)
-        
         dateTextField.inputAccessoryView = toolBar
         
     }

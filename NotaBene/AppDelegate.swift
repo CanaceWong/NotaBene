@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 import UserNotifications
 
 @UIApplicationMain
@@ -20,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
-        
+                
         //added this for persistence when offline!!!!!!
         Database.database().isPersistenceEnabled = true
         

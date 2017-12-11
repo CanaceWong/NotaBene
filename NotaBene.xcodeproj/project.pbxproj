@@ -18,12 +18,13 @@
 		7C6743A21FD6F55100A3B578 /* NotaBeneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6743A11FD6F55100A3B578 /* NotaBeneTests.swift */; };
 		7C6743AD1FD6F55100A3B578 /* NotaBeneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */; };
 		7CBC1AC81FD818A3002007F7 /* EntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */; };
+		7CCBCB431FDE915500D71D7F /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCBCB421FDE915500D71D7F /* PasswordResetViewController.swift */; };
+		7CCBCB451FDEB37A00D71D7F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CCBCB441FDEB37A00D71D7F /* GoogleService-Info.plist */; };
 		7CF033721FD9CD1D00E31704 /* ShowEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */; };
 		7CF033741FD9FE3400E31704 /* ShowTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF033731FD9FE3400E31704 /* ShowTitleTableViewCell.swift */; };
 		7CF033761FD9FECA00E31704 /* ShowContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF033751FD9FECA00E31704 /* ShowContentTableViewCell.swift */; };
 		7CF0337B1FDAAF4C00E31704 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0337A1FDAAF4C00E31704 /* UserModel.swift */; };
 		7CF0337D1FDAB23A00E31704 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0337C1FDAB23A00E31704 /* RegisterViewController.swift */; };
-		7CFCB6301FD9962B005A8076 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CFCB62F1FD9962B005A8076 /* GoogleService-Info.plist */; };
 		CB0E2CD81FD98896008F9391 /* ViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E2CD71FD98896008F9391 /* ViewControllerTableViewCell.swift */; };
 		CB0E2CDA1FD98A3E008F9391 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E2CD91FD98A3E008F9391 /* EntryModel.swift */; };
 		CD9B6BE680718C0E16A580F3 /* Pods_NotaBeneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8E01D8D5666786CADD5D24 /* Pods_NotaBeneUITests.framework */; };
@@ -69,12 +70,13 @@
 		7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaBeneUITests.swift; sourceTree = "<group>"; };
 		7C6743AE1FD6F55100A3B578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesViewController.swift; sourceTree = "<group>"; };
+		7CCBCB421FDE915500D71D7F /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
+		7CCBCB441FDEB37A00D71D7F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEntryViewController.swift; sourceTree = "<group>"; };
 		7CF033731FD9FE3400E31704 /* ShowTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTitleTableViewCell.swift; sourceTree = "<group>"; };
 		7CF033751FD9FECA00E31704 /* ShowContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowContentTableViewCell.swift; sourceTree = "<group>"; };
 		7CF0337A1FDAAF4C00E31704 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		7CF0337C1FDAB23A00E31704 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
-		7CFCB62F1FD9962B005A8076 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B2E14FC05096576DD9376898 /* Pods_NotaBene.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBene.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8D53CC1D5DC22BEA1C60D36 /* Pods-NotaBene.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBene.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBene/Pods-NotaBene.release.xcconfig"; sourceTree = "<group>"; };
 		BB72E7771DD3A7BD7CE766D2 /* Pods-NotaBeneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneTests/Pods-NotaBeneTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,8 +154,8 @@
 				7C6743901FD6F55100A3B578 /* Main.storyboard */,
 				7C6743931FD6F55100A3B578 /* Assets.xcassets */,
 				7C6743951FD6F55100A3B578 /* LaunchScreen.storyboard */,
-				7CFCB62F1FD9962B005A8076 /* GoogleService-Info.plist */,
 				7C6743981FD6F55100A3B578 /* Info.plist */,
+				7CCBCB441FDEB37A00D71D7F /* GoogleService-Info.plist */,
 			);
 			path = NotaBene;
 			sourceTree = "<group>";
@@ -192,6 +194,7 @@
 				7C67438E1FD6F55100A3B578 /* ViewController.swift */,
 				7CF0337C1FDAB23A00E31704 /* RegisterViewController.swift */,
 				7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */,
+				7CCBCB421FDE915500D71D7F /* PasswordResetViewController.swift */,
 				CB0E2CD71FD98896008F9391 /* ViewControllerTableViewCell.swift */,
 				7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */,
 				7CF033731FD9FE3400E31704 /* ShowTitleTableViewCell.swift */,
@@ -331,7 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6743971FD6F55100A3B578 /* LaunchScreen.storyboard in Resources */,
-				7CFCB6301FD9962B005A8076 /* GoogleService-Info.plist in Resources */,
+				7CCBCB451FDEB37A00D71D7F /* GoogleService-Info.plist in Resources */,
 				7C6743941FD6F55100A3B578 /* Assets.xcassets in Resources */,
 				7C6743921FD6F55100A3B578 /* Main.storyboard in Resources */,
 			);
@@ -474,9 +477,19 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NotaBene/Pods-NotaBene-resources.sh",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle,
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -521,6 +534,7 @@
 				CB0E2CD81FD98896008F9391 /* ViewControllerTableViewCell.swift in Sources */,
 				7C67438F1FD6F55100A3B578 /* ViewController.swift in Sources */,
 				7CF033741FD9FE3400E31704 /* ShowTitleTableViewCell.swift in Sources */,
+				7CCBCB431FDE915500D71D7F /* PasswordResetViewController.swift in Sources */,
 				7CF033761FD9FECA00E31704 /* ShowContentTableViewCell.swift in Sources */,
 				7CF033721FD9CD1D00E31704 /* ShowEntryViewController.swift in Sources */,
 				7CF0337B1FDAAF4C00E31704 /* UserModel.swift in Sources */,
