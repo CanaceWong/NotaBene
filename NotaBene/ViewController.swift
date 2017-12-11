@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var segmentControl: UISegmentedControl!
     @IBOutlet weak var actionButton: UIButton!
+    @IBOutlet weak var myLabel: UILabel!
     
     @IBAction func action(_ sender: UIButton) {
         if emailText.text != "" && passwordText.text != "" {
@@ -53,8 +54,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-    }
+        
+        }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -63,4 +64,5 @@ class ViewController: UIViewController {
 
 
 }
+
 
