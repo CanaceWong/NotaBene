@@ -17,17 +17,19 @@ class Entries: UITableViewController {
     
     @IBOutlet var entriesTable: UITableView!
     
-    var refEntries: DatabaseReference!
+//    var refEntries: DatabaseReference!
     var entriesList = [EntryModel]()
     var entry: EntryModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        userNameDisplay.text = Auth.auth().currentUser?.email
+        let currentUser = Auth.auth().currentUser
+        let uid = currentUser?.uid
+        userNameDisplay.text = currentUser?.email
         
-        refEntries = Database.database().reference().child("entries");
-        
+        let refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
+//        refEntries = Database.database().reference().child("entries");
         refEntries.observe(DataEventType.value, with:{(snapshot) in
             if snapshot.childrenCount>0{
                 self.entriesList.removeAll()
@@ -47,18 +49,6 @@ class Entries: UITableViewController {
         })
     }
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        let refEntries = Database.database().reference().child("entries");
-//        if editingStyle == .delete {
-//            self.entriesList.removeValue(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
-//
-//            let thisEntry = entriesList[indexPath.row]
-//            thisEntry.refEntries?.removeValue()
-//        }
-//    }
-
-
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entriesList.count
     }
@@ -74,14 +64,10 @@ class Entries: UITableViewController {
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
-        
         let entry: EntryModel
-        
         entry = entriesList[indexPath.row]
-        
         cell.entryTitleLabel.text = entry.entryTitle
         cell.entryContentLabel.text = entry.entryContent
-        
         return cell
     }
     
