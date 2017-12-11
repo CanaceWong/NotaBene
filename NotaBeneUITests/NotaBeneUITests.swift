@@ -47,6 +47,8 @@ class NotaBeneUITests: XCTestCase {
         passwordSecureTextField.tap()
         passwordSecureTextField.typeText("testing565656")
         logInButton.tap()
+        
+        XCTAssert(app.alerts["Error"].exists)
         app.alerts["Error"].buttons["OK"].tap()
         
         passwordSecureTextField.typeText("testing")
