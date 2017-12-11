@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 import UserNotifications
 
 class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
@@ -21,6 +22,8 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var imageView: UIImageView!
     var datePickerView:UIDatePicker = UIDatePicker()
+    
+    var imageFileName = ""
     
     @IBAction func textFieldEditing(_ sender: UITextField) {
         datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
@@ -78,6 +81,36 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func uploadImage(image: UIImage) {
+        let randomName = randomStringWithLength(length: 10)
+        let imageData = UIImageJPEGRepresentation(image, 1.0)
+        let uploadRef = Storage.storage().reference().child("image/\(randomName).jpg")
+        
+        let uploadTask = uploadRef.putData(imageData!, metadata: nil) { metadata, error in
+            if error == nil {
+                //success
+                print("Sucessfully uploaded image!")
+                self.imageFileName = "\(randomName as String).jpg"
+            } else {
+                // error
+                print("Error uploading image: \(error?.localizedDescription)")
+            }
+        }
+    }
+    
+    func randomStringWithLength(length: Int) -> NSString {
+        let characters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let randomString: NSMutableString = NSMutableString(capacity: length)
+        
+        for i in 0..<length {
+            let len = UInt32(characters.length)
+            let rand = arc4random_uniform(len)
+            randomString.appendFormat("%C", characters.character(at: Int(rand)))
+        }
+        
+        return randomString
+    }
 
     @objc func datePickerValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
@@ -110,23 +143,23 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     @IBAction func saveEntry(_ sender: UIButton) {
         addEntry()
         scheduleNotification()
-        storeImage() 
+//        storeImage()
     }
     
-    func storeImage() {
-        let storageRef = Storage.storage().reference().child("myImage.png")
-        
-        if let uploadData = UIImagePNGRepresentation(self.imageView.image!) {
-            storageRef.putData(uploadData, metadata: nil, completion: {(metadata, error) in
-                if error != nil {
-                    print(error ?? "there's an error")
-                    return
-                }
-                
-                print(metadata!)
-            })
-        }
-        
+//    func storeImage() {
+//        let storageRef = Storage.storage().reference().child("myImage.png")
+//
+//        if let uploadData = UIImagePNGRepresentation(self.imageView.image!) {
+//            storageRef.putData(uploadData, metadata: nil, completion: {(metadata, error) in
+//                if error != nil {
+//                    print(error ?? "there's an error")
+//                    return
+//                }
+//
+//                print(metadata!)
+//            })
+//        }
+    
         
     }
     
