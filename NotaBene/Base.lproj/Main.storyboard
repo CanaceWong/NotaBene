@@ -51,6 +51,43 @@
             </objects>
             <point key="canvasLocation" x="1988" y="453.82308845577217"/>
         </scene>
+        <!--Password Reset View Controller-->
+        <scene sceneID="Io0-iX-r7E">
+            <objects>
+                <viewController id="Aq1-yM-xc1" customClass="PasswordResetViewController" customModule="NotaBene" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CZ5-zU-i4b">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="n5b-9a-vPX">
+                                <rect key="frame" x="50" y="216" width="274" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="emailReset"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MjD-qN-lHa">
+                                <rect key="frame" x="163" y="318" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="resetPassword:" destination="Aq1-yM-xc1" eventType="touchUpInside" id="z84-pR-bbu"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="FLG-kA-PLC"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailReset" destination="n5b-9a-vPX" id="CA7-v1-0l8"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="VC1" id="TqZ-7J-iAH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ugk-bq-GVP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2018.4000000000001" y="1208.5457271364319"/>
+        </scene>
         <!--Register View Controller-->
         <scene sceneID="mR3-Vh-iCD">
             <objects>
@@ -129,14 +166,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0bP-3p-qbX">
-                                <rect key="frame" x="126" y="457" width="123" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Forgot Passowrd?"/>
-                                <connections>
-                                    <action selector="requestPasswordReset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YzW-lt-JCs"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O5c-3j-ey0">
                                 <rect key="frame" x="167" y="346" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -160,6 +189,14 @@
                                     <segue destination="H9i-W3-pbj" kind="show" identifier="goToSignUp" id="6fG-dx-Vf1"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BT9-wl-ZQQ">
+                                <rect key="frame" x="104" y="484" width="169" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Forgot Password?"/>
+                                <connections>
+                                    <segue destination="Aq1-yM-xc1" kind="presentation" identifier="forgotPassword" id="jsN-Jm-m6t"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -172,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2902" y="337"/>
+            <point key="canvasLocation" x="2901.5999999999999" y="336.88155922038982"/>
         </scene>
         <!--Entries-->
         <scene sceneID="UEG-iN-lq9">
@@ -480,10 +517,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="jsN-Jm-m6t"/>
         <segue reference="k1b-HO-7Mu"/>
         <segue reference="peA-S1-LWK"/>
         <segue reference="Z6f-LQ-h6Q"/>
-        <segue reference="YQf-F4-BfT"/>
+        <segue reference="TqZ-7J-iAH"/>
         <segue reference="6fG-dx-Vf1"/>
         <segue reference="UTa-6b-WCc"/>
     </inferredMetricsTieBreakers>
