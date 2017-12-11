@@ -34,6 +34,8 @@ class NotaBeneUITests: XCTestCase {
     func testExample() {
         
         let app = XCUIApplication()
+        let predicate = NSPredicate(format: "exists == 1")
+        let entryTab = app.navigationBars["Entries"]
         let logInButton = app.buttons["Log in"]
         logInButton.tap()
         
@@ -49,6 +51,9 @@ class NotaBeneUITests: XCTestCase {
         
         passwordSecureTextField.typeText("testing")
         logInButton.tap()
+        
+        expectation(for: predicate, evaluatedWith: entryTab, handler: nil)
+        waitForExpectations(timeout: 10, handler: nil)
         
         XCTAssert(app.navigationBars["Entries"].exists)
         
