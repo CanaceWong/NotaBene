@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="i40-w6-t9c">
             <objects>
-                <viewController id="4Pj-bv-QyU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="4Pj-bv-QyU" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TV2-IA-54I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,9 +43,9 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration" identifier="Home"/>
                         <viewLayoutGuide key="safeArea" id="Xwd-PH-NfX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="JXw-DN-c27"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RW-3q-mv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -209,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2901.5999999999999" y="336.88155922038982"/>
+            <point key="canvasLocation" x="2902" y="-233"/>
         </scene>
         <!--Entries-->
         <scene sceneID="UEG-iN-lq9">
@@ -285,10 +285,16 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Entries" id="d4R-jy-NCi">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="fuR-nM-X37">
-                            <connections>
-                                <segue destination="4Pj-bv-QyU" kind="show" identifier="logged2" id="QS9-Iw-0Ou"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" title="Log out" style="plain" id="Iej-G3-Ura">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gcm-bN-gom">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Logout"/>
+                                <state key="normal" title="Log out "/>
+                                <connections>
+                                    <action selector="logout:" destination="fuE-0W-AgS" eventType="touchUpInside" id="xfD-JX-VBX"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2Ji-RK-gAp">
                             <connections>
@@ -533,9 +539,8 @@
     <inferredMetricsTieBreakers>
         <segue reference="k1b-HO-7Mu"/>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="vie-DC-pIu"/>
-        <segue reference="TqZ-7J-iAH"/>
-        <segue reference="6fG-dx-Vf1"/>
-        <segue reference="QS9-Iw-0Ou"/>
+        <segue reference="Z6f-LQ-h6Q"/>
+        <segue reference="ayG-Uo-Lj3"/>
+        <segue reference="YFv-zS-H7R"/>
     </inferredMetricsTieBreakers>
 </document>
