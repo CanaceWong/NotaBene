@@ -74,6 +74,7 @@ class Entries: UITableViewController {
     }
     
     @IBOutlet weak var userNameDisplay: UILabel!
+    
     @IBAction func action(_ sender: UIButton) {
         try! Auth.auth().signOut()
         performSegue(withIdentifier: "logged2", sender: self)
