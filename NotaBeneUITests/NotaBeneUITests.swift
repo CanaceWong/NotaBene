@@ -77,6 +77,8 @@ class NotaBeneUITests: XCTestCase {
         let entrytitlelabelStaticText = app.tables/*@START_MENU_TOKEN@*/.staticTexts["entryTitleLabel"]/*[[".cells",".staticTexts[\"hello again\"]",".staticTexts[\"entryTitleLabel\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
         entrytitlelabelStaticText.tap()
         
+         XCTAssert(app.staticTexts["hello again there"].exists)
+        
         let entrycontenteditableTextView = app.textViews["entryContentEditable"]
         entrycontenteditableTextView.tap()
         entrycontenteditableTextView.typeText(" This is our test!")
