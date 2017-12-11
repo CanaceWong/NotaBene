@@ -30,7 +30,6 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     
     func addEntry() {
         let key = refEntries.childByAutoId().key
-        print(refEntries.childByAutoId().key)
         let entry = [
             "id": key,
             "entryTitle": entryTitle.text! as String,

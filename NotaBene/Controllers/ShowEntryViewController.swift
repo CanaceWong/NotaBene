@@ -11,6 +11,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import UserNotifications
+import FirebaseStorage
 
 class ShowEntryViewController: UIViewController {
     
@@ -37,26 +38,26 @@ class ShowEntryViewController: UIViewController {
     }
     
     @IBAction func saveChanges(_ sender: Any) {
-        let id = entry?.id
-        self.updateEntry(id: id!, entryTitle: entryTitleEditable.text!, entryContent: entryContentEditable.text!)
-        print("success")
-        scheduleNotification()
+//        let id = entry?.id
+//        self.updateEntry(id: id!, entryTitle: entryTitleEditable.text!, entryContent: entryContentEditable.text!, image: UIImage)
+//        print("success")
+//        scheduleNotification()
     }
     
-    func updateEntry(id: String, entryTitle: String, entryContent: String){
+    func updateEntry(id: String, entryTitle: String, entryContent: String, image: String){
             let entry = [
                 "id": id,
                 "entryTitle": entryTitle,
                 "entryContent": entryContent,
-//                "image": image
+                "image": image
             ]
         let dbref = Database.database().reference().child("users")
         let user = Auth.auth().currentUser
         if let uid = user?.uid {
             dbref.child("\(uid)").child("entries").child(id).setValue(entry)
         }
+        
     }
-
     
     var datePickerView:UIDatePicker = UIDatePicker()
     
@@ -103,13 +104,24 @@ class ShowEntryViewController: UIViewController {
     func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         entryTitleEditable.text = entry?.entryTitle
         entryContentEditable.text = entry?.entryContent
+        
+        
+        let image = entry?.image
+        let imageRef = Storage.storage().reference().child("images/" + image!)
+        imageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
+            if error == nil {
+                let image = UIImage(data: data!)
+                self.entryImageEditable.image = image
+            } else {
+                //error
+                print("error downloading image: \(error?.localizedDescription)")
+            }
+        })
         
         Database.database().reference().child("entries");
         
@@ -125,11 +137,8 @@ class ShowEntryViewController: UIViewController {
         toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
         
         toolBar.barStyle = UIBarStyle.blackTranslucent
-        
         toolBar.tintColor = UIColor.white
-        
         toolBar.backgroundColor = UIColor.white
-        
         
         let todayBtn = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(Entry.tappedToolBarBtn))
         
@@ -140,19 +149,12 @@ class ShowEntryViewController: UIViewController {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
         
         label.font = UIFont(name: "Helvetica", size: 12)
-        
         label.backgroundColor = UIColor.clear
-        
         label.textColor = UIColor.white
-        
         label.text = "Set a Reminder Date"
-        
         label.textAlignment = NSTextAlignment.center
-        
         let textBtn = UIBarButtonItem(customView: label)
-        
         toolBar.setItems([todayBtn,flexSpace,textBtn,flexSpace,okBarBtn], animated: true)
-        
         dateTextField.inputAccessoryView = toolBar
     }
 
