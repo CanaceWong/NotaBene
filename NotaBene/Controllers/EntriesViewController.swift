@@ -74,9 +74,17 @@ class Entries: UITableViewController {
     }
     
     @IBOutlet weak var userNameDisplay: UILabel!
-    @IBAction func action(_ sender: UIButton) {
-        try! Auth.auth().signOut()
-        performSegue(withIdentifier: "logged2", sender: self)
+    
+    @IBAction func logout(_ sender: UIButton) {
+        if Auth.auth().currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+                let logout: UIViewController? = self.storyboard?.instantiateViewController(withIdentifier: "Home")
+                self.present(logout!, animated: true, completion: nil)
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

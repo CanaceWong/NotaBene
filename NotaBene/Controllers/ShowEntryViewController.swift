@@ -22,14 +22,18 @@ class ShowEntryViewController: UIViewController {
     @IBOutlet weak var entryContentEditable: UITextView!
     @IBOutlet weak var entryTitleEditable: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
+    @IBOutlet weak var entryImageEditable: UIImageView!
     
     @IBAction func deleteButton(_ sender: Any) {
         self.deleteEntry(id: (entry?.id!)!)
-        print("deleted")
     }
     
     func deleteEntry(id: String) {
-        refEntries.child(id).setValue(nil)
+        let dbref = Database.database().reference().child("users")
+        let user = Auth.auth().currentUser
+        if let uid = user?.uid {
+            dbref.child("\(uid)").child("entries").child(id).setValue(nil)
+        }
     }
     
     @IBAction func saveChanges(_ sender: Any) {
@@ -43,9 +47,14 @@ class ShowEntryViewController: UIViewController {
             let entry = [
                 "id": id,
                 "entryTitle": entryTitle,
-                "entryContent": entryContent
+                "entryContent": entryContent,
+//                "image": image
             ]
-            refEntries.child(id).setValue(entry)
+        let dbref = Database.database().reference().child("users")
+        let user = Auth.auth().currentUser
+        if let uid = user?.uid {
+            dbref.child("\(uid)").child("entries").child(id).setValue(entry)
+        }
     }
 
     
@@ -106,7 +115,10 @@ class ShowEntryViewController: UIViewController {
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
-        refEntries = Database.database().reference().child("entries");
+//        refEntries = Database.database().reference().child("entries");
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+        let refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
         
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))
         
