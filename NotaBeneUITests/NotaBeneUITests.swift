@@ -33,23 +33,91 @@ class NotaBeneUITests: XCTestCase {
     
     func testExample() {
         
-        let predicate = NSPredicate(format: "exists == 1")
-        let entryTab = app.navigationBars["Entries"]
-        XCTAssertFalse(entryTab.exists)
+        let app = XCUIApplication()
+        let registerButton = app.buttons["Register"]
+        registerButton.tap()
+        
+        let emailtextTextField = app.textFields["emailText"]
+        emailtextTextField.tap()
+        emailtextTextField.tap()
+        emailtextTextField.typeText("test@testagain.com")
+        
+        let passwordtextSecureTextField = app.secureTextFields["passwordText"]
+        passwordtextSecureTextField.tap()
+        passwordtextSecureTextField.tap()
+        passwordtextSecureTextField.typeText("testing")
+        
+        let signUpButton = app.buttons["Sign Up"]
+        signUpButton.tap()
+        
+        let okButton = app.alerts["Error"].buttons["OK"]
+        okButton.tap()
+        passwordtextSecureTextField.swipeLeft()
+        emailtextTextField.swipeLeft()
+        app.children(matching: .window).element(boundBy: 0).children(matching: .other).element.children(matching: .other).element.swipeRight()
+        emailtextTextField.typeText("maggie@tests.com")
+        passwordtextSecureTextField.tap()
+        passwordtextSecureTextField.tap()
+        passwordtextSecureTextField.typeText("testing")
+        signUpButton.tap()
+        okButton.tap()
+        passwordtextSecureTextField.swipeLeft()
+        emailtextTextField.swipeLeft()
+        emailtextTextField.tap()
+        emailtextTextField.tap()
+        emailtextTextField.tap()
+        emailtextTextField.tap()
+        emailtextTextField.tap()
+        emailtextTextField.tap()
+        
+        let cancelButton = app.buttons["Cancel"]
+        cancelButton.tap()
+        
+        let logInButton = app.buttons["Log in"]
+        logInButton.tap()
         
         let usernameTextField = app.textFields["Username"]
         usernameTextField.tap()
-        usernameTextField.typeText("canacewong@testing.com")
+        usernameTextField.typeText("chaya@tests.com")
         
         let passwordSecureTextField = app.secureTextFields["Password"]
         passwordSecureTextField.tap()
-        passwordSecureTextField.typeText("Testing")
-        app.otherElements.containing(.textField, identifier:"Username").children(matching: .button)["Login"].tap()
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("testing")
+        logInButton.tap()
+        app.tables/*@START_MENU_TOKEN@*/.staticTexts["entryTitleLabel"]/*[[".cells",".staticTexts[\"Test 1\"]",".staticTexts[\"entryTitleLabel\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.alerts["“NotaBene” Would Like to Send You Notifications"].buttons["Allow"].tap()
         
-        expectation(for: predicate, evaluatedWith: entryTab, handler: nil)
-        waitForExpectations(timeout: 10, handler: nil)
+        let entrycontenteditableTextView = app.textViews["entryContentEditable"]
+        entrycontenteditableTextView.tap()
+        entrycontenteditableTextView.typeText("again")
+        app/*@START_MENU_TOKEN@*/.buttons["saveChanges"]/*[[".buttons[\"Save Changes\"]",".buttons[\"saveChanges\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        app.navigationBars["Entries"].buttons["Logout"].tap()
+        registerButton.tap()
+        emailtextTextField.tap()
+        emailtextTextField.typeText("hello@testagain.com")
+        passwordtextSecureTextField.tap()
+        passwordtextSecureTextField.tap()
+        passwordtextSecureTextField.typeText("testingisfun")
+        signUpButton.tap()
+        okButton.tap()
+        cancelButton.tap()
         
-        XCTAssert(app.navigationBars["Entries"].exists)
+        let app = XCUIApplication()
+        app.buttons["Register"].tap()
+        
+        let emailtextTextField = app.textFields["emailText"]
+        emailtextTextField.tap()
+        emailtextTextField.typeText("oranges@christmas.com")
+        
+        let passwordtextSecureTextField = app.secureTextFields["passwordText"]
+        passwordtextSecureTextField.tap()
+        passwordtextSecureTextField.tap()
+        passwordtextSecureTextField.typeText("testing")
+        app.buttons["Sign Up"].tap()
+        app.alerts["Error"].buttons["OK"].tap()
+        
+        
     }
         
 }

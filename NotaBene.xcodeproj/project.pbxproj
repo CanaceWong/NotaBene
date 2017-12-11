@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1EF754791FD8617E00B3E4E7 /* loginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF754781FD8617E00B3E4E7 /* loginTests.swift */; };
+		46A356161FDED888007D2AFB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46A356151FDED888007D2AFB /* GoogleService-Info.plist */; };
 		7AA794E3C164601823BA4E0E /* Pods_NotaBeneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */; };
 		7C1379551FD81FAA009C35FA /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1379541FD81FAA009C35FA /* EntryViewController.swift */; };
 		7C67438D1FD6F55000A3B578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67438C1FD6F55000A3B578 /* AppDelegate.swift */; };
@@ -19,7 +20,6 @@
 		7C6743AD1FD6F55100A3B578 /* NotaBeneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */; };
 		7CBC1AC81FD818A3002007F7 /* EntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */; };
 		7CCBCB431FDE915500D71D7F /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCBCB421FDE915500D71D7F /* PasswordResetViewController.swift */; };
-		7CCBCB451FDEB37A00D71D7F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7CCBCB441FDEB37A00D71D7F /* GoogleService-Info.plist */; };
 		7CF033721FD9CD1D00E31704 /* ShowEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */; };
 		7CF033741FD9FE3400E31704 /* ShowTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF033731FD9FE3400E31704 /* ShowTitleTableViewCell.swift */; };
 		7CF033761FD9FECA00E31704 /* ShowContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF033751FD9FECA00E31704 /* ShowContentTableViewCell.swift */; };
@@ -53,6 +53,7 @@
 		1EF754781FD8617E00B3E4E7 /* loginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginTests.swift; sourceTree = "<group>"; };
 		2E8E01D8D5666786CADD5D24 /* Pods_NotaBeneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBeneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		381A223640B4E20B9E4BE7B2 /* Pods-NotaBeneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneTests/Pods-NotaBeneTests.debug.xcconfig"; sourceTree = "<group>"; };
+		46A356151FDED888007D2AFB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBeneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77F03B3D500857187FBF54B0 /* Pods-NotaBeneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneUITests/Pods-NotaBeneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C1379541FD81FAA009C35FA /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		7C6743AE1FD6F55100A3B578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesViewController.swift; sourceTree = "<group>"; };
 		7CCBCB421FDE915500D71D7F /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
-		7CCBCB441FDEB37A00D71D7F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEntryViewController.swift; sourceTree = "<group>"; };
 		7CF033731FD9FE3400E31704 /* ShowTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTitleTableViewCell.swift; sourceTree = "<group>"; };
 		7CF033751FD9FECA00E31704 /* ShowContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 				7C6743931FD6F55100A3B578 /* Assets.xcassets */,
 				7C6743951FD6F55100A3B578 /* LaunchScreen.storyboard */,
 				7C6743981FD6F55100A3B578 /* Info.plist */,
-				7CCBCB441FDEB37A00D71D7F /* GoogleService-Info.plist */,
+				46A356151FDED888007D2AFB /* GoogleService-Info.plist */,
 			);
 			path = NotaBene;
 			sourceTree = "<group>";
@@ -334,9 +334,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6743971FD6F55100A3B578 /* LaunchScreen.storyboard in Resources */,
-				7CCBCB451FDEB37A00D71D7F /* GoogleService-Info.plist in Resources */,
 				7C6743941FD6F55100A3B578 /* Assets.xcassets in Resources */,
 				7C6743921FD6F55100A3B578 /* Main.storyboard in Resources */,
+				46A356161FDED888007D2AFB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
