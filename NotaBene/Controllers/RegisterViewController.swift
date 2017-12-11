@@ -75,7 +75,6 @@ class RegisterViewController: UIViewController {
                     })
                     let alertController = UIAlertController(title: "You have signed up successfully!", message: "Please go to Log in", preferredStyle: UIAlertControllerStyle.alert)
                     let ok = UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: {(action) -> Void in
-                        //The (withIdentifier: "VC2") is the Storyboard Segue identifier.
                         self.performSegue(withIdentifier: "VC2", sender: self)
                     })
                     

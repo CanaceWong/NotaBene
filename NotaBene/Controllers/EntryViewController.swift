@@ -20,7 +20,30 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
     @IBOutlet weak var successMessage: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
     
+    var refEntries: DatabaseReference!
+    var ref: DatabaseReference!
+    var entriesList = [EntryModel]()
     var datePickerView:UIDatePicker = UIDatePicker()
+
+    
+    func addEntry() {
+        let key = refEntries.childByAutoId().key
+        let entry = [
+            "id": key,
+            "entryTitle": entryTitle.text! as String,
+            "entryContent": entryContent.text! as String
+        ]
+            let dbref = Database.database().reference().child("users")
+            let user = Auth.auth().currentUser
+            if let uid = user?.uid {
+            dbref.child("\(uid)").child("entries").child(key).setValue(entry)
+            }
+    }
+    
+    @IBAction func saveEntry(_ sender: UIButton) {
+        addEntry()
+        scheduleNotification()
+    }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert,.sound])
@@ -30,6 +53,13 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
         sender.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(Entry.datePickerValueChanged), for: UIControlEvents.valueChanged)
+    }
+    
+    @objc func datePickerValueChanged(sender:UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        dateTextField.text = dateFormatter.string(from: sender.date)
     }
     
     func scheduleNotification() {
@@ -44,14 +74,6 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
         let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
-    }
-
-    @objc func datePickerValueChanged(sender:UIDatePicker) {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = DateFormatter.Style.medium
-        dateFormatter.timeStyle = DateFormatter.Style.short
-        dateTextField.text = dateFormatter.string(from: sender.date)
-        
     }
     
     @objc func donePressed(sender: UIBarButtonItem) {
@@ -70,37 +92,10 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         self.view.endEditing(true)
     }
     
-    var refEntries: DatabaseReference!
-    var ref: DatabaseReference!
-    var entriesList = [EntryModel]()
-    
-    @IBAction func saveEntry(_ sender: UIButton) {
-        addEntry()
-        
-        scheduleNotification()
-    }
-    
-    
-    func addEntry() {
-        let key = refEntries.childByAutoId().key
-
-        let entry = [
-                    "id": key,
-                    "entryTitle": entryTitle.text! as String,
-                    "entryContent": entryContent.text! as String
-        ]
-
-        refEntries.child(key).setValue(entry)
-
-        successMessage.text = "Entry Saved!"
-    }
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UNUserNotificationCenter.current().delegate = self
-
         Database.database().reference().child("entries");
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
@@ -108,15 +103,10 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         refEntries = Database.database().reference().child("entries");
         
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))
-        
         toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
-        
         toolBar.barStyle = UIBarStyle.blackTranslucent
-        
         toolBar.tintColor = UIColor.white
-        
         toolBar.backgroundColor = UIColor.white
-        
         
         let todayBtn = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(Entry.tappedToolBarBtn))
         
@@ -127,19 +117,12 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
         
         label.font = UIFont(name: "Helvetica", size: 12)
-        
         label.backgroundColor = UIColor.clear
-        
         label.textColor = UIColor.white
-        
         label.text = "Set a Reminder Date"
-        
         label.textAlignment = NSTextAlignment.center
-        
         let textBtn = UIBarButtonItem(customView: label)
-        
         toolBar.setItems([todayBtn,flexSpace,textBtn,flexSpace,okBarBtn], animated: true)
-        
         dateTextField.inputAccessoryView = toolBar
         
     }

@@ -18,6 +18,7 @@
 		7C6743A21FD6F55100A3B578 /* NotaBeneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6743A11FD6F55100A3B578 /* NotaBeneTests.swift */; };
 		7C6743AD1FD6F55100A3B578 /* NotaBeneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */; };
 		7CBC1AC81FD818A3002007F7 /* EntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */; };
+		7CCBCB431FDE915500D71D7F /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCBCB421FDE915500D71D7F /* PasswordResetViewController.swift */; };
 		7CF033721FD9CD1D00E31704 /* ShowEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */; };
 		7CF033741FD9FE3400E31704 /* ShowTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF033731FD9FE3400E31704 /* ShowTitleTableViewCell.swift */; };
 		7CF033761FD9FECA00E31704 /* ShowContentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF033751FD9FECA00E31704 /* ShowContentTableViewCell.swift */; };
@@ -69,6 +70,7 @@
 		7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaBeneUITests.swift; sourceTree = "<group>"; };
 		7C6743AE1FD6F55100A3B578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesViewController.swift; sourceTree = "<group>"; };
+		7CCBCB421FDE915500D71D7F /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEntryViewController.swift; sourceTree = "<group>"; };
 		7CF033731FD9FE3400E31704 /* ShowTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTitleTableViewCell.swift; sourceTree = "<group>"; };
 		7CF033751FD9FECA00E31704 /* ShowContentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowContentTableViewCell.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				7C67438E1FD6F55100A3B578 /* ViewController.swift */,
 				7CF0337C1FDAB23A00E31704 /* RegisterViewController.swift */,
 				7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */,
+				7CCBCB421FDE915500D71D7F /* PasswordResetViewController.swift */,
 				CB0E2CD71FD98896008F9391 /* ViewControllerTableViewCell.swift */,
 				7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */,
 				7CF033731FD9FE3400E31704 /* ShowTitleTableViewCell.swift */,
@@ -475,11 +478,11 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NotaBene/Pods-NotaBene-resources.sh",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle",
-				"$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseFacebookAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseGoogleAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebasePhoneAuthUI.bundle,
+				$PODS_CONFIGURATION_BUILD_DIR/FirebaseUI/FirebaseTwitterAuthUI.bundle,
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
 				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterShareExtensionUIResources.bundle",
@@ -531,6 +534,7 @@
 				CB0E2CD81FD98896008F9391 /* ViewControllerTableViewCell.swift in Sources */,
 				7C67438F1FD6F55100A3B578 /* ViewController.swift in Sources */,
 				7CF033741FD9FE3400E31704 /* ShowTitleTableViewCell.swift in Sources */,
+				7CCBCB431FDE915500D71D7F /* PasswordResetViewController.swift in Sources */,
 				7CF033761FD9FECA00E31704 /* ShowContentTableViewCell.swift in Sources */,
 				7CF033721FD9CD1D00E31704 /* ShowEntryViewController.swift in Sources */,
 				7CF0337B1FDAAF4C00E31704 /* UserModel.swift in Sources */,
