@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EAC9FFB1FDEE0D000D85538 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EAC9FFA1FDEE0D000D85538 /* GoogleService-Info.plist */; };
 		1EF754791FD8617E00B3E4E7 /* loginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF754781FD8617E00B3E4E7 /* loginTests.swift */; };
-		46A356161FDED888007D2AFB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46A356151FDED888007D2AFB /* GoogleService-Info.plist */; };
 		7AA794E3C164601823BA4E0E /* Pods_NotaBeneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */; };
 		7C1379551FD81FAA009C35FA /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1379541FD81FAA009C35FA /* EntryViewController.swift */; };
 		7C67438D1FD6F55000A3B578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67438C1FD6F55000A3B578 /* AppDelegate.swift */; };
@@ -50,10 +50,10 @@
 
 /* Begin PBXFileReference section */
 		17947378912FFFAFE1E99D95 /* Pods-NotaBene.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBene.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBene/Pods-NotaBene.debug.xcconfig"; sourceTree = "<group>"; };
+		1EAC9FFA1FDEE0D000D85538 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/Olivia configure/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EF754781FD8617E00B3E4E7 /* loginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginTests.swift; sourceTree = "<group>"; };
 		2E8E01D8D5666786CADD5D24 /* Pods_NotaBeneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBeneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		381A223640B4E20B9E4BE7B2 /* Pods-NotaBeneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneTests/Pods-NotaBeneTests.debug.xcconfig"; sourceTree = "<group>"; };
-		46A356151FDED888007D2AFB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBeneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77F03B3D500857187FBF54B0 /* Pods-NotaBeneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneUITests/Pods-NotaBeneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C1379541FD81FAA009C35FA /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 				7C6743931FD6F55100A3B578 /* Assets.xcassets */,
 				7C6743951FD6F55100A3B578 /* LaunchScreen.storyboard */,
 				7C6743981FD6F55100A3B578 /* Info.plist */,
-				46A356151FDED888007D2AFB /* GoogleService-Info.plist */,
+				1EAC9FFA1FDEE0D000D85538 /* GoogleService-Info.plist */,
 			);
 			path = NotaBene;
 			sourceTree = "<group>";
@@ -334,9 +334,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6743971FD6F55100A3B578 /* LaunchScreen.storyboard in Resources */,
+				1EAC9FFB1FDEE0D000D85538 /* GoogleService-Info.plist in Resources */,
 				7C6743941FD6F55100A3B578 /* Assets.xcassets in Resources */,
 				7C6743921FD6F55100A3B578 /* Main.storyboard in Resources */,
-				46A356161FDED888007D2AFB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
