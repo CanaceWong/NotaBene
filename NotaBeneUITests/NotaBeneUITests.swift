@@ -74,6 +74,20 @@ class NotaBeneUITests: XCTestCase {
         
         XCTAssert(app.staticTexts["hello again"].exists)
         
+        let entrytitlelabelStaticText = app.tables/*@START_MENU_TOKEN@*/.staticTexts["entryTitleLabel"]/*[[".cells",".staticTexts[\"hello again\"]",".staticTexts[\"entryTitleLabel\"]"],[[[-1,2],[-1,1],[-1,0,1]],[[-1,2],[-1,1]]],[0]]@END_MENU_TOKEN@*/
+        entrytitlelabelStaticText.tap()
+        
+        let entrycontenteditableTextView = app.textViews["entryContentEditable"]
+        entrycontenteditableTextView.tap()
+        entrycontenteditableTextView.typeText(" This is our test!")
+        app/*@START_MENU_TOKEN@*/.buttons["saveChanges"]/*[[".buttons[\"Save Changes\"]",".buttons[\"saveChanges\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        entrytitlelabelStaticText.tap()
+        app.buttons["Delete?"].tap()
+        app.navigationBars["Entries"]/*@START_MENU_TOKEN@*/.buttons["Logout"]/*[[".buttons[\"Log out\"]",".buttons[\"Logout\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        
+        
+        
         
     }
         
