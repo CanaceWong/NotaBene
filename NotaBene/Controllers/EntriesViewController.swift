@@ -27,11 +27,10 @@ class Entries: UITableViewController {
         let currentUser = Auth.auth().currentUser
         userNameDisplay.text = currentUser?.email
         
-//        let refEntries = Database.database().reference().child("users")
-//        if let uid = currentUser?.uid {
-//            refEntries.child("\(uid)").child("entries")
-            refEntries = Database.database().reference().child("entries");
-            refEntries.observe(DataEventType.value, with:{(snapshot) in
+        let refEntries = Database.database().reference().child("users")
+        if let uid = currentUser?.uid {
+            
+            refEntries.child("\(uid)").child("entries").observe(DataEventType.value, with:{(snapshot) in
                 if snapshot.childrenCount>0{
                     self.entriesList.removeAll()
 
@@ -40,15 +39,16 @@ class Entries: UITableViewController {
                         let entryTitle = entryObject["entryTitle"]
                         let entryContent = entryObject["entryContent"]
                         let entryId = entryObject["id"]
+                        let image = entryObject["image"]
                         
-                        let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?)
+                        let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?, image: image as! String?)
             
                         self.entriesList.append(entry)
                     }
                     self.entriesTable.reloadData()
                 }
             })
-//        }
+        }
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

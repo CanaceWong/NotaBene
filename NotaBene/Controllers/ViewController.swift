@@ -29,7 +29,7 @@ class ViewController: UIViewController {
             
         } else {
             
-            Auth.auth().signIn(withEmail: self.emailText.text!, password: self.passwordText.text!) { (user, error) in
+            Auth.auth().signInAndRetrieveData(withEmail: self.emailText.text!, password: self.passwordText.text!) { (user, error) in
                 
                 if error == nil {
                     
