@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Pj-bv-QyU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4Pj-bv-QyU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="i40-w6-t9c">
             <objects>
-                <viewController id="4Pj-bv-QyU" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="4Pj-bv-QyU" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TV2-IA-54I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -43,9 +43,9 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <accessibility key="accessibilityConfiguration" identifier="Home"/>
                         <viewLayoutGuide key="safeArea" id="Xwd-PH-NfX"/>
                     </view>
-                    <navigationItem key="navigationItem" id="JXw-DN-c27"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1RW-3q-mv8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -209,7 +209,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2901.5999999999999" y="336.88155922038982"/>
+            <point key="canvasLocation" x="2902" y="-233"/>
         </scene>
         <!--Entries-->
         <scene sceneID="UEG-iN-lq9">
@@ -285,10 +285,16 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Entries" id="d4R-jy-NCi">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="fuR-nM-X37">
-                            <connections>
-                                <segue destination="4Pj-bv-QyU" kind="show" identifier="logged2" id="QS9-Iw-0Ou"/>
-                            </connections>
+                        <barButtonItem key="leftBarButtonItem" title="Log out" style="plain" id="Iej-G3-Ura">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Gcm-bN-gom">
+                                <rect key="frame" x="16" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="Logout"/>
+                                <state key="normal" title="Log out "/>
+                                <connections>
+                                    <action selector="logout:" destination="fuE-0W-AgS" eventType="touchUpInside" id="xfD-JX-VBX"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2Ji-RK-gAp">
                             <connections>
@@ -409,7 +415,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SUM-Rc-Opz">
-                                <rect key="frame" x="16" y="99" width="343" height="510"/>
+                                <rect key="frame" x="16" y="99" width="343" height="326"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="entryContentEditable"/>
@@ -445,6 +451,11 @@
                                     <action selector="textFieldEditing:" destination="rX9-KX-EtL" eventType="editingDidBegin" id="Gv4-H4-9Ho"/>
                                 </connections>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89g-WA-Nif">
+                                <rect key="frame" x="67" y="443" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="entryImageEditable"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2ns-QG-aBl"/>
@@ -459,6 +470,7 @@
                     <connections>
                         <outlet property="dateTextField" destination="Prw-lt-13L" id="nQs-Mm-UzR"/>
                         <outlet property="entryContentEditable" destination="SUM-Rc-Opz" id="xhm-Jk-P4c"/>
+                        <outlet property="entryImageEditable" destination="89g-WA-Nif" id="NXT-31-xvo"/>
                         <outlet property="entryTitleEditable" destination="fn8-yz-BaJ" id="IOp-tb-tZ6"/>
                     </connections>
                 </viewController>
@@ -525,12 +537,10 @@
         <image name="addimage" width="640" height="640"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="jsN-Jm-m6t"/>
         <segue reference="k1b-HO-7Mu"/>
         <segue reference="peA-S1-LWK"/>
         <segue reference="Z6f-LQ-h6Q"/>
-        <segue reference="TqZ-7J-iAH"/>
-        <segue reference="6fG-dx-Vf1"/>
-        <segue reference="UTa-6b-WCc"/>
+        <segue reference="ayG-Uo-Lj3"/>
+        <segue reference="YFv-zS-H7R"/>
     </inferredMetricsTieBreakers>
 </document>
