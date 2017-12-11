@@ -14,7 +14,7 @@ import FirebaseStorage
 import UserNotifications
 
 
-class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UNUserNotificationCenterDelegate {
   
     @IBOutlet weak var entryTitle: UITextField!
     @IBOutlet weak var entryContent: UITextField!
@@ -30,6 +30,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     
     func addEntry() {
         let key = refEntries.childByAutoId().key
+        print(refEntries.childByAutoId().key)
         let entry = [
             "id": key,
             "entryTitle": entryTitle.text! as String,
@@ -67,6 +68,9 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     }
     
     func scheduleNotification() {
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+        refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
         let key = refEntries.childByAutoId().key
         let content = UNMutableNotificationContent() //The notification's content
         let datePicker = datePickerView
@@ -167,17 +171,20 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Entry.imageTapped(gesture:)))
+        
         imageView.addGestureRecognizer(tapGesture)
         imageView.isUserInteractionEnabled = true
         
-        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
-        Database.database().reference().child("entries");
-        
-        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
-    
         refEntries = Database.database().reference().child("entries");
+        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
+        
+//        let user = Auth.auth().currentUser
+//        let uid = user?.uid
+//        let refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
         
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))
         toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
