@@ -33,7 +33,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         let entry = [
             "id": key,
             "entryTitle": entryTitle.text! as String,
-            "entryContent": entryContent.text! as String
+            "entryContent": entryContent.text! as String,
             "image": imageFileName
         ]
             let dbref = Database.database().reference().child("users")
@@ -172,7 +172,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         imageView.addGestureRecognizer(tapGesture)
         imageView.isUserInteractionEnabled = true
         
-        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
         Database.database().reference().child("entries");
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
