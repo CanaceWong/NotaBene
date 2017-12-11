@@ -66,7 +66,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         
         var selectedImageFromPicker: UIImage?
         
-        if let editedImage = info["UIImagePickerControllerEditedImage"]              as? UIImage {
+        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
             selectedImageFromPicker = editedImage
         } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
             selectedImageFromPicker = originalImage
@@ -77,15 +77,18 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         else
         {
             //Error message
+            print("All is doomed! Your image has failed")
         }
         
+        uploadImage(image: selectedImageFromPicker!)
         self.dismiss(animated: true, completion: nil)
+        
     }
     
     func uploadImage(image: UIImage) {
         let randomName = randomStringWithLength(length: 10)
         let imageData = UIImageJPEGRepresentation(image, 1.0)
-        let uploadRef = Storage.storage().reference().child("image/\(randomName).jpg")
+        let uploadRef = Storage.storage().reference().child("images/\(randomName).jpg")
         
         let uploadTask = uploadRef.putData(imageData!, metadata: nil) { metadata, error in
             if error == nil {
@@ -161,7 +164,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
 //        }
     
         
-    }
+//    }
     
     
     func addEntry() {
@@ -170,14 +173,15 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         let entry = [
                     "id": key,
                     "entryTitle": entryTitle.text! as String,
-                    "entryContent": entryContent.text! as String
+                    "entryContent": entryContent.text! as String,
+                    "image": imageFileName
         ]
 
         refEntries.child(key).setValue(entry)
 
         successMessage.text = "Entry Saved!"
     }
-    
+
 
     
     override func viewDidLoad() {
