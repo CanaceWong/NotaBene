@@ -10,20 +10,22 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 import UserNotifications
 
-class Entry: UIViewController, UNUserNotificationCenterDelegate {
-    
-    
+
+class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+  
     @IBOutlet weak var entryTitle: UITextField!
     @IBOutlet weak var entryContent: UITextField!
     @IBOutlet weak var successMessage: UILabel!
     @IBOutlet weak var dateTextField: UITextField!
-    
+    @IBOutlet weak var imageView: UIImageView!    
     var refEntries: DatabaseReference!
     var ref: DatabaseReference!
     var entriesList = [EntryModel]()
     var datePickerView:UIDatePicker = UIDatePicker()
+    var imageFileName = ""
 
     
     func addEntry() {
@@ -31,7 +33,8 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         let entry = [
             "id": key,
             "entryTitle": entryTitle.text! as String,
-            "entryContent": entryContent.text! as String
+            "entryContent": entryContent.text! as String,
+            "image": imageFileName
         ]
             let dbref = Database.database().reference().child("users")
             let user = Auth.auth().currentUser
@@ -48,6 +51,7 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert,.sound])
     }
+    
     
     @IBAction func textFieldEditing(_ sender: UITextField) {
         datePickerView.datePickerMode = UIDatePickerMode.dateAndTime
@@ -75,7 +79,8 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
     }
-    
+  
+  
     @objc func donePressed(sender: UIBarButtonItem) {
         dateTextField.resignFirstResponder()
     }
@@ -92,10 +97,82 @@ class Entry: UIViewController, UNUserNotificationCenterDelegate {
         self.view.endEditing(true)
     }
     
+    @objc func imageTapped(gesture: UIGestureRecognizer) {
+        if (gesture.view as? UIImageView) != nil {
+            print("Image Tapped")
+            
+            let image = UIImagePickerController()
+            image.delegate = self
+            image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            image.allowsEditing = true
+            self.present(image, animated: true)
+            {
+                //After it is complete
+            }
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        var selectedImageFromPicker: UIImage?
+        
+        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
+            selectedImageFromPicker = editedImage
+        } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            selectedImageFromPicker = originalImage
+        }
+        if let selectedImage = selectedImageFromPicker {
+            imageView.image = selectedImage
+        }
+        else
+        {
+            //Error message
+            print("All is doomed! Your image has failed")
+        }
+        
+        uploadImage(image: selectedImageFromPicker!)
+        self.dismiss(animated: true, completion: nil)
+        
+    }
+    
+    func uploadImage(image: UIImage) {
+        let randomName = randomStringWithLength(length: 10)
+        let imageData = UIImageJPEGRepresentation(image, 1.0)
+        let uploadRef = Storage.storage().reference().child("images/\(randomName).jpg")
+        
+        let uploadTask = uploadRef.putData(imageData!, metadata: nil) { metadata, error in
+            if error == nil {
+                //success
+                print("Sucessfully uploaded image!")
+                self.imageFileName = "\(randomName as String).jpg"
+            } else {
+                // error
+                print("Error uploading image: \(error?.localizedDescription)")
+            }
+        }
+    }
+    
+    func randomStringWithLength(length: Int) -> NSString {
+        let characters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        let randomString: NSMutableString = NSMutableString(capacity: length)
+        
+        for i in 0..<length {
+            let len = UInt32(characters.length)
+            let rand = arc4random_uniform(len)
+            randomString.appendFormat("%C", characters.character(at: Int(rand)))
+        }
+        
+        return randomString
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Entry.imageTapped(gesture:)))
+        imageView.addGestureRecognizer(tapGesture)
+        imageView.isUserInteractionEnabled = true
         
-        UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
         Database.database().reference().child("entries");
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})

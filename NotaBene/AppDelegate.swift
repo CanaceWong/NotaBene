@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         // Override point for customization after application launch.
         
         FirebaseApp.configure()
-        
+                
         //added this for persistence when offline!!!!!!
         Database.database().isPersistenceEnabled = true
         
