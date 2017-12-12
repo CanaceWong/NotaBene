@@ -19,18 +19,17 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     @IBOutlet weak var entryTitle: UITextField!
     @IBOutlet weak var entryContent: UITextField!
     @IBOutlet weak var successMessage: UILabel!
-    @IBOutlet weak var dateTextField: UITextField!
-    @IBOutlet weak var imageView: UIImageView!    
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
     var refEntries: DatabaseReference!
     var ref: DatabaseReference!
     var entriesList = [EntryModel]()
-    var datePickerView:UIDatePicker = UIDatePicker()
     var imageFileName = ""
 
     
     func addEntry() {
         let key = refEntries.childByAutoId().key
-        print(refEntries.childByAutoId().key)
         let entry = [
             "id": key,
             "entryTitle": entryTitle.text! as String,
@@ -47,8 +46,14 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     @IBAction func saveEntry(_ sender: UIButton) {
         addEntry()
         scheduleNotification()
+        scheduleSecondNotification()
     }
     
+    
+    //first Notification
+    var datePickerView:UIDatePicker = UIDatePicker()
+    
+    @IBOutlet weak var dateTextField: UITextField!
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([.alert,.sound])
     }
@@ -100,6 +105,55 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }
+    // ends first Notification
+    
+    //second Notification
+    var secondDatePickerView:UIDatePicker = UIDatePicker()
+    @IBOutlet weak var secondDateTextField: UITextField!
+    
+    @IBAction func secondTextFieldEditing(_ sender: UITextField) {
+        secondDatePickerView.datePickerMode = UIDatePickerMode.dateAndTime
+        sender.inputView = secondDatePickerView
+        secondDatePickerView.addTarget(self, action: #selector(Entry.secondDatePickerValueChanged), for: UIControlEvents.valueChanged)
+    }
+    
+    @objc func secondTappedToolBarBtn(sender: UIBarButtonItem) {
+        let dateformatter = DateFormatter()
+        dateformatter.dateStyle = DateFormatter.Style.medium
+        dateformatter.timeStyle = DateFormatter.Style.short
+        secondDateTextField.text = dateformatter.string(from: NSDate() as Date)
+        secondDateTextField.resignFirstResponder()
+    }
+    
+    @objc func secondDatePickerValueChanged(sender:UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeStyle = DateFormatter.Style.short
+        secondDateTextField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    @objc func secondDonePressed(sender: UIBarButtonItem) {
+        secondDateTextField.resignFirstResponder()
+    }
+    
+    func scheduleSecondNotification() {
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+        refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
+        let key = refEntries.childByAutoId().key
+        let content = UNMutableNotificationContent() //The notification's content
+        let datePicker = secondDatePickerView
+        
+        content.title = "Another reminder to review " + entryTitle.text!
+        content.sound = UNNotificationSound.default()
+        
+        let dateComponent = datePicker.calendar.dateComponents([.day, .hour, .minute], from: datePicker.date)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
+        let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
+    }
+    //ends second Notification
+    
     
     @objc func imageTapped(gesture: UIGestureRecognizer) {
         if (gesture.view as? UIImageView) != nil {
@@ -186,28 +240,53 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
 //        let uid = user?.uid
 //        let refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
         
+        
+        //toolbar1
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))
         toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
         toolBar.barStyle = UIBarStyle.blackTranslucent
         toolBar.tintColor = UIColor.white
         toolBar.backgroundColor = UIColor.white
-        
-        let todayBtn = UIBarButtonItem(title: "Cancel", style: UIBarButtonItemStyle.plain, target: self, action: #selector(Entry.tappedToolBarBtn))
-        
+
         let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(Entry.donePressed))
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
         
-        label.font = UIFont(name: "Helvetica", size: 12)
+        label.font = UIFont(name: "Helvetica", size: 20)
         label.backgroundColor = UIColor.clear
         label.textColor = UIColor.white
         label.text = "Set a Reminder Date"
         label.textAlignment = NSTextAlignment.center
         let textBtn = UIBarButtonItem(customView: label)
-        toolBar.setItems([todayBtn,flexSpace,textBtn,flexSpace,okBarBtn], animated: true)
+        toolBar.setItems([flexSpace,textBtn,flexSpace,okBarBtn], animated: true)
         dateTextField.inputAccessoryView = toolBar
+        //end of toolbar 1
+        
+        //toolbar2
+        let secondToolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))
+        secondToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
+        secondToolBar.barStyle = UIBarStyle.blackTranslucent
+        secondToolBar.tintColor = UIColor.white
+        secondToolBar.backgroundColor = UIColor.white
+        
+        let secondOkBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(Entry.secondDonePressed))
+        
+//        let secondFlexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: self, action: nil)
+//
+        let secondLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
+        
+        secondLabel.font = UIFont(name: "Helvetica", size: 20)
+        secondLabel.backgroundColor = UIColor.clear
+        secondLabel.textColor = UIColor.white
+        secondLabel.text = "Set a Second Reminder Date"
+        secondLabel.textAlignment = NSTextAlignment.center
+        let secondTextBtn = UIBarButtonItem(customView: secondLabel)
+        secondToolBar.setItems([flexSpace,secondTextBtn,flexSpace,secondOkBarBtn], animated: true)
+        secondDateTextField.inputAccessoryView = secondToolBar
+        //end of toolbar 2
+        
         
     }
     
