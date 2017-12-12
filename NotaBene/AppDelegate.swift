@@ -1,4 +1,4 @@
-git//
+//
 //  AppDelegate.swift
 //  NotaBene
 //
