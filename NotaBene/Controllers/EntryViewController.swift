@@ -73,10 +73,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     }
     
     func scheduleNotification() {
-        let user = Auth.auth().currentUser
-        let uid = user?.uid
-        refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
-        let key = refEntries.childByAutoId().key
+        let key = entryTitle.text!
         let content = UNMutableNotificationContent() //The notification's content
         let datePicker = datePickerView
 
@@ -139,7 +136,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     func scheduleSecondNotification() {
         let user = Auth.auth().currentUser
         let uid = user?.uid
-        refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
+        let refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
         let key = refEntries.childByAutoId().key
         let content = UNMutableNotificationContent() //The notification's content
         let datePicker = secondDatePickerView

@@ -82,10 +82,7 @@ class ShowEntryViewController: UIViewController {
     }
     
     func scheduleNotification() {
-        let user = Auth.auth().currentUser
-        let uid = user?.uid
-        refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
-        let key = refEntries.childByAutoId().key
+        let key = entry?.entryTitle!
         let content = UNMutableNotificationContent() //The notification's content
         let datePicker = datePickerView
         
@@ -94,7 +91,8 @@ class ShowEntryViewController: UIViewController {
         
         let dateComponent = datePicker.calendar.dateComponents([.day, .hour, .minute], from: datePicker.date)
         let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponent, repeats: false)
-        let notificationReq = UNNotificationRequest(identifier: key, content: content, trigger: trigger)
+        let notificationReq = UNNotificationRequest(identifier: key!, content: content, trigger: trigger)
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [key!])
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
     }
     
@@ -148,7 +146,7 @@ class ShowEntryViewController: UIViewController {
     func scheduleSecondNotification() {
         let user = Auth.auth().currentUser
         let uid = user?.uid
-        refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
+        let refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
         let key = refEntries.childByAutoId().key
         let content = UNMutableNotificationContent() //The notification's content
         let datePicker = secondDatePickerView
