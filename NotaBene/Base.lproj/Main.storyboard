@@ -364,6 +364,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="addimage" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-pM-UuY">
                                 <rect key="frame" x="21" y="352" width="332" height="118"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="imageView"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tnw-A1-REQ">
                                 <rect key="frame" x="16" y="590" width="343" height="30"/>
@@ -589,7 +590,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="k1b-HO-7Mu"/>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="L5U-c7-drx"/>
+        <segue reference="2x4-CQ-y7i"/>
         <segue reference="ayG-Uo-Lj3"/>
         <segue reference="YFv-zS-H7R"/>
     </inferredMetricsTieBreakers>

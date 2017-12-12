@@ -13,6 +13,8 @@ target 'NotaBene' do
 
   # Pods for NotaBene
 
+pod "BSImagePicker", "~> 2.4"
+
   target 'NotaBeneTests' do
     inherit! :search_paths
     # Pods for testing
