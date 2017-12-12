@@ -477,11 +477,6 @@
                                     <action selector="textFieldEditing:" destination="rX9-KX-EtL" eventType="editingDidBegin" id="Gv4-H4-9Ho"/>
                                 </connections>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="89g-WA-Nif">
-                                <rect key="frame" x="67" y="374" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="entryImageEditable"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="add another reminder?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CYK-38-1cc">
                                 <rect key="frame" x="16" y="566" width="209" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -506,6 +501,22 @@
                                     <action selector="secondTextFieldEditing:" destination="rX9-KX-EtL" eventType="editingDidBegin" id="NQR-3d-4ID"/>
                                 </connections>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MPN-8G-rKt">
+                                <rect key="frame" x="0.0" y="433" width="94" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F2r-YW-6yK">
+                                <rect key="frame" x="93" y="433" width="94" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Mn-WC-KgJ">
+                                <rect key="frame" x="187" y="433" width="94" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kyr-PY-gHU">
+                                <rect key="frame" x="281" y="433" width="94" height="69"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="2ns-QG-aBl"/>
@@ -520,7 +531,10 @@
                     <connections>
                         <outlet property="dateTextField" destination="Prw-lt-13L" id="nQs-Mm-UzR"/>
                         <outlet property="entryContentEditable" destination="SUM-Rc-Opz" id="xhm-Jk-P4c"/>
-                        <outlet property="entryImageEditable" destination="89g-WA-Nif" id="NXT-31-xvo"/>
+                        <outlet property="entryImage1" destination="MPN-8G-rKt" id="Dta-mY-PZe"/>
+                        <outlet property="entryImage2" destination="F2r-YW-6yK" id="5Eh-pA-gSl"/>
+                        <outlet property="entryImage3" destination="6Mn-WC-KgJ" id="mOG-wd-gBd"/>
+                        <outlet property="entryImage4" destination="kyr-PY-gHU" id="xny-Zj-loh"/>
                         <outlet property="entryTitleEditable" destination="fn8-yz-BaJ" id="IOp-tb-tZ6"/>
                         <outlet property="secondDateTextField" destination="DgQ-lX-Nf9" id="rcJ-XV-9KJ"/>
                     </connections>
@@ -590,7 +604,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="k1b-HO-7Mu"/>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="2x4-CQ-y7i"/>
+        <segue reference="L5U-c7-drx"/>
         <segue reference="ayG-Uo-Lj3"/>
         <segue reference="YFv-zS-H7R"/>
     </inferredMetricsTieBreakers>

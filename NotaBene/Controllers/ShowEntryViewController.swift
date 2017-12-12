@@ -22,7 +22,6 @@ class ShowEntryViewController: UIViewController {
     
     @IBOutlet weak var entryContentEditable: UITextView!
     @IBOutlet weak var entryTitleEditable: UITextField!
-    @IBOutlet weak var entryImageEditable: UIImageView!
     
     @IBAction func deleteButton(_ sender: Any) {
         self.deleteEntry(id: (entry?.id!)!)
@@ -160,20 +159,61 @@ class ShowEntryViewController: UIViewController {
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
     }
     //ends second Notification
-
+    
+//    func collectionView(_ collectiveView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let zoomView = UIImageView(image: UIImage(named: images[indexPath.row]))
+//        zoomView.frame = self.view.frame
+//        zoomView.backgroundColor = .black
+//        zoomView.contentMode = .scaleAspectFit
+//        zoomView.isUserInteractionEnabled = true
+//        let tap = UITapGestureRecognizer(target: self, action:)
+//    }
+    @IBOutlet weak var entryImage1: UIImageView!
+    @IBOutlet weak var entryImage2: UIImageView!
+    @IBOutlet weak var entryImage3: UIImageView!
+    @IBOutlet weak var entryImage4: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         entryTitleEditable.text = entry?.entryTitle
         entryContentEditable.text = entry?.entryContent
         
-        
         let image = (entry?.image)?.components(separatedBy: " , ")
-        print(image)
         let imageRef = Storage.storage().reference().child("images/\(image![0])")
+        let secondImageRef = Storage.storage().reference().child("images/\(image![1])")
+        let thirdImageRef = Storage.storage().reference().child("images/\(image![2])")
+        let fourthImageRef = Storage.storage().reference().child("images/\(image![3])")
         imageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
             if error == nil {
                 let image = UIImage(data: data!)
-                self.entryImageEditable.image = image
+                self.entryImage1.image = image
+            } else {
+                //error
+                print("error downloading image: \(error?.localizedDescription)")
+            }
+        })
+        secondImageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
+            if error == nil {
+                let image = UIImage(data: data!)
+                self.entryImage2.image = image
+            } else {
+                //error
+                print("error downloading image: \(error?.localizedDescription)")
+            }
+        })
+        thirdImageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
+            if error == nil {
+                let image = UIImage(data: data!)
+                self.entryImage3.image = image
+            } else {
+                //error
+                print("error downloading image: \(error?.localizedDescription)")
+            }
+        })
+        fourthImageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
+            if error == nil {
+                let image = UIImage(data: data!)
+                self.entryImage4.image = image
             } else {
                 //error
                 print("error downloading image: \(error?.localizedDescription)")
