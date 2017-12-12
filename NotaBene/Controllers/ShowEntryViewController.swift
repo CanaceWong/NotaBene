@@ -44,6 +44,11 @@ class ShowEntryViewController: UIViewController {
         scheduleSecondNotification()
     }
     
+    @IBAction func editText(_ sender: UIButton) {
+        entryContentEditable.isEditable = true
+    }
+    
+    
     func updateEntry(id: String, entryTitle: String, entryContent: String){
             let entry = [
                 "id": id,
