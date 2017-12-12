@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1EF754791FD8617E00B3E4E7 /* loginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF754781FD8617E00B3E4E7 /* loginTests.swift */; };
-		46A683491FDFE85D00F9567D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 46A683481FDFE85D00F9567D /* GoogleService-Info.plist */; };
 		7AA794E3C164601823BA4E0E /* Pods_NotaBeneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */; };
 		7C1379551FD81FAA009C35FA /* EntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C1379541FD81FAA009C35FA /* EntryViewController.swift */; };
 		7C67438D1FD6F55000A3B578 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C67438C1FD6F55000A3B578 /* AppDelegate.swift */; };
@@ -27,6 +26,7 @@
 		7CF0337D1FDAB23A00E31704 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF0337C1FDAB23A00E31704 /* RegisterViewController.swift */; };
 		CB0E2CD81FD98896008F9391 /* ViewControllerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E2CD71FD98896008F9391 /* ViewControllerTableViewCell.swift */; };
 		CB0E2CDA1FD98A3E008F9391 /* EntryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB0E2CD91FD98A3E008F9391 /* EntryModel.swift */; };
+		CB95AB0F1FE0412B007DC515 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB95AB0E1FE0412B007DC515 /* GoogleService-Info.plist */; };
 		CD9B6BE680718C0E16A580F3 /* Pods_NotaBeneUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8E01D8D5666786CADD5D24 /* Pods_NotaBeneUITests.framework */; };
 		D2FABF5FC40ECE4E88C55498 /* Pods_NotaBene.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2E14FC05096576DD9376898 /* Pods_NotaBene.framework */; };
 /* End PBXBuildFile section */
@@ -53,7 +53,6 @@
 		1EF754781FD8617E00B3E4E7 /* loginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginTests.swift; sourceTree = "<group>"; };
 		2E8E01D8D5666786CADD5D24 /* Pods_NotaBeneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBeneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		381A223640B4E20B9E4BE7B2 /* Pods-NotaBeneTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneTests/Pods-NotaBeneTests.debug.xcconfig"; sourceTree = "<group>"; };
-		46A683481FDFE85D00F9567D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBeneTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77F03B3D500857187FBF54B0 /* Pods-NotaBeneUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneUITests/Pods-NotaBeneUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		7C1379541FD81FAA009C35FA /* EntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +81,7 @@
 		BB72E7771DD3A7BD7CE766D2 /* Pods-NotaBeneTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneTests/Pods-NotaBeneTests.release.xcconfig"; sourceTree = "<group>"; };
 		CB0E2CD71FD98896008F9391 /* ViewControllerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTableViewCell.swift; sourceTree = "<group>"; };
 		CB0E2CD91FD98A3E008F9391 /* EntryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryModel.swift; sourceTree = "<group>"; };
+		CB95AB0E1FE0412B007DC515 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F440534C9E17FF5D7AEF27AE /* Pods-NotaBeneUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBeneUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBeneUITests/Pods-NotaBeneUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,8 +154,8 @@
 				7C6743901FD6F55100A3B578 /* Main.storyboard */,
 				7C6743931FD6F55100A3B578 /* Assets.xcassets */,
 				7C6743951FD6F55100A3B578 /* LaunchScreen.storyboard */,
+				CB95AB0E1FE0412B007DC515 /* GoogleService-Info.plist */,
 				7C6743981FD6F55100A3B578 /* Info.plist */,
-				46A683481FDFE85D00F9567D /* GoogleService-Info.plist */,
 			);
 			path = NotaBene;
 			sourceTree = "<group>";
@@ -334,7 +334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6743971FD6F55100A3B578 /* LaunchScreen.storyboard in Resources */,
-				46A683491FDFE85D00F9567D /* GoogleService-Info.plist in Resources */,
+				CB95AB0F1FE0412B007DC515 /* GoogleService-Info.plist in Resources */,
 				7C6743941FD6F55100A3B578 /* Assets.xcassets in Resources */,
 				7C6743921FD6F55100A3B578 /* Main.storyboard in Resources */,
 			);
