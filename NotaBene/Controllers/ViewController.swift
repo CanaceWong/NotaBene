@@ -53,6 +53,11 @@ class ViewController: UIViewController {
         }
     }
     
+    override func loadView() {
+        super.loadView()
+        // Add relevant code here
+    }
+    
     
 
     override func viewDidLoad() {

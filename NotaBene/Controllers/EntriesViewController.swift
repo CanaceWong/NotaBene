@@ -25,7 +25,9 @@ class Entries: UITableViewController {
         super.viewDidLoad()
         
         let currentUser = Auth.auth().currentUser
+        print()
         userNameDisplay.text = currentUser?.email
+        // error is thrown in line 29; unexpected nil value
         
         let refEntries = Database.database().reference().child("users")
         if let uid = currentUser?.uid {

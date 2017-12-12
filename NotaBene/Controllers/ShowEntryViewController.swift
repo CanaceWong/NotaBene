@@ -23,7 +23,20 @@ class ShowEntryViewController: UIViewController {
     @IBOutlet weak var entryTitleEditable: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var entryImageEditable: UIImageView!
+    @IBOutlet weak var searchController: UISearchController!
+   
     
+    @IBAction func configureSearchController() {
+        func loadSearchBar() {
+            //code to display a searchbar
+            searchController = UISearchController(searchResultsController: nil)
+            searchController.searchResultsUpdater = (self as! UISearchResultsUpdating)
+            searchController.searchBar.placeholder = "Enter Search"
+            searchController.searchBar.delegate = (self as! UISearchBarDelegate)
+        }
+    }
+    
+
     @IBAction func deleteButton(_ sender: Any) {
         self.deleteEntry(id: (entry?.id!)!)
     }
