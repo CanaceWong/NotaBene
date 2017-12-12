@@ -343,16 +343,6 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="td7-zU-5G6">
-                                <rect key="frame" x="170" y="534" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <accessibility key="accessibilityConfiguration" identifier="saveEntry"/>
-                                <state key="normal" title="Save"/>
-                                <connections>
-                                    <action selector="saveEntry:" destination="91A-sR-Qxm" eventType="touchUpInside" id="7oh-eV-WSZ"/>
-                                    <segue destination="fuE-0W-AgS" kind="show" identifier="afterSave" id="2x4-CQ-y7i"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERn-yu-ux6">
                                 <rect key="frame" x="16" y="323" width="343" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -362,7 +352,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cxu-At-ouf">
-                                <rect key="frame" x="16" y="572" width="343" height="30"/>
+                                <rect key="frame" x="16" y="535" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -372,9 +362,43 @@
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="addimage" translatesAutoresizingMaskIntoConstraints="NO" id="Vdq-pM-UuY">
-                                <rect key="frame" x="21" y="408" width="332" height="118"/>
+                                <rect key="frame" x="21" y="352" width="332" height="118"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tnw-A1-REQ">
+                                <rect key="frame" x="16" y="590" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="secondTextFieldEditing:" destination="91A-sR-Qxm" eventType="editingDidBegin" id="Seb-2N-KcH"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="td7-zU-5G6">
+                                <rect key="frame" x="170" y="478" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <accessibility key="accessibilityConfiguration" identifier="saveEntry"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveEntry:" destination="91A-sR-Qxm" eventType="touchUpInside" id="7oh-eV-WSZ"/>
+                                    <segue destination="fuE-0W-AgS" kind="show" identifier="afterSave" id="2x4-CQ-y7i"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="set a second reminder?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfY-dD-AcO">
+                                <rect key="frame" x="21" y="567" width="209" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="set a reminder to review this?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59H-T9-rTe">
+                                <rect key="frame" x="21" y="511" width="225" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="cWa-8i-bf9"/>
@@ -391,6 +415,7 @@
                         <outlet property="entryContent" destination="xvd-rL-61x" id="Elm-Kq-7Q2"/>
                         <outlet property="entryTitle" destination="wJb-cW-Zk5" id="Y4L-tw-9qC"/>
                         <outlet property="imageView" destination="Vdq-pM-UuY" id="jUP-7P-pdV"/>
+                        <outlet property="secondDateTextField" destination="tnw-A1-REQ" id="VIM-7U-apQ"/>
                         <outlet property="successMessage" destination="ERn-yu-ux6" id="oRe-VB-jj6"/>
                     </connections>
                 </viewController>
@@ -539,7 +564,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="k1b-HO-7Mu"/>
         <segue reference="peA-S1-LWK"/>
-        <segue reference="Z6f-LQ-h6Q"/>
+        <segue reference="6CI-GF-maF"/>
         <segue reference="ayG-Uo-Lj3"/>
         <segue reference="YFv-zS-H7R"/>
     </inferredMetricsTieBreakers>
