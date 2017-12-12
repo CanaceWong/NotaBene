@@ -26,7 +26,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     var refEntries: DatabaseReference!
     var ref: DatabaseReference!
     var entriesList = [EntryModel]()
-    var imageFileName = [String]()
+    var imageFileName = ""
 
     func addEntry() {
         let key = refEntries.childByAutoId().key
@@ -196,7 +196,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
                     if error == nil {
                         //success
                         print("Sucessfully uploaded image!")
-                        self.imageFileName.append("\(randomName as String).jpg")
+                        self.imageFileName.append("\(randomName as String).jpg , ")
                     } else {
                         // error
                         print("Error uploading image: \(error?.localizedDescription)")
@@ -221,79 +221,9 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
             let rand = arc4random_uniform(len)
             randomString.appendFormat("%C", characters.character(at: Int(rand)))
         }
-        
         return randomString
     }
-    
-
-    
-//    @objc func imageTapped(gesture: UIGestureRecognizer) {
-//        if (gesture.view as? UIImageView) != nil {
-//            print("Image Tapped")
-//
-//            let image = UIImagePickerController()
-//            image.delegate = self
-//            image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-//            image.allowsEditing = true
-//            self.present(image, animated: true)
-//            {
-//                //After it is complete
-//            }
-//        }
-//    }
-//
-//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-//
-//        var selectedImageFromPicker: UIImage?
-//
-//        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-//            selectedImageFromPicker = editedImage
-//        } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-//            selectedImageFromPicker = originalImage
-//        }
-//        if let selectedImage = selectedImageFromPicker {
-//            imageView.image = selectedImage
-//        }
-//        else
-//        {
-//            //Error message
-//            print("All is doomed! Your image has failed")
-//        }
-//
-//        uploadImage(image: selectedImageFromPicker!)
-//        self.dismiss(animated: true, completion: nil)
-//    }
-//
-//    func uploadImage(image: UIImage) {
-//        let randomName = randomStringWithLength(length: 10)
-//        let imageData = UIImageJPEGRepresentation(image, 1.0)
-//        let uploadRef = Storage.storage().reference().child("images/\(randomName).jpg")
-//
-//        let uploadTask = uploadRef.putData(imageData!, metadata: nil) { metadata, error in
-//            if error == nil {
-//                //success
-//                print("Sucessfully uploaded image!")
-//                self.imageFileName = "\(randomName as String).jpg"
-//            } else {
-//                // error
-//                print("Error uploading image: \(error?.localizedDescription)")
-//            }
-//        }
-//    }
-
-//    func randomStringWithLength(length: Int) -> NSString {
-//        let characters: NSString = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-//        let randomString: NSMutableString = NSMutableString(capacity: length)
-//
-//        for i in 0..<length {
-//            let len = UInt32(characters.length)
-//            let rand = arc4random_uniform(len)
-//            randomString.appendFormat("%C", characters.character(at: Int(rand)))
-//        }
-//
-//        return randomString
-//    }
-//        
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         

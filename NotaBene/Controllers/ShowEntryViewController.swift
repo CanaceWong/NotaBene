@@ -167,8 +167,9 @@ class ShowEntryViewController: UIViewController {
         entryContentEditable.text = entry?.entryContent
         
         
-        let image = entry?.image
-        let imageRef = Storage.storage().reference().child("images/" + image!)
+        let image = (entry?.image)?.components(separatedBy: " , ")
+        print(image)
+        let imageRef = Storage.storage().reference().child("images/\(image![0])")
         imageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
             if error == nil {
                 let image = UIImage(data: data!)
