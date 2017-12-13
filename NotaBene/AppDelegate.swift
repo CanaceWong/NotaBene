@@ -28,6 +28,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         UNUserNotificationCenter.current().delegate = self
         
+        var navigationBarAppearace = UINavigationBar.appearance()
+        
+        func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+            let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+            let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+            let blue = CGFloat(rgbValue & 0xFF)/256.0
+            
+            return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+        }
+        navigationBarAppearace.tintColor = UIColorFromHex(rgbValue: 0xCCCCFF)
+        navigationBarAppearace.barTintColor = UIColorFromHex(rgbValue: 0xCCCCFF)
+        
+        let attrs = [
+            NSAttributedStringKey.foregroundColor: UIColor.white,
+            NSAttributedStringKey.font: UIFont(name: "Avenir", size: 20)!
+        ]
+        
+        UINavigationBar.appearance().titleTextAttributes = attrs
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: "Avenir-light", size: 18.0)!], for: .normal)
+        
         return true
     }
 
