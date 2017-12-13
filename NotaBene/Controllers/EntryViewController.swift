@@ -18,7 +18,7 @@ import Photos
 class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UNUserNotificationCenterDelegate {
   
     @IBOutlet weak var entryTitle: UITextField!
-    @IBOutlet weak var entryContent: UITextField!
+    @IBOutlet weak var entryContent: UITextView!
     @IBOutlet weak var successMessage: UILabel!
     
     @IBOutlet weak var imageView: UIImageView!
@@ -227,6 +227,14 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+            let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+            let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+            let blue = CGFloat(rgbValue & 0xFF)/256.0
+            
+            return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+        }
+        
         UNUserNotificationCenter.current().delegate = self as UNUserNotificationCenterDelegate
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Entry.imageTapped(gesture:)))
         
@@ -238,9 +246,9 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
         //toolbar1
-        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))
-        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
-        toolBar.barStyle = UIBarStyle.blackTranslucent
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 20.0, width: self.view.frame.size.width, height: self.view.frame.size.height/10))
+        toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-10.0)
+//        toolBar.barStyle = UIBarStyle.default
         toolBar.tintColor = UIColor.white
         toolBar.backgroundColor = UIColor.white
 
@@ -250,9 +258,9 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
         
-        label.font = UIFont(name: "Helvetica", size: 20)
+        label.font = UIFont(name: "Avenir-light", size: 20)
         label.backgroundColor = UIColor.clear
-        label.textColor = UIColor.white
+        label.textColor = UIColorFromHex(rgbValue: 0x97A1FF)
         label.text = "Set a Reminder Date"
         label.textAlignment = NSTextAlignment.center
         let textBtn = UIBarButtonItem(customView: label)
@@ -261,9 +269,9 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         //end of toolbar 1
         
         //toolbar2
-        let secondToolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))
+        let secondToolBar = UIToolbar(frame: CGRect(x: 0, y: 20.0, width: self.view.frame.size.width, height: self.view.frame.size.height/10))
         secondToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
-        secondToolBar.barStyle = UIBarStyle.blackTranslucent
+//        secondToolBar.barStyle = UIBarStyle.blackTranslucent
         secondToolBar.tintColor = UIColor.white
         secondToolBar.backgroundColor = UIColor.white
         
@@ -273,9 +281,9 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
 //
         let secondLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
         
-        secondLabel.font = UIFont(name: "Helvetica", size: 20)
+        secondLabel.font = UIFont(name: "Avenir-light", size: 20)
         secondLabel.backgroundColor = UIColor.clear
-        secondLabel.textColor = UIColor.white
+        secondLabel.textColor = UIColorFromHex(rgbValue: 0x97A1FF)
         secondLabel.text = "Set a Second Reminder Date"
         secondLabel.textAlignment = NSTextAlignment.center
         let secondTextBtn = UIBarButtonItem(customView: secondLabel)

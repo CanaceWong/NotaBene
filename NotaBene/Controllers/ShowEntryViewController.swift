@@ -227,6 +227,11 @@ class ShowEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let user = Auth.auth().currentUser
+        let uid = user?.uid
+        refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
+        
         entryTitleEditable.text = entry?.entryTitle
         entryContentEditable.text = entry?.entryContent
         
@@ -245,9 +250,13 @@ class ShowEntryViewController: UIViewController {
         
         let image = (entry?.image)?.components(separatedBy: " , ")
         let imageRef = Storage.storage().reference().child("images/\(image![0])")
+        print(imageRef)
         let secondImageRef = Storage.storage().reference().child("images/\(image![1])")
+        print(secondImageRef)
         let thirdImageRef = Storage.storage().reference().child("images/\(image![2])")
+        print(thirdImageRef)
         let fourthImageRef = Storage.storage().reference().child("images/\(image![3])")
+         print(fourthImageRef)
         imageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
             if error == nil {
                 let image = UIImage(data: data!)
@@ -290,9 +299,7 @@ class ShowEntryViewController: UIViewController {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
         
 //        refEntries = Database.database().reference().child("entries");
-        let user = Auth.auth().currentUser
-        let uid = user?.uid
-        refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
+        
         
         //toolbar1
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))
