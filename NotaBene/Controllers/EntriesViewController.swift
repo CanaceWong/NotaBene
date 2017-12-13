@@ -16,16 +16,19 @@ class Entries: UITableViewController {
     
     
     @IBOutlet var entriesTable: UITableView!
-    
     var refEntries: DatabaseReference!
     var entriesList = [EntryModel]()
     var entry: EntryModel?
+
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         let currentUser = Auth.auth().currentUser
-        userNameDisplay.text = currentUser?.email
+//        userNameDisplay.text = currentUser?.email
         
         let refEntries = Database.database().reference().child("users")
         if let uid = currentUser?.uid {
@@ -52,7 +55,7 @@ class Entries: UITableViewController {
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return entriesList.count
+            return entriesList.count
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,13 +70,13 @@ class Entries: UITableViewController {
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
         let entry: EntryModel
-        entry = entriesList[indexPath.row]
+            entry = entriesList[indexPath.row]
         cell.entryTitleLabel.text = entry.entryTitle
         cell.entryContentLabel.text = entry.entryContent
         return cell
     }
     
-    @IBOutlet weak var userNameDisplay: UILabel!
+//    @IBOutlet weak var userNameDisplay: UILabel!
     
     @IBAction func logout(_ sender: UIButton) {
         if Auth.auth().currentUser != nil {
@@ -91,6 +94,8 @@ class Entries: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
 
     /*
     // MARK: - Navigation
