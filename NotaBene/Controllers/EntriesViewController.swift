@@ -33,16 +33,17 @@ class Entries: UITableViewController {
             refEntries.child("\(uid)").child("entries").observe(DataEventType.value, with:{(snapshot) in
                 if snapshot.childrenCount>0{
                     self.entriesList.removeAll()
-
+                    
                     for entries in snapshot.children.allObjects as![DataSnapshot]{
-                        let entryObject = entries.value as? [String: AnyObject] ?? [:]
+                        let entryObject = entries.value as? [String: Any] ?? [:]
                         let entryTitle = entryObject["entryTitle"]
                         let entryContent = entryObject["entryContent"]
                         let entryId = entryObject["id"]
-                        let image = entryObject["image"]
+                        let images = entryObject["image"]
+                       print(images)
                         
-                        let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?, image: image as! String?)
-            
+                        let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?, image: images as? String)
+                       
                         self.entriesList.append(entry)
                     }
                     self.entriesTable.reloadData()

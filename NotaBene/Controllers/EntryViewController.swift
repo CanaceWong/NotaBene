@@ -12,7 +12,8 @@ import FirebaseAuth
 import FirebaseDatabase
 import FirebaseStorage
 import UserNotifications
-
+import BSImagePicker
+import Photos
 
 class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UNUserNotificationCenterDelegate {
   
@@ -27,7 +28,6 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     var entriesList = [EntryModel]()
     var imageFileName = ""
 
-    
     func addEntry() {
         let key = refEntries.childByAutoId().key
         let entry = [
@@ -35,7 +35,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
             "entryTitle": entryTitle.text! as String,
             "entryContent": entryContent.text! as String,
             "image": imageFileName
-        ]
+            ] as [String : Any]
             let dbref = Database.database().reference().child("users")
             let user = Auth.auth().currentUser
             if let uid = user?.uid {
@@ -152,59 +152,64 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     //ends second Notification
     
     
+    var SelectedImages = [PHAsset]()
+    var PhotoArray = [UIImage]()
+    
     @objc func imageTapped(gesture: UIGestureRecognizer) {
         if (gesture.view as? UIImageView) != nil {
             print("Image Tapped")
             
-            let image = UIImagePickerController()
-            image.delegate = self
-            image.sourceType = UIImagePickerControllerSourceType.photoLibrary
-            image.allowsEditing = true
-            self.present(image, animated: true)
-            {
-                //After it is complete
-            }
+            let vc = BSImagePickerViewController()
+            self.bs_presentImagePickerController(vc, animated: true, select: { (asset: PHAsset) -> Void in
+                
+            }, deselect: { (asset: PHAsset) -> Void in
+                
+            }, cancel: { (assets: [PHAsset]) -> Void in
+            }, finish: {(assets: [PHAsset]) -> Void in
+                for i in 0..<assets.count{
+                    self.SelectedImages.append(assets[i])
+                }
+                self.convertAssetToImages()
+            }, completion: nil)
         }
     }
+            
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
-        var selectedImageFromPicker: UIImage?
-        
-        if let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
-            selectedImageFromPicker = editedImage
-        } else if let originalImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            selectedImageFromPicker = originalImage
-        }
-        if let selectedImage = selectedImageFromPicker {
-            imageView.image = selectedImage
-        }
-        else
-        {
-            //Error message
-            print("All is doomed! Your image has failed")
-        }
-        
-        uploadImage(image: selectedImageFromPicker!)
-        self.dismiss(animated: true, completion: nil)
-        
-    }
     
-    func uploadImage(image: UIImage) {
-        let randomName = randomStringWithLength(length: 10)
-        let imageData = UIImageJPEGRepresentation(image, 1.0)
-        let uploadRef = Storage.storage().reference().child("images/\(randomName).jpg")
-        
-        let uploadTask = uploadRef.putData(imageData!, metadata: nil) { metadata, error in
-            if error == nil {
-                //success
-                print("Sucessfully uploaded image!")
-                self.imageFileName = "\(randomName as String).jpg"
-            } else {
-                // error
-                print("Error uploading image: \(error?.localizedDescription)")
+    func convertAssetToImages() -> Void {
+        if SelectedImages.count != 0 {
+            for i in 0..<SelectedImages.count{
+                let manager = PHImageManager.default()
+                let option = PHImageRequestOptions()
+                var thumbnail = UIImage()
+                option.isSynchronous = true
+                manager.requestImage(for: SelectedImages[i], targetSize: CGSize(width: 200, height: 200), contentMode: .aspectFill, options: option, resultHandler: {(result, info)->Void in
+                    thumbnail = result!
+                })
+                
+                let data = UIImageJPEGRepresentation(thumbnail, 0.7)
+                let newImage = UIImage(data: data!)
+                let randomName = randomStringWithLength(length: 10)
+                let uploadRef = Storage.storage().reference().child("images/\(randomName).jpg")
+                
+                uploadRef.putData(data!, metadata: nil) { metadata, error in
+                    if error == nil {
+                        //success
+                        print("Sucessfully uploaded image!")
+                        self.imageFileName.append("\(randomName as String).jpg , ")
+                    } else {
+                        // error
+                        print("Error uploading image: \(error?.localizedDescription)")
+                    }
+                }
+                
+                self.PhotoArray.append(newImage! as UIImage)
             }
+            self.imageView.animationImages = self.PhotoArray
+            self.imageView.animationDuration = 5.0
+            self.imageView.startAnimating()
         }
+        print("complete photo array \(self.PhotoArray)")
     }
     
     func randomStringWithLength(length: Int) -> NSString {
@@ -216,14 +221,13 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
             let rand = arc4random_uniform(len)
             randomString.appendFormat("%C", characters.character(at: Int(rand)))
         }
-        
         return randomString
     }
-        
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+        UNUserNotificationCenter.current().delegate = self as UNUserNotificationCenterDelegate
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(Entry.imageTapped(gesture:)))
         
         imageView.addGestureRecognizer(tapGesture)
@@ -232,11 +236,6 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         refEntries = Database.database().reference().child("entries");
         UNUserNotificationCenter.current().delegate = self
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: {didAllow, error in})
-        
-//        let user = Auth.auth().currentUser
-//        let uid = user?.uid
-//        let refEntries = Database.database().reference().child("users").child("\(uid)").child("entries")
-        
         
         //toolbar1
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 40.0, width: self.view.frame.size.width, height: self.view.frame.size.height/6))

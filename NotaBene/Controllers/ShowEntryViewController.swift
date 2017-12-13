@@ -22,7 +22,6 @@ class ShowEntryViewController: UIViewController {
     
     @IBOutlet weak var entryContentEditable: UITextView!
     @IBOutlet weak var entryTitleEditable: UITextField!
-    @IBOutlet weak var entryImageEditable: UIImageView!
     
     @IBAction func deleteButton(_ sender: Any) {
         self.deleteEntry(id: (entry?.id!)!)
@@ -160,19 +159,126 @@ class ShowEntryViewController: UIViewController {
         UNUserNotificationCenter.current().add(notificationReq, withCompletionHandler: nil)
     }
     //ends second Notification
-
+    
+    @IBOutlet weak var entryImage1: UIImageView!
+    @IBOutlet weak var entryImage2: UIImageView!
+    @IBOutlet weak var entryImage3: UIImageView!
+    @IBOutlet weak var entryImage4: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
+    
+    @IBAction func selectImage1(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    @IBAction func selectImage2(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    @IBAction func selectImage3(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    @IBAction func selectImage4(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         entryTitleEditable.text = entry?.entryTitle
         entryContentEditable.text = entry?.entryContent
         
+        let pictureTap1 = UITapGestureRecognizer(target: self, action: #selector(self.selectImage1(_:)))
+        let pictureTap2 = UITapGestureRecognizer(target: self, action: #selector(self.selectImage2(_:)))
+        let pictureTap3 = UITapGestureRecognizer(target: self, action: #selector(self.selectImage3(_:)))
+        let pictureTap4 = UITapGestureRecognizer(target: self, action: #selector(self.selectImage4(_:)))
+        entryImage1.addGestureRecognizer(pictureTap1)
+        entryImage1.isUserInteractionEnabled = true
+        entryImage2.addGestureRecognizer(pictureTap2)
+        entryImage2.isUserInteractionEnabled = true
+        entryImage3.addGestureRecognizer(pictureTap3)
+        entryImage3.isUserInteractionEnabled = true
+        entryImage4.addGestureRecognizer(pictureTap4)
+        entryImage4.isUserInteractionEnabled = true
         
-        let image = entry?.image
-        let imageRef = Storage.storage().reference().child("images/" + image!)
+        let image = (entry?.image)?.components(separatedBy: " , ")
+        let imageRef = Storage.storage().reference().child("images/\(image![0])")
+        let secondImageRef = Storage.storage().reference().child("images/\(image![1])")
+        let thirdImageRef = Storage.storage().reference().child("images/\(image![2])")
+        let fourthImageRef = Storage.storage().reference().child("images/\(image![3])")
         imageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
             if error == nil {
                 let image = UIImage(data: data!)
-                self.entryImageEditable.image = image
+                self.entryImage1.image = image
+            } else {
+                //error
+                print("error downloading image: \(error?.localizedDescription)")
+            }
+        })
+        secondImageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
+            if error == nil {
+                let image = UIImage(data: data!)
+                self.entryImage2.image = image
+            } else {
+                //error
+                print("error downloading image: \(error?.localizedDescription)")
+            }
+        })
+        thirdImageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
+            if error == nil {
+                let image = UIImage(data: data!)
+                self.entryImage3.image = image
+            } else {
+                //error
+                print("error downloading image: \(error?.localizedDescription)")
+            }
+        })
+        fourthImageRef.getData(maxSize: 25 * 1024 * 1024, completion: { (data, error) -> Void in
+            if error == nil {
+                let image = UIImage(data: data!)
+                self.entryImage4.image = image
             } else {
                 //error
                 print("error downloading image: \(error?.localizedDescription)")
