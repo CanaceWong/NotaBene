@@ -35,6 +35,12 @@ class ShowEntryViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func editText(_ sender: UIButton) {
+        entryContentEditable.isEditable = true
+    }
+    
+    
     @IBAction func saveChanges(_ sender: Any) {
         let id = entry?.id
         self.updateEntry(id: id!, entryTitle: entryTitleEditable.text!, entryContent: entryContentEditable.text!)
