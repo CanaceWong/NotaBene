@@ -243,7 +243,18 @@ class ShowEntryViewController: UIViewController {
         entryImage4.addGestureRecognizer(pictureTap4)
         entryImage4.isUserInteractionEnabled = true
         
-        let image = (entry?.image)?.components(separatedBy: " , ")
+        let imageArray = (entry?.image)?.components(separatedBy: " , ")
+
+
+        
+//        while imageLength! < 5 {
+//            let imageArray = (entry?.image)?.components(separatedBy: " , ")
+//            let imageLength = imageArray?.count
+//
+//            imageArray.insert("")
+//        }
+        
+        let image = imageArray
         let imageRef = Storage.storage().reference().child("images/\(image![0])")
         let secondImageRef = Storage.storage().reference().child("images/\(image![1])")
         let thirdImageRef = Storage.storage().reference().child("images/\(image![2])")

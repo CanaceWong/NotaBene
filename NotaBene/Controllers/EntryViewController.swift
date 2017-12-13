@@ -29,6 +29,10 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
     var imageFileName = ""
 
     func addEntry() {
+
+        lengthenImageFileName()
+        print(self.imageFileName)
+        
         let key = refEntries.childByAutoId().key
         let entry = [
             "id": key,
@@ -41,6 +45,13 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
             if let uid = user?.uid {
             dbref.child("\(uid)").child("entries").child(key).setValue(entry)
             }
+    }
+    
+    func lengthenImageFileName() {
+        self.imageFileName.append(" , ")
+        self.imageFileName.append(" , ")
+        self.imageFileName.append(" , ")
+        self.imageFileName.append(" , ")
     }
     
     @IBAction func saveEntry(_ sender: UIButton) {
