@@ -160,23 +160,88 @@ class ShowEntryViewController: UIViewController {
     }
     //ends second Notification
     
-//    func collectionView(_ collectiveView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let zoomView = UIImageView(image: UIImage(named: images[indexPath.row]))
-//        zoomView.frame = self.view.frame
-//        zoomView.backgroundColor = .black
-//        zoomView.contentMode = .scaleAspectFit
-//        zoomView.isUserInteractionEnabled = true
-//        let tap = UITapGestureRecognizer(target: self, action:)
-//    }
     @IBOutlet weak var entryImage1: UIImageView!
     @IBOutlet weak var entryImage2: UIImageView!
     @IBOutlet weak var entryImage3: UIImageView!
     @IBOutlet weak var entryImage4: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @objc func dismissFullscreenImage(_ sender: UITapGestureRecognizer) {
+        self.navigationController?.isNavigationBarHidden = false
+        self.tabBarController?.tabBar.isHidden = false
+        sender.view?.removeFromSuperview()
+    }
+    
+    @IBAction func selectImage1(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    @IBAction func selectImage2(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    @IBAction func selectImage3(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
+    @IBAction func selectImage4(_ sender: UITapGestureRecognizer) {
+        let imageView = sender.view as! UIImageView
+        let newImageView = UIImageView(image: imageView.image)
+        newImageView.frame = UIScreen.main.bounds
+        newImageView.backgroundColor = .black
+        newImageView.contentMode = .scaleAspectFit
+        newImageView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissFullscreenImage))
+        newImageView.addGestureRecognizer(tap)
+        self.view.addSubview(newImageView)
+        self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         entryTitleEditable.text = entry?.entryTitle
         entryContentEditable.text = entry?.entryContent
+        
+        let pictureTap1 = UITapGestureRecognizer(target: self, action: #selector(self.selectImage1(_:)))
+        let pictureTap2 = UITapGestureRecognizer(target: self, action: #selector(self.selectImage2(_:)))
+        let pictureTap3 = UITapGestureRecognizer(target: self, action: #selector(self.selectImage3(_:)))
+        let pictureTap4 = UITapGestureRecognizer(target: self, action: #selector(self.selectImage4(_:)))
+        entryImage1.addGestureRecognizer(pictureTap1)
+        entryImage1.isUserInteractionEnabled = true
+        entryImage2.addGestureRecognizer(pictureTap2)
+        entryImage2.isUserInteractionEnabled = true
+        entryImage3.addGestureRecognizer(pictureTap3)
+        entryImage3.isUserInteractionEnabled = true
+        entryImage4.addGestureRecognizer(pictureTap4)
+        entryImage4.isUserInteractionEnabled = true
         
         let image = (entry?.image)?.components(separatedBy: " , ")
         let imageRef = Storage.storage().reference().child("images/\(image![0])")
