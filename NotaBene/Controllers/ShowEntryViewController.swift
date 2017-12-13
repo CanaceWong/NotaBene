@@ -35,6 +35,12 @@ class ShowEntryViewController: UIViewController {
         }
     }
     
+    
+    @IBAction func editText(_ sender: UIButton) {
+        entryContentEditable.isEditable = true
+    }
+    
+    
     @IBAction func saveChanges(_ sender: Any) {
         let id = entry?.id
         self.updateEntry(id: id!, entryTitle: entryTitleEditable.text!, entryContent: entryContentEditable.text!)
@@ -248,7 +254,18 @@ class ShowEntryViewController: UIViewController {
         entryImage4.addGestureRecognizer(pictureTap4)
         entryImage4.isUserInteractionEnabled = true
         
-        let image = (entry?.image)?.components(separatedBy: " , ")
+        let imageArray = (entry?.image)?.components(separatedBy: " , ")
+
+
+        
+//        while imageLength! < 5 {
+//            let imageArray = (entry?.image)?.components(separatedBy: " , ")
+//            let imageLength = imageArray?.count
+//
+//            imageArray.insert("")
+//        }
+        
+        let image = imageArray
         let imageRef = Storage.storage().reference().child("images/\(image![0])")
         print(imageRef)
         let secondImageRef = Storage.storage().reference().child("images/\(image![1])")

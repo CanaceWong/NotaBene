@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NotaBene/Controllers/ShowEntryViewController.swift"
+            timestampString = "534874593.23129"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "ShowEntryViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NotaBene/Controllers/EntriesViewController.swift"
+            timestampString = "534874593.296094"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NotaBene/Controllers/EntriesViewController.swift"
+            timestampString = "534874593.296659"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "3"
+            endingLineNumber = "3"
+            landmarkName = "unknown"
+            landmarkType = "0">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotaBene.Entries.__deallocating_deinit"
+                  moduleName = "NotaBene"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Christine/MakersWork/Final_Project/NotaBene/NotaBene/Controllers/EntriesViewController.swift"
+                  timestampString = "534855048.162854"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotaBene.Entries.__allocating_init(style: __C.UITableViewStyle) -&gt; NotaBene.Entries"
+                  moduleName = "NotaBene"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Christine/MakersWork/Final_Project/NotaBene/NotaBene/Controllers/EntriesViewController.swift"
+                  timestampString = "534855048.167959"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotaBene.Entries.init(style: __C.UITableViewStyle) -&gt; NotaBene.Entries"
+                  moduleName = "NotaBene"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Christine/MakersWork/Final_Project/NotaBene/NotaBene/Controllers/EntriesViewController.swift"
+                  timestampString = "534855048.171082"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "31">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotaBene.Entries.__allocating_init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; NotaBene.Entries"
+                  moduleName = "NotaBene"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Christine/MakersWork/Final_Project/NotaBene/NotaBene/Controllers/EntriesViewController.swift"
+                  timestampString = "534855048.173383"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotaBene.Entries.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; NotaBene.Entries"
+                  moduleName = "NotaBene"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Christine/MakersWork/Final_Project/NotaBene/NotaBene/Controllers/EntriesViewController.swift"
+                  timestampString = "534855048.175295"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "77">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotaBene.Entries.__allocating_init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;NotaBene.Entries&gt;"
+                  moduleName = "NotaBene"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Christine/MakersWork/Final_Project/NotaBene/NotaBene/Controllers/EntriesViewController.swift"
+                  timestampString = "534855048.177457"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NotaBene.Entries.init(coder: __ObjC.NSCoder) -&gt; Swift.Optional&lt;NotaBene.Entries&gt;"
+                  moduleName = "NotaBene"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Christine/MakersWork/Final_Project/NotaBene/NotaBene/Controllers/EntriesViewController.swift"
+                  timestampString = "534855048.179368"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "47">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

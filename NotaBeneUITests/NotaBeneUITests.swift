@@ -33,23 +33,48 @@ class NotaBeneUITests: XCTestCase {
     
     func testExample() {
         
+        let app = XCUIApplication()
         let predicate = NSPredicate(format: "exists == 1")
         let entryTab = app.navigationBars["Entries"]
-        XCTAssertFalse(entryTab.exists)
+        let logInButton = app.buttons["Log in"]
+        logInButton.tap()
         
         let usernameTextField = app.textFields["Username"]
         usernameTextField.tap()
-        usernameTextField.typeText("canacewong@testing.com")
+        usernameTextField.typeText("notabene@team.com")
         
         let passwordSecureTextField = app.secureTextFields["Password"]
         passwordSecureTextField.tap()
-        passwordSecureTextField.typeText("Testing")
-        app.otherElements.containing(.textField, identifier:"Username").children(matching: .button)["Login"].tap()
+        passwordSecureTextField.typeText("testing565656")
+        logInButton.tap()
+        
+        XCTAssert(app.alerts["Error"].exists)
+            
+        app.alerts["Error"].buttons["OK"].tap()
+        
+        passwordSecureTextField.typeText("testing")
+        logInButton.tap()
         
         expectation(for: predicate, evaluatedWith: entryTab, handler: nil)
         waitForExpectations(timeout: 10, handler: nil)
         
         XCTAssert(app.navigationBars["Entries"].exists)
+        
+        let entriesNavigationBar = app.navigationBars["Entries"]
+        entriesNavigationBar.buttons["Add"].tap()
+        
+        let entrytitleTextField = app/*@START_MENU_TOKEN@*/.textFields["entryTitle"]/*[[".textFields[\"entry title\"]",".textFields[\"entryTitle\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        entrytitleTextField.tap()
+        entrytitleTextField.typeText("hello again")
+        
+        let entrycontentTextField = app/*@START_MENU_TOKEN@*/.textFields["entryContent"]/*[[".textFields[\"entry content.....\"]",".textFields[\"entryContent\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        entrycontentTextField.tap()
+        entrycontentTextField.typeText("hello again there")
+        app/*@START_MENU_TOKEN@*/.buttons["saveEntry"]/*[[".buttons[\"Save\"]",".buttons[\"saveEntry\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        XCTAssert(app.staticTexts["hello again"].exists)
+        
+        
     }
         
 }

@@ -76,6 +76,7 @@ class Entries: UITableViewController {
     
     @IBOutlet weak var userNameDisplay: UILabel!
     
+    
     @IBAction func logout(_ sender: UIButton) {
         if Auth.auth().currentUser != nil {
             do {
