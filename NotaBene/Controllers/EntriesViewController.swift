@@ -12,20 +12,25 @@ import FirebaseAuth
 import FirebaseDatabase
 import UserNotifications
 
-class Entries: UITableViewController {
+class Entries: UITableViewController, UISearchBarDelegate {
     
     
     @IBOutlet var entriesTable: UITableView!
     var refEntries: DatabaseReference!
     var entriesList = [EntryModel]()
     var entry: EntryModel?
+    var filteredEntries = [EntryModel]()
+    var isSearching = false
 
+    @IBOutlet weak var searchBar: UISearchBar!
     
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
+        searchBar.returnKeyType = UIReturnKeyType.done
         
         let currentUser = Auth.auth().currentUser
 //        userNameDisplay.text = currentUser?.email
@@ -55,6 +60,9 @@ class Entries: UITableViewController {
     }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isSearching{
+            return filteredEntries.count
+        }
             return entriesList.count
     }
     
@@ -70,10 +78,26 @@ class Entries: UITableViewController {
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
         let entry: EntryModel
+        if isSearching{
+            entry = filteredEntries[indexPath.row]
+        } else {
             entry = entriesList[indexPath.row]
+        }
         cell.entryTitleLabel.text = entry.entryTitle
         cell.entryContentLabel.text = entry.entryContent
         return cell
+    }
+    
+    func searchBar(_searchBar: UISearchBar, textDidChange searchText:String) {
+        if searchBar.text == nil || searchBar.text == ""{
+            isSearching = false
+            view.endEditing(true)
+            tableView.reloadData()
+        } else {
+            filteredEntries = entriesList.filter({$0.entryTitle == searchBar.text!})
+            tableView.reloadData()
+        }
+        
     }
     
 //    @IBOutlet weak var userNameDisplay: UILabel!
@@ -95,6 +119,8 @@ class Entries: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+
 
 
     /*
@@ -106,5 +132,4 @@ class Entries: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
