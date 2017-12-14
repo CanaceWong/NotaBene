@@ -7,6 +7,14 @@
 //
 
 import XCTest
+import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseStorage
+import BSImagePicker
+import Photos
+import UserNotifications
+
 
 class NotaBeneUITests: XCTestCase {
     
@@ -31,50 +39,77 @@ class NotaBeneUITests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
+    func testCreateEntry() {
         
-        let app = XCUIApplication()
-        let predicate = NSPredicate(format: "exists == 1")
-        let entryTab = app.navigationBars["Entries"]
-        let logInButton = app.buttons["Log in"]
-        logInButton.tap()
+        app/*@START_MENU_TOKEN@*/.buttons["Log in"]/*[[".otherElements[\"Home\"].buttons[\"Log in\"]",".buttons[\"Log in\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
         let usernameTextField = app.textFields["Username"]
         usernameTextField.tap()
-        usernameTextField.typeText("notabene@team.com")
+        usernameTextField.typeText("newtest@testing.com")
         
         let passwordSecureTextField = app.secureTextFields["Password"]
         passwordSecureTextField.tap()
-        passwordSecureTextField.typeText("testing565656")
-        logInButton.tap()
-        
-        XCTAssert(app.alerts["Error"].exists)
-            
-        app.alerts["Error"].buttons["OK"].tap()
-        
         passwordSecureTextField.typeText("testing")
-        logInButton.tap()
         
-        expectation(for: predicate, evaluatedWith: entryTab, handler: nil)
-        waitForExpectations(timeout: 10, handler: nil)
-        
-        XCTAssert(app.navigationBars["Entries"].exists)
-        
-        let entriesNavigationBar = app.navigationBars["Entries"]
-        entriesNavigationBar.buttons["Add"].tap()
+        app.buttons["Log in"].tap()
+        app.navigationBars["ENTRIES"].buttons["Add"].tap()
         
         let entrytitleTextField = app/*@START_MENU_TOKEN@*/.textFields["entryTitle"]/*[[".textFields[\"entry title\"]",".textFields[\"entryTitle\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
         entrytitleTextField.tap()
-        entrytitleTextField.typeText("hello again")
+        entrytitleTextField.typeText("hello there")
         
-        let entrycontentTextField = app/*@START_MENU_TOKEN@*/.textFields["entryContent"]/*[[".textFields[\"entry content.....\"]",".textFields[\"entryContent\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+
+        
+        let entrycontentTextField = textView
         entrycontentTextField.tap()
-        entrycontentTextField.typeText("hello again there")
+        entrycontentTextField.typeText("well well well")
         app/*@START_MENU_TOKEN@*/.buttons["saveEntry"]/*[[".buttons[\"Save\"]",".buttons[\"saveEntry\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
-        XCTAssert(app.staticTexts["hello again"].exists)
+        XCTAssert(app.staticTexts["hello there"].exists)
+        
+    }
+    
+    func testReadEntry() {
+        app.buttons["Log in"].tap()
+        
+        let usernameTextField = app/*@START_MENU_TOKEN@*/.textFields["Username"]/*[[".textFields[\"email...\"]",".textFields[\"Username\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        usernameTextField.tap()
+        usernameTextField.typeText("notabene@team.com")
+        
+        let passwordSecureTextField = app/*@START_MENU_TOKEN@*/.secureTextFields["Password"]/*[[".secureTextFields[\"password...\"]",".secureTextFields[\"Password\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("testing")
+        app.buttons["Log in"].tap()
+        
+        let entriesNavigationBar = app.navigationBars["ENTRIES"]
+        entriesNavigationBar.buttons["Add"].tap()
+        
+        let entrytitleTextField = app/*@START_MENU_TOKEN@*/.textFields["entryTitle"]/*[[".textFields[\"Title...\"]",".textFields[\"entryTitle\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        entrytitleTextField.tap()
+        entrytitleTextField.typeText("we will read this")
+        
+        let element = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element
+        let textView = element.children(matching: .other).element.children(matching: .textView).element
+        
+        textView.tap()
+        textView.typeText("great entry")
+        app/*@START_MENU_TOKEN@*/.buttons["saveEntry"]/*[[".buttons[\"SAVE\"]",".buttons[\"saveEntry\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        app.tables.staticTexts["we will read this"].tap()
+        
+        XCTAssert(app.textViews["entryContentEditable"].exists)
+
+        app.buttons["DELETE"].tap()
+        entriesNavigationBar/*@START_MENU_TOKEN@*/.buttons["Logout"]/*[[".buttons[\"Log out\"]",".buttons[\"Logout\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
         
         
     }
-        
+    
+    func testUpdateEntry() {
+
+    }
+    
+    
+
 }
