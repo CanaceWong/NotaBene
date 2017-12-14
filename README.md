@@ -108,10 +108,10 @@ Finally the data once again flows from Firebase to the table
 In the time limit that we had, there were additional features which we wanted to include in NotaBene, but were unable to.
 If we had more time, we would have added the following features:
 
-1.Search bar in an entry which allows a user to filter current entries by letters or words to find the one they want
-2. Add in a rating system which allows a user to rate an entry on how useful it was to their learning
-3. The rating system would then influence the entries homepage so that the most useful entries would be listed first
-4. Add in code snippets where users can copy and paste chunks of code into an entry. In these snippets, key words would change colour like they do in Ruby, JavaScript etc.
+* Search bar in an entry which allows a user to filter current entries by letters or words to find the one they want.
+* Add in a rating system which allows a user to rate an entry on how useful it was to their learning.
+* The rating system would then influence the entries homepage so that the most useful entries would be listed first.
+* Add in code snippets where users can copy and paste chunks of code into an entry. In these snippets, key words would change colour like they do in Ruby, JavaScript etc.
 
 ## Conclusion
 As a team we faced several challenges while creating NotaBene, from working in an unfamiliar dev environment to learning a new language as we were building the app. 
