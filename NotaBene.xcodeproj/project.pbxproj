@@ -19,6 +19,7 @@
 		7C6743971FD6F55100A3B578 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6743951FD6F55100A3B578 /* LaunchScreen.storyboard */; };
 		7C6743A21FD6F55100A3B578 /* NotaBeneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6743A11FD6F55100A3B578 /* NotaBeneTests.swift */; };
 		7C6743AD1FD6F55100A3B578 /* NotaBeneUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */; };
+		7C69F21A1FE18D8E00235A67 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C69F2191FE18D8E00235A67 /* GoogleService-Info.plist */; };
 		7CBC1AC81FD818A3002007F7 /* EntriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */; };
 		7CCBCB431FDE915500D71D7F /* PasswordResetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CCBCB421FDE915500D71D7F /* PasswordResetViewController.swift */; };
 		7CF033721FD9CD1D00E31704 /* ShowEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */; };
@@ -72,6 +73,7 @@
 		7C6743A81FD6F55100A3B578 /* NotaBeneUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotaBeneUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotaBeneUITests.swift; sourceTree = "<group>"; };
 		7C6743AE1FD6F55100A3B578 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C69F2191FE18D8E00235A67 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7CBC1AC71FD818A3002007F7 /* EntriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesViewController.swift; sourceTree = "<group>"; };
 		7CCBCB421FDE915500D71D7F /* PasswordResetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewController.swift; sourceTree = "<group>"; };
 		7CF033711FD9CD1D00E31704 /* ShowEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowEntryViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				7C6743951FD6F55100A3B578 /* LaunchScreen.storyboard */,
 				7C6743981FD6F55100A3B578 /* Info.plist */,
 				1EC57BA41FE29D5C00375F0C /* GoogleService-Info.plist */,
+
 			);
 			path = NotaBene;
 			sourceTree = "<group>";
@@ -337,7 +340,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6743971FD6F55100A3B578 /* LaunchScreen.storyboard in Resources */,
+
 				1EC57BA51FE29D5C00375F0C /* GoogleService-Info.plist in Resources */,
+
 				7C6743941FD6F55100A3B578 /* Assets.xcassets in Resources */,
 				7C6743921FD6F55100A3B578 /* Main.storyboard in Resources */,
 			);

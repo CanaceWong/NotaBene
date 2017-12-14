@@ -37,7 +37,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             
             return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
         }
-        navigationBarAppearace.tintColor = UIColorFromHex(rgbValue: 0xCCCCFF)
+        
+        
+        
+        navigationBarAppearace.tintColor = UIColor.white
         navigationBarAppearace.barTintColor = UIColorFromHex(rgbValue: 0xCCCCFF)
         
         let attrs = [

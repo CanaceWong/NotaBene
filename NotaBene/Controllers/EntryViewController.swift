@@ -172,9 +172,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
             
             let vc = BSImagePickerViewController()
             self.bs_presentImagePickerController(vc, animated: true, select: { (asset: PHAsset) -> Void in
-                
             }, deselect: { (asset: PHAsset) -> Void in
-                
             }, cancel: { (assets: [PHAsset]) -> Void in
             }, finish: {(assets: [PHAsset]) -> Void in
                 for i in 0..<assets.count{
@@ -260,7 +258,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 20.0, width: self.view.frame.size.width, height: self.view.frame.size.height/10))
         toolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-10.0)
 //        toolBar.barStyle = UIBarStyle.default
-        toolBar.tintColor = UIColor.white
+        toolBar.tintColor = UIColorFromHex(rgbValue: 0x97A1FF)
         toolBar.backgroundColor = UIColor.white
 
         let okBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(Entry.donePressed))
@@ -269,13 +267,13 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
         
-        label.font = UIFont(name: "Avenir-light", size: 20)
+        label.font = UIFont(name: "Avenir-medium", size: 20)
         label.backgroundColor = UIColor.clear
         label.textColor = UIColorFromHex(rgbValue: 0x97A1FF)
-        label.text = "Set a Reminder Date"
-        label.textAlignment = NSTextAlignment.center
+        label.text = "Set a reminder date"
+        label.textAlignment = NSTextAlignment.left
         let textBtn = UIBarButtonItem(customView: label)
-        toolBar.setItems([flexSpace,textBtn,flexSpace,okBarBtn], animated: true)
+        toolBar.setItems([textBtn,flexSpace,okBarBtn], animated: true)
         dateTextField.inputAccessoryView = toolBar
         //end of toolbar 1
         
@@ -283,7 +281,7 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
         let secondToolBar = UIToolbar(frame: CGRect(x: 0, y: 20.0, width: self.view.frame.size.width, height: self.view.frame.size.height/10))
         secondToolBar.layer.position = CGPoint(x: self.view.frame.size.width/2, y: self.view.frame.size.height-20.0)
 //        secondToolBar.barStyle = UIBarStyle.blackTranslucent
-        secondToolBar.tintColor = UIColor.white
+        secondToolBar.tintColor = UIColorFromHex(rgbValue: 0x97A1FF)
         secondToolBar.backgroundColor = UIColor.white
         
         let secondOkBarBtn = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(Entry.secondDonePressed))
@@ -292,13 +290,13 @@ class Entry: UIViewController, UINavigationControllerDelegate, UIImagePickerCont
 //
         let secondLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width / 3, height: self.view.frame.size.height))
         
-        secondLabel.font = UIFont(name: "Avenir-light", size: 20)
+        secondLabel.font = UIFont(name: "Avenir-medium", size: 20)
         secondLabel.backgroundColor = UIColor.clear
         secondLabel.textColor = UIColorFromHex(rgbValue: 0x97A1FF)
-        secondLabel.text = "Set a Second Reminder Date"
-        secondLabel.textAlignment = NSTextAlignment.center
+        secondLabel.text = "Set a second Reminder date"
+        secondLabel.textAlignment = NSTextAlignment.left
         let secondTextBtn = UIBarButtonItem(customView: secondLabel)
-        secondToolBar.setItems([flexSpace,secondTextBtn,flexSpace,secondOkBarBtn], animated: true)
+        secondToolBar.setItems([secondTextBtn,flexSpace,secondOkBarBtn], animated: true)
         secondDateTextField.inputAccessoryView = secondToolBar
         //end of toolbar 2
         

@@ -24,6 +24,16 @@ class Entries: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+            let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+            let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+            let blue = CGFloat(rgbValue & 0xFF)/256.0
+            
+            return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+        }
+       
+        //        self.tableView.backgroundColor = UIColorFromHex(rgbValue: 0xCCCCFF)
+        
         let currentUser = Auth.auth().currentUser
         userNameDisplay.text = currentUser?.email
         
@@ -40,7 +50,6 @@ class Entries: UITableViewController {
                         let entryContent = entryObject["entryContent"]
                         let entryId = entryObject["id"]
                         let images = entryObject["image"]
-                       print(images)
                         
                         let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?, image: images as? String)
                        
@@ -71,6 +80,7 @@ class Entries: UITableViewController {
         entry = entriesList[indexPath.row]
         cell.entryTitleLabel.text = entry.entryTitle
         cell.entryContentLabel.text = entry.entryContent
+        cell.entryTitleLabel.font = UIFont(name:"Avenir-medium", size:18)
         return cell
     }
     
