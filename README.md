@@ -31,7 +31,7 @@ Most of us have already got Notes installed on our phones - but ours is differen
 6. User can create and set multiple reminders
 7. Password reset option
 8. User separation; you can’t see other users’ NotaBene accounts or entries
-9. Option to upload multiple images from camera or phone library
+9. Option to upload multiple images from phone library
 10. User can also save multiple images in an entry
 11. Images can be expanded when in show-view
 
@@ -64,8 +64,8 @@ To view it, simply tap the entry, and it will open your screen. You can then tap
 * Add a Photo (in a new and/or existing entry)
 Tap ‘+’ to create a new entry.
 When the new entry page opens, scroll down and tap the ‘+’ on the images button.
-**you will either be given the choice to upload a photo from your camera or photo library**
-**if choosing from photo library, select the photos you want, and then tap ‘done’. Your photos should now appear in your entry**
+You will be able to upload a photo from your phone's photo library.
+Select the photos you want, and then tap ‘done’. Your photos should now appear in your entry.
 Tap ‘save’ and you’ll be taken back to your list of entries.
 
 * Add a Hyperlink (in a new and/or existing entry)
@@ -96,7 +96,7 @@ Congratulations! You’re officially a NotaBener!
 ## Work Method
 NotaBene was built using the Xcode development environment and Swift. The backend database was created using Firebase. 
 
-As you can see from this diagram (DIAGRAM HERE)  the architecture of our dataflow is relatively straightforward, though getting it to follow the flow was not!
+The architecture of our dataflow is relatively straightforward, though getting it to follow the flow was not!
 
 When working online, the login data first flows to Firebase, which checks the authorisation.
 Firebase will then send all the information pertaining to existing entries back to the app to then display in the table.
@@ -114,5 +114,6 @@ If we had more time, we would have added the following features:
 4. Add in code snippets where users can copy and paste chunks of code into an entry. In these snippets, key words would change colour like they do in Ruby, JavaScript etc.
 
 ## Conclusion
-As a team we faced several challenges while creating NotaBene - from an unfamiliar dev environment and learning a new language as we were building the app. Overall we are happy with our product. It works, is secure, is user friendly and is a useful product which will be of benefit to students from any disciple/level of learning. 
+As a team we faced several challenges while creating NotaBene, from working in an unfamiliar dev environment to learning a new language as we were building the app. 
+Overall we are happy with our product. It works, is secure, is user friendly and is a useful product which will be of benefit to students from any disciple/level of learning. 
 
