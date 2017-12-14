@@ -98,11 +98,12 @@ NotaBene was built using the Xcode development environment and Swift. The backen
 
 The architecture of our dataflow is relatively straightforward, though getting it to follow the flow was not!
 
-When working online, the login data first flows to Firebase, which checks the authorisation.
-Firebase will then send all the information pertaining to existing entries back to the app to then display in the table.
-When a new entry is created the data then flows back to update the Firebase database, which then sends the updated information back to be displayed in the app.
-Viewing and editing entries is a little different as instead of retrieving the data from the database it actually persists over the app segue. However, once changes are made it does head straight back to the database to update it. 
-Finally the data once again flows from Firebase to the table
+* When working online, the login data first flows to Firebase, which checks the authorisation.
+* Firebase will then send all the information pertaining to existing entries back to the app to then display in the table.
+* When a new entry is created the data then flows back to update the Firebase database, which then sends the updated information back to be displayed in the app.
+* Viewing and editing entries is a little different as instead of retrieving the data from the database it actually persists over the app segue. 
+* However, once changes are made it does head straight back to the database to update it. 
+* Finally the data once again flows from Firebase to the table
 
 ## Additional features
 In the time limit that we had, there were additional features which we wanted to include in NotaBene, but were unable to.
