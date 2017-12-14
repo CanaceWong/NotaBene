@@ -106,7 +106,40 @@ class NotaBeneUITests: XCTestCase {
         
     }
     
-    func testUpdateEntry() {
+    func testDeleteEntry() {
+        
+        app.buttons["Log in"].tap()
+
+        let usernameTextField = app/*@START_MENU_TOKEN@*/.textFields["Username"]/*[[".textFields[\"email...\"]",".textFields[\"Username\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        usernameTextField.tap()
+        usernameTextField.typeText("notabene@team.com")
+        
+        
+        let passwordSecureTextField = app/*@START_MENU_TOKEN@*/.secureTextFields["Password"]/*[[".secureTextFields[\"password...\"]",".secureTextFields[\"Password\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        passwordSecureTextField.tap()
+        passwordSecureTextField.typeText("testing")
+        app.buttons["Log in"].tap()
+        
+        let entriesNavigationBar = app.navigationBars["ENTRIES"]
+        entriesNavigationBar.buttons["Add"].tap()
+        
+        let entrytitleTextField = app/*@START_MENU_TOKEN@*/.textFields["entryTitle"]/*[[".textFields[\"Title...\"]",".textFields[\"entryTitle\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        entrytitleTextField.tap()
+        entrytitleTextField.typeText("this will be deleted")
+        
+        let textView = app.children(matching: .window).element(boundBy: 0).children(matching: .other).element(boundBy: 1).children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .textView).element
+        textView.tap()
+        textView.typeText("delete")
+        app/*@START_MENU_TOKEN@*/.buttons["saveEntry"]/*[[".buttons[\"SAVE\"]",".buttons[\"saveEntry\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        app.tables.staticTexts["this will be deleted"].tap()
+
+        let deleteButton = app.buttons["DELETE"]
+        deleteButton.tap()
+        
+        XCTAssertFalse(app.staticTexts["this will be deleted"].exists)
+        
+        
 
     }
     
