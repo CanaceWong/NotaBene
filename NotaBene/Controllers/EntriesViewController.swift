@@ -10,13 +10,56 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import UserNotifications
 
 class Entries: UITableViewController {
     
-    var refEntries: DatabaseReference!
+    
     @IBOutlet var entriesTable: UITableView!
     
+    var refEntries: DatabaseReference!
     var entriesList = [EntryModel]()
+    var entry: EntryModel?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        func UIColorFromHex(rgbValue:UInt32, alpha:Double=1.0)->UIColor {
+            let red = CGFloat((rgbValue & 0xFF0000) >> 16)/256.0
+            let green = CGFloat((rgbValue & 0xFF00) >> 8)/256.0
+            let blue = CGFloat(rgbValue & 0xFF)/256.0
+            
+            return UIColor(red:red, green:green, blue:blue, alpha:CGFloat(alpha))
+        }
+       
+        //        self.tableView.backgroundColor = UIColorFromHex(rgbValue: 0xCCCCFF)
+        
+        let currentUser = Auth.auth().currentUser
+        userNameDisplay.text = currentUser?.email
+        
+        let refEntries = Database.database().reference().child("users")
+        if let uid = currentUser?.uid {
+            
+            refEntries.child("\(uid)").child("entries").observe(DataEventType.value, with:{(snapshot) in
+                if snapshot.childrenCount>0{
+                    self.entriesList.removeAll()
+                    
+                    for entries in snapshot.children.allObjects as![DataSnapshot]{
+                        let entryObject = entries.value as? [String: Any] ?? [:]
+                        let entryTitle = entryObject["entryTitle"]
+                        let entryContent = entryObject["entryContent"]
+                        let entryId = entryObject["id"]
+                        let images = entryObject["image"]
+                        
+                        let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?, image: images as? String)
+                       
+                        self.entriesList.append(entry)
+                    }
+                    self.entriesTable.reloadData()
+                }
+            })
+        }
+    }
     
     public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return entriesList.count
@@ -33,47 +76,27 @@ class Entries: UITableViewController {
 
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ViewControllerTableViewCell
-        
         let entry: EntryModel
-        
         entry = entriesList[indexPath.row]
-        
         cell.entryTitleLabel.text = entry.entryTitle
         cell.entryContentLabel.text = entry.entryContent
-        
+        cell.entryTitleLabel.font = UIFont(name:"Avenir-medium", size:18)
         return cell
     }
     
     @IBOutlet weak var userNameDisplay: UILabel!
-    @IBAction func action(_ sender: UIButton) {
-        try! Auth.auth().signOut()
-        performSegue(withIdentifier: "logged2", sender: self)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        userNameDisplay.text = Auth.auth().currentUser?.email
-        
-        refEntries = Database.database().reference().child("entries");
-        
-        refEntries.observe(DataEventType.value, with:{(snapshot) in
-            if snapshot.childrenCount>0{
-                self.entriesList.removeAll()
-
-                for entries in snapshot.children.allObjects as![DataSnapshot]{
-                    let entryObject = entries.value as? [String: AnyObject]
-                    let entryTitle = entryObject?["entryTitle"]
-                    let entryContent = entryObject?["entryContent"]
-                    let entryId = entryObject?["id"]
-            
-                    let entry = EntryModel(id: entryId as! String?, entryTitle: entryTitle as! String?, entryContent: entryContent as! String?)
-                    
-                    self.entriesList.append(entry)
-                }
-                self.entriesTable.reloadData()
+    
+    
+    @IBAction func logout(_ sender: UIButton) {
+        if Auth.auth().currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+                let logout: UIViewController? = self.storyboard?.instantiateViewController(withIdentifier: "Home")
+                self.present(logout!, animated: true, completion: nil)
+            } catch let error as NSError {
+                print(error.localizedDescription)
             }
-        })
+        }
     }
     
     override func didReceiveMemoryWarning() {

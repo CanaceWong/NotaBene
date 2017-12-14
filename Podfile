@@ -4,6 +4,7 @@
 pod 'Firebase/Core'
 pod 'Firebase/Auth'
 pod 'Firebase/Database'
+pod 'Firebase/Storage'
 
 
 target 'NotaBene' do
@@ -11,6 +12,8 @@ target 'NotaBene' do
   use_frameworks!
 
   # Pods for NotaBene
+
+pod "BSImagePicker", "~> 2.4"
 
   target 'NotaBeneTests' do
     inherit! :search_paths
