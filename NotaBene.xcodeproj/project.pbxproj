@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1EC380801FE2A17E00B22859 /* signInTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC3807F1FE2A17E00B22859 /* signInTests.swift */; };
 		1EC57BA51FE29D5C00375F0C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1EC57BA41FE29D5C00375F0C /* GoogleService-Info.plist */; };
 		1EC57BA71FE29DBE00375F0C /* signUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC57BA61FE29DBE00375F0C /* signUpTests.swift */; };
 		7AA794E3C164601823BA4E0E /* Pods_NotaBeneTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F109CF66364CC82BD342795 /* Pods_NotaBeneTests.framework */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		17947378912FFFAFE1E99D95 /* Pods-NotaBene.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotaBene.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NotaBene/Pods-NotaBene.debug.xcconfig"; sourceTree = "<group>"; };
+		1EC3807F1FE2A17E00B22859 /* signInTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signInTests.swift; sourceTree = "<group>"; };
 		1EC57BA41FE29D5C00375F0C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Desktop/Olivia configure/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1EC57BA61FE29DBE00375F0C /* signUpTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = signUpTests.swift; sourceTree = "<group>"; };
 		2E8E01D8D5666786CADD5D24 /* Pods_NotaBeneUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NotaBeneUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +177,7 @@
 				7C6743AC1FD6F55100A3B578 /* NotaBeneUITests.swift */,
 				7C6743AE1FD6F55100A3B578 /* Info.plist */,
 				1EC57BA61FE29DBE00375F0C /* signUpTests.swift */,
+				1EC3807F1FE2A17E00B22859 /* signInTests.swift */,
 			);
 			path = NotaBeneUITests;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C6743AD1FD6F55100A3B578 /* NotaBeneUITests.swift in Sources */,
+				1EC380801FE2A17E00B22859 /* signInTests.swift in Sources */,
 				1EC57BA71FE29DBE00375F0C /* signUpTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
