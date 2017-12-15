@@ -57,24 +57,24 @@ You will be taken to a blank page where you can give your entry a title and a te
 Tap ‘done’ whenever you’re ready to save your entry. 
 You will then be taken back to the homepage. You should now be able to see the title of your newly created entry. 
 
-* View an entry
+* View an entry:
 At the homepage you will either see a blank page or an entry (from the previous section).
 To view it, simply tap the entry, and it will open your screen. You can then tap the text box to continue writing or tap ‘delete’ to remove it. 
 
-* Add a Photo (in a new and/or existing entry)
+* Add a Photo (in a new and/or existing entry):
 Tap ‘+’ to create a new entry.
 When the new entry page opens, scroll down and tap the ‘+’ on the images button.
 You will be able to upload a photo from your phone's photo library.
 Select the photos you want, and then tap ‘done’. Your photos should now appear in your entry.
 Tap ‘save’ and you’ll be taken back to your list of entries.
 
-* Add a Hyperlink (in a new and/or existing entry)
+* Add a Hyperlink (in a new and/or existing entry):
 Tap ‘+’ to create a new entry.
 When the new entry page opens, enter a title and tap the text box below it to start writing.
 You can add a hyperlink alongside text in an entry by typing ‘www.’ or copying and pasting a link from your browser into the entry.
 Tap ‘save’ and the hyperlink should be underlined and highlighted to show that it’s not a piece of text. 
 
-* Set a reminder
+* Set a reminder:
 You can set a reminder whenever you create an entry or add one to an existing entry.
 After you’ve created an entry (following the previous instructions), scroll down to the bottom of your entry. 
 You will see a button called ‘set reminder’ - go ahead and tap it!
@@ -84,7 +84,7 @@ Your reminder will then sound at the time and day you’ve picked - even when yo
 
 You can also edit any reminders you’ve created by going into an entry, tapping ‘reminders’ to change the alert to the time/day that you want.
 
-* Forgot your password?
+* Forgot your password?:
 Tap ‘forgot password’ at the login page.
 You’ll be asked to enter your email address so that we can send you a link to reset your password.
 You should then receive a link in your email inbox (if it’s not there check your spam box).
