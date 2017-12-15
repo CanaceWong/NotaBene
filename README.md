@@ -45,13 +45,13 @@ Learners are able to add multiple photos, for example of the classroom board, to
 And finally, you can set multiple reminders to ensure that you remember to review important points.
 
 ## How to use NotaBene
-Create an account
+* Create an account:
 Download NotaBene and open the app. 
 You will then be taken to the login/signup page where you will be asked for your email address and password. 
 Fill out our signup form and then use those details to login. 
 Once logged in, you’ll see a blank page where your future entries will be listed. 
 
-* Create an entry
+* Create an entry:
 Tap ‘+’ to create a new entry.
 You will be taken to a blank page where you can give your entry a title and a text box where you can start writing your entry (it can be anything from writing a note from your keyboard, inserting hyperlinks or uploading photos from your phone).
 Tap ‘done’ whenever you’re ready to save your entry. 
